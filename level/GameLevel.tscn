@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=2 format=3 uid="uid://jxpf5kymyvsd"]
+
+[ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level_background.png" id="1_pbpix"]
 
 [node name="GameLevel" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_pbpix")
+centered = false
