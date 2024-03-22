@@ -1,24 +1,50 @@
 extends Sprite2D
 
-signal signal_enivornment()
+class_name Weather
 
-var current_weather
+enum {
+	WINTER,
+	SPRING,
+	SUMMER,
+	FALL
+}
 
-func draw_weather_card(current_phase: int):
-	current_weather = get_season_from_phase(current_phase)
-	current_weather.visible = true
-	current_weather.get_node("AnimationPlayer").play_entry = true
-	
-func get_season_from_phase(current_phase: int):
-	match current_phase%4:
-		1:
-			return $Winter
-		2:
-			return $Winter
-		3:
-			return $Winter
-		0:
-			return $Winter
+const signal_in = "WeatherPhase"
+const signal_out = "EnvironmentPhase"
+
+func _ready():
+	Signals.connect(signal_in, activate_weather)
+
+func activate_weather():
+	var weather = get_current_weather()
+	display_entry_sign(weather.sign)
+	play_entry_animation(weather.scene)
+
+func get_current_weather():
+	match GlobalVariables.current_round%4:
+		0 : 
+			return {
+				"type" : WINTER,
+				"sign" : $Winter,
+				"scene" : $Winter
+				}
+		1 : 
+			return {
+				"type" : WINTER,
+				"sign" : $Winter,
+				"scene" : $Winter
+				}
+		2 : 
+			return SUMMER
+		3 :
+			return FALL
+
+func play_entry_animation(weather):
+	weather.visible = true
+	weather.get_node(GlobalVariables.animation_player).play_entry = true
+
+func display_entry_sign(weather):
+	pass
 
 func _on_winter_signal_animation_end():
-	signal_enivornment.emit()
+	Signals.emit_signal(signal_out)

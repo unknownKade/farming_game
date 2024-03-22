@@ -1,6 +1,5 @@
 extends Node2D
 
-var current_phase : int = 1
-
+var signal_out = "WeatherPhase"
 func _ready():
-	$Weather.draw_weather_card(current_phase)
+	Signals.emit_signal(signal_out)
