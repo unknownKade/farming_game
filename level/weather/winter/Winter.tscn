@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ysr8yebe3ke"]
 
-[ext_resource type="Script" path="res://level/weather/Winter.gd" id="1_7jomj"]
+[ext_resource type="Script" path="res://level/weather/winter/Winter.gd" id="1_7jomj"]
 [ext_resource type="Texture2D" uid="uid://ct51kftrvcj5g" path="res://resource/images/weather/winter-no-bg.png" id="2_a8ewt"]
-[ext_resource type="Script" path="res://level/weather/AnimationPlayer.gd" id="3_1tynp"]
+[ext_resource type="Script" path="res://level/weather/winter/AnimationPlayer.gd" id="3_1tynp"]
 
 [sub_resource type="Animation" id="Animation_5fqkw"]
 resource_name = "Entry"

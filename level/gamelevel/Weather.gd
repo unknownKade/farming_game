@@ -7,6 +7,7 @@ var current_weather
 func draw_weather_card(current_phase: int):
 	current_weather = get_season_from_phase(current_phase)
 	current_weather.visible = true
+	current_weather.get_node("AnimationPlayer").play_entry = true
 	
 func get_season_from_phase(current_phase: int):
 	match current_phase%4:
