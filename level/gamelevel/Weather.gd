@@ -21,7 +21,7 @@ func activate_weather():
 	play_entry_animation(weather.scene)
 
 func get_current_weather():
-	match GlobalVariables.current_round%4:
+	match GameManager.current_round%4:
 		0 : 
 			return {
 				"type" : WINTER,
@@ -41,7 +41,7 @@ func get_current_weather():
 
 func play_entry_animation(weather):
 	weather.visible = true
-	weather.get_node(GlobalVariables.animation_player).play_entry = true
+	weather.get_node(GameManager.animation_player).play_entry = true
 
 func display_entry_sign(weather):
 	pass

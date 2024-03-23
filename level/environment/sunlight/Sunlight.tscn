@@ -6,7 +6,6 @@
 
 [sub_resource type="Animation" id="Animation_4ww6x"]
 resource_name = "Entry"
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level_background.png" id="1_pbpix"]
 [ext_resource type="Texture2D" uid="uid://deu4qowlx8exe" path="res://resource/images/game_level/environment_box.aseprite" id="3_adiyy"]
 [ext_resource type="Script" path="res://level/gamelevel/Environment.gd" id="4_2p28q"]
+[ext_resource type="Texture2D" uid="uid://bl1p5pgwkeowr" path="res://resource/images/game_level/weather_box.aseprite" id="4_2u2v4"]
 [ext_resource type="Script" path="res://level/gamelevel/Weather.gd" id="4_cbj4g"]
 [ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/winter/Winter.tscn" id="5_4nm7p"]
 [ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/environment/sunlight/Sunlight.tscn" id="5_h7xs0"]
 [ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/Beet.tscn" id="9_v8gl7"]
-[ext_resource type="Script" path="res://level/gamelevel/Deck.gd" id="9_whvgy"]
 
 [node name="GameLevel" type="Node2D"]
 script = ExtResource("1_lq06n")
@@ -31,21 +31,26 @@ visible = false
 
 [node name="Weather" type="Sprite2D" parent="."]
 position = Vector2(182, 79)
+texture = ExtResource("4_2u2v4")
 script = ExtResource("4_cbj4g")
 
 [node name="Winter" parent="Weather" instance=ExtResource("5_4nm7p")]
-texture_filter = 1
+visible = false
 
 [node name="Deck" type="Node2D" parent="."]
 scale = Vector2(5, 5)
-script = ExtResource("9_whvgy")
 
 [node name="Beet" parent="Deck" instance=ExtResource("9_v8gl7")]
-position = Vector2(140.2, 161.4)
+position = Vector2(114, 167.2)
 
-[node name="Timer" type="Timer" parent="Deck"]
-wait_time = 5.0
+[node name="Beet2" parent="Deck" instance=ExtResource("9_v8gl7")]
+position = Vector2(165.8, 167)
+
+[node name="Beet3" parent="Deck" instance=ExtResource("9_v8gl7")]
+position = Vector2(217, 166.8)
+
+[node name="Beet4" parent="Deck" instance=ExtResource("9_v8gl7")]
+position = Vector2(269.8, 167)
 
 [connection signal="signal_animation_end" from="Environment/Sunlight" to="Environment" method="_on_sunlight_signal_animation_end"]
 [connection signal="signal_animation_end" from="Weather/Winter" to="Weather" method="_on_winter_signal_animation_end"]
-[connection signal="timeout" from="Deck/Timer" to="Deck" method="_on_timer_timeout"]

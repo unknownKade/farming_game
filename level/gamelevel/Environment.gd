@@ -22,7 +22,7 @@ func _ready():
 func activate_environment():
 	var scene = scenes.get(select_environment_type())
 	scene.visible = true
-	scene.get_node(GlobalVariables.animation_player).play_entry = true
+	scene.get_node(GameManager.animation_player).play_entry = true
 
 func select_environment_type():
 	match randi_range(0, len(Types)-1):

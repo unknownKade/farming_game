@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxofbby3bsmfa"]
-
-[ext_resource type="PackedScene" uid="uid://ddwm6clc3mekq" path="res://resource/images/card/Beet1.aseprite" id="1_bs6ei"]
-
-[node name="Beet1" instance=ExtResource("1_bs6ei")]
