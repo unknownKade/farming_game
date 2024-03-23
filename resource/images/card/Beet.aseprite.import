@@ -3,12 +3,12 @@
 importer="Aseprite AnimatedSprite2D Import"
 type="PackedScene"
 uid="uid://ddwm6clc3mekq"
-path="res://.godot/imported/Beet1.aseprite-f8762fda77d5e9a228e00178823d0d28.scn"
+path="res://.godot/imported/Beet.aseprite-40dbce1ad7f3712ecb186b570cdc0f2a.scn"
 
 [deps]
 
-source_file="res://resource/images/card/Beet1.aseprite"
-dest_files=["res://.godot/imported/Beet1.aseprite-f8762fda77d5e9a228e00178823d0d28.scn"]
+source_file="res://resource/images/card/Beet.aseprite"
+dest_files=["res://.godot/imported/Beet.aseprite-40dbce1ad7f3712ecb186b570cdc0f2a.scn"]
 
 [params]
 

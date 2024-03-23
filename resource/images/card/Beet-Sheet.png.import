@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3gwkvunp4tmm"
-path="res://.godot/imported/Beet1.png-a77729f6ec492fc1edaf5d9a8aeab954.ctex"
+uid="uid://boqjkexwrh7s4"
+path="res://.godot/imported/Beet-Sheet.png-e1ec044efd99d279a6749d32b4a4fa4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/images/card/Beet1.png"
-dest_files=["res://.godot/imported/Beet1.png-a77729f6ec492fc1edaf5d9a8aeab954.ctex"]
+source_file="res://resource/images/card/Beet-Sheet.png"
+dest_files=["res://.godot/imported/Beet-Sheet.png-e1ec044efd99d279a6749d32b4a4fa4c.ctex"]
 
 [params]
 

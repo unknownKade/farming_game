@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://jxpf5kymyvsd"]
+
+[ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
+[ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level_background.png" id="1_pbpix"]
+[ext_resource type="Texture2D" uid="uid://deu4qowlx8exe" path="res://resource/images/game_level/environment_box.aseprite" id="3_adiyy"]
+[ext_resource type="Script" path="res://level/gamelevel/Environment.gd" id="4_2p28q"]
+[ext_resource type="Texture2D" uid="uid://bl1p5pgwkeowr" path="res://resource/images/game_level/weather_box.aseprite" id="4_2u2v4"]
+[ext_resource type="Script" path="res://level/gamelevel/Weather.gd" id="4_cbj4g"]
+[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/winter/Winter.tscn" id="5_4nm7p"]
+[ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/environment/sunlight/Sunlight.tscn" id="5_h7xs0"]
+[ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/Beet.tscn" id="9_v8gl7"]
+[ext_resource type="Script" path="res://level/gamelevel/Deck.gd" id="9_whvgy"]
+[ext_resource type="Script" path="res://level/card/Beet.gd" id="11_gltde"]
+
+[sub_resource type="Animation" id="Animation_maoja"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kd1y3"]
+_data = {
+"entry": SubResource("Animation_maoja")
+}
+
+[node name="GameLevel" type="Node2D"]
+script = ExtResource("1_lq06n")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_pbpix")
+centered = false
+
+[node name="Environment" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(182, 224)
+texture = ExtResource("3_adiyy")
+script = ExtResource("4_2p28q")
+
+[node name="Sunlight" parent="Environment" instance=ExtResource("5_h7xs0")]
+
+[node name="Weather" type="Sprite2D" parent="."]
+position = Vector2(182, 79)
+texture = ExtResource("4_2u2v4")
+script = ExtResource("4_cbj4g")
+
+[node name="Winter" parent="Weather" instance=ExtResource("5_4nm7p")]
+
+[node name="Deck" type="Node2D" parent="."]
+scale = Vector2(5, 5)
+script = ExtResource("9_whvgy")
+
+[node name="Beet" parent="Deck" instance=ExtResource("9_v8gl7")]
+position = Vector2(149.4, 160.6)
+rotation = -0.275621
+script = ExtResource("11_gltde")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Deck"]
+libraries = {
+"": SubResource("AnimationLibrary_kd1y3")
+}
+
+[node name="Timer" type="Timer" parent="Deck"]
+wait_time = 2.0
+
+[connection signal="signal_animation_end" from="Environment/Sunlight" to="Environment" method="_on_sunlight_signal_animation_end"]
+[connection signal="signal_animation_end" from="Weather/Winter" to="Weather" method="_on_winter_signal_animation_end"]
+[connection signal="timeout" from="Deck/Timer" to="Deck" method="_on_timer_timeout"]
