@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Beet
+class_name Tomato
 
 const signal_out = "PlayerEnd"
 
@@ -9,7 +9,7 @@ func _on_area_2d_signal_card_change(is_select):
 		if GameManager.selected_card == self :
 			GameManager.confirmed_card = self
 			play_confirm()
-			Signals.emit_signal("PlayerEnd")
+			Signals.emit_signal(signal_out)
 		else :
 			GameManager.selected_card = self
 			play_select()
@@ -19,10 +19,10 @@ func _on_area_2d_signal_card_change(is_select):
 		play_deselect()
 
 func play_select():
-	pass
+	$DeckAnimationPlayer.play("select")
 
 func play_deselect():
-	pass
+	$DeckAnimationPlayer.play("deselect")
 	
 func play_confirm():
-	pass
+	$DeckAnimationPlayer.play("confirm")
