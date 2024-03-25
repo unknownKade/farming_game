@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://06bul7hi5akv"]
 
-[ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_3l7xw"]
+[ext_resource type="Script" path="res://level/card/carrot/Carrot.gd" id="1_ipbhs"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="2_twubf"]
-[ext_resource type="Script" path="res://level/card/beet/Area2D.gd" id="3_auavi"]
+[ext_resource type="Script" path="res://scripts/Click.gd" id="3_lh00u"]
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
 resource_name = "1"
@@ -79,7 +79,7 @@ size = Vector2(48, 64)
 [node name="Carrot" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_3l7xw")
+script = ExtResource("1_ipbhs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -94,7 +94,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_auavi")
+script = ExtResource("3_lh00u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d7h4i")
