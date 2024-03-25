@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bcjo6vxhmi3ti"]
 
-[ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_gx4k3"]
+[ext_resource type="Script" path="res://level/card/potato/Potato.gd" id="1_gu2o1"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
-[ext_resource type="Script" path="res://level/card/beet/Area2D.gd" id="3_7o1eo"]
+[ext_resource type="Script" path="res://scripts/Click.gd" id="3_yedh5"]
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
 resource_name = "1"
@@ -80,7 +80,7 @@ size = Vector2(48, 64)
 [node name="Potato" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_gx4k3")
+script = ExtResource("1_gu2o1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -95,7 +95,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_7o1eo")
+script = ExtResource("3_yedh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d7h4i")

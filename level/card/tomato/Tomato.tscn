@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://ssl6ge77mc3l"]
 
-[ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_nhmtm"]
+[ext_resource type="Script" path="res://level/card/tomato/Tomato.gd" id="1_unide"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="2_30hg2"]
-[ext_resource type="Script" path="res://level/card/beet/Area2D.gd" id="3_88p3r"]
+[ext_resource type="Script" path="res://scripts/Click.gd" id="3_6v2lb"]
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
 resource_name = "1"
@@ -80,7 +80,7 @@ size = Vector2(48, 64)
 [node name="Tomato" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_nhmtm")
+script = ExtResource("1_unide")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -95,7 +95,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_88p3r")
+script = ExtResource("3_6v2lb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d7h4i")

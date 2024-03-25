@@ -1,6 +1,6 @@
 extends Area2D
 
-signal signal_card_change(is_select)
+signal signal_card_change(is_left_click)
 
 var mouse_in : bool = false
 func _input(event):

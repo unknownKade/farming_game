@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="1_bauuj"]
 [ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_eqvqw"]
-[ext_resource type="Script" path="res://level/card/beet/Area2D.gd" id="3_7cabd"]
+[ext_resource type="Script" path="res://scripts/Click.gd" id="3_4xb23"]
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
 resource_name = "1"
@@ -94,7 +94,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_7cabd")
+script = ExtResource("3_4xb23")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d7h4i")
