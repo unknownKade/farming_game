@@ -8,4 +8,4 @@ func _ready():
 	Signals.emit_signal(signal_out)
 
 func calculate_result():
-	print('selected : ', GameManager.confirmed_card)
+	$Garden.play_seeding()

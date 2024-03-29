@@ -1,50 +1,30 @@
 extends Sprite2D
 
 class_name Weather
-
-enum {
-	WINTER,
-	SPRING,
-	SUMMER,
-	FALL
-}
+const seasons = ['Winter','Winter', 'Winter', 'Winter']
 
 const signal_in = "WeatherPhase"
 const signal_out = "EnvironmentPhase"
 
+var scenes : Dictionary
+
 func _ready():
 	Signals.connect(signal_in, activate_weather)
-
+	
+	for child in get_children():
+		scenes[child.name]= child
+		
 func activate_weather():
-	var weather = get_current_weather()
-	display_entry_sign(weather.sign)
-	play_entry_animation(weather.scene)
+	var weather = seasons[GameManager.current_round%4]
+	display_entry_sign(weather)
+	play_entry_animation(scenes.get(weather))
 
-func get_current_weather():
-	match GameManager.current_round%4:
-		0 : 
-			return {
-				"type" : WINTER,
-				"sign" : $Winter,
-				"scene" : $Winter
-				}
-		1 : 
-			return {
-				"type" : WINTER,
-				"sign" : $Winter,
-				"scene" : $Winter
-				}
-		2 : 
-			return SUMMER
-		3 :
-			return FALL
-
-func play_entry_animation(weather):
-	weather.visible = true
-	weather.get_node(GameManager.animation_player).play_entry = true
+func play_entry_animation(scene):
+	scene.visible = true
+	scene.get_node(GameManager.animation_player).play_entry = true
 
 func display_entry_sign(weather):
-	pass
+	$Routine.change_texture(weather)
 
 func _on_winter_signal_animation_end():
 	Signals.emit_signal(signal_out)
