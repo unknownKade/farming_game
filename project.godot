@@ -21,8 +21,7 @@ aseprite_executable_path="D:/programs/Aseprite-v1.3.5-x64/Aseprite.exe"
 
 [autoload]
 
-Signals="*res://scripts/Signals.gd"
-GameManager="*res://scripts/GameManager.gd"
+GameManger="*res://scripts/GameManager.gd"
 
 [display]
 

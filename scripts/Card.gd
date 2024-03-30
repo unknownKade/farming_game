@@ -2,25 +2,26 @@ extends Node2D
 
 class_name Card
 
-const signal_out = "PlayerEnd"
+signal end_player_turn
+
 func _on_area_2d_signal_card_change(is_left_click):
 	if is_left_click :
 		#confirming selected card
-		if GameManager.selected_card == self :
-			GameManager.confirmed_card = self
+		if GameManger.selected_card == self.type :
+			GameManger.confirmed_card = self.type
 			play_confirm()
-			Signals.emit_signal(signal_out)
+			end_player_turn.emit()
 		#don't select card when another card is selected
-		elif GameManager.selected_card != null:
+		elif GameManger.selected_card != null:
 			return
 		#select card
 		else :
-			GameManager.selected_card = self
+			GameManger.selected_card = self.type
 			play_select()
 			
 	#deselect card
 	else :
-		GameManager.selected_card = null
+		GameManger.selected_card = null
 		play_deselect()
 
 func play_select():
@@ -30,4 +31,6 @@ func play_deselect():
 	$DeckAnimationPlayer.play("deselect")
 	
 func play_confirm():
+	%Ground/Mask.visible = true
+	%Ground/Sprite2D.visible = true
 	$DeckAnimationPlayer.play("confirm")
