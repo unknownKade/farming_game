@@ -1,19 +1,24 @@
 extends Sprite2D
 
+class_name IntroCard
+
 const path ="res://resource/images/game_level/routine/"
 const extension = ".aseprite"
-var stop_display: bool = false
+var display_state: bool = true
 
-func _ready():
-	scale.y = 1
-	
 func change_texture(weather):
-	var file_name :String = weather + str(GameManager.current_round/4 +1)
+	var file_name :String = weather + str(GameManger.current_round/4 +1)
 	self.texture = load(path + file_name + extension)
-	self.visible = true
 	
+	display_state = true
+	self.scale.y = 0
+	self.visible = true
+
 func _process(delta):
-	if stop_display && self.scale.y > 0:
+	if display_state && self.scale.y <= 1:
+		self.scale.y += delta * 2
+	
+	if !display_state && self.scale.y >= 0:
 		self.scale.y -= delta * 2 
-	elif stop_display :
+	elif !display_state:
 		self.visible = false

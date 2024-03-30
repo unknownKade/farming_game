@@ -1,28 +1,23 @@
-extends Node2D
+extends State
 
 var scenes : Dictionary
 var environments : Array
-var signal_in = "EnvironmentPhase"
-var signal_out = "PlayerPhase"
+const next_state = "Deck"
+const child_node_type = "Sprite2D"
 
 func _ready():
 	for child in get_children():
-		if child.get_class() == "Sprite2D" :
+		if child.get_class() == child_node_type :
 			environments.append(child.name)
 			scenes[child.name] = child
-			
-	Signals.connect(signal_in, activate_environment)
 
-func activate_environment():
-	self.visible = true
+func enter():
 	var current_environment = environments[randi_range(0, environments.size()-1)]
 	var scene = scenes.get(current_environment)
+	
+	self.visible = true
 	scene.visible = true
-	self.get_node(GameManager.animation_player).current_enviornment = current_environment
-
-#func _on_animation_player_animation_finished(anim_name):
-	#Signals.emit_signal(signal_out)
-
+	self.get_node(GameManger.animation_player).current_enviornment = current_environment
 
 func _on_animation_player_animation_end():
-	Signals.emit_signal(signal_out)
+	Transition.emit(self, next_state)

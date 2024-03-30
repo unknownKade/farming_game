@@ -932,7 +932,6 @@ script = ExtResource("9_whvgy")
 unique_name_in_owner = true
 
 [node name="Mask" type="Polygon2D" parent="Deck/Ground"]
-visible = false
 clip_children = 1
 position = Vector2(989.211, 797)
 scale = Vector2(4.34701, 5)
@@ -946,7 +945,6 @@ scale = Vector2(0.230043, 0.2)
 texture = ExtResource("3_mxavo")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck/Ground"]
-visible = false
 z_index = 5
 texture_filter = 1
 texture_repeat = 1
@@ -954,7 +952,6 @@ position = Vector2(959, 490)
 texture = ExtResource("15_h3sir")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Deck/Ground"]
-visible = false
 z_index = 5
 position = Vector2(758, 605)
 emitting = false
@@ -1012,7 +1009,10 @@ libraries = {
 [node name="Timer" type="Timer" parent="Deck"]
 wait_time = 10.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Deck"]
+
 [node name="Garden" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 script = ExtResource("14_6vmu0")
 

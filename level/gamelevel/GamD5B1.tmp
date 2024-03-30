@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://i05j6u1pod1c" path="res://resource/images/game_level/board/board.png" id="3_mxavo"]
 [ext_resource type="Script" path="res://level/gamelevel/Weather.gd" id="4_cbj4g"]
 [ext_resource type="Texture2D" uid="uid://d1vu5kx8nrg7n" path="res://resource/images/game_level/routine/spring1.aseprite" id="4_vn1ca"]
-[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/Season.tscn" id="5_4nm7p"]
+[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/winter/Winter.tscn" id="5_4nm7p"]
 [ext_resource type="Script" path="res://level/gamelevel/Routine.gd" id="5_8lg57"]
 [ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/environment/Environment.tscn" id="5_h7xs0"]
 [ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/beet/Beet.tscn" id="9_v8gl7"]
@@ -884,16 +884,12 @@ _data = {
 "select": SubResource("Animation_pgle1")
 }
 
-[node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state")]
+[node name="GameLevel" type="Node2D"]
 script = ExtResource("1_lq06n")
-initial_state = NodePath("Weather")
 metadata/_edit_horizontal_guides_ = [0.0, 864.0, 423.0, 429.0, 737.0]
 metadata/_edit_vertical_guides_ = [383.0, 1536.0, 959.0, 1458.0, 461.0]
 
-[node name="Background" type="Node2D" parent="."]
-position = Vector2(0, 1)
-
-[node name="Background" type="Sprite2D" parent="Background"]
+[node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("1_pbpix")
@@ -907,7 +903,7 @@ texture = ExtResource("3_adiyy")
 position = Vector2(182, 79)
 script = ExtResource("4_cbj4g")
 
-[node name="IntroCard" type="Sprite2D" parent="Weather"]
+[node name="Routine" type="Sprite2D" parent="Weather"]
 visible = false
 texture_filter = 1
 texture_repeat = 1
@@ -915,7 +911,8 @@ position = Vector2(777, 345.5)
 texture = ExtResource("4_vn1ca")
 script = ExtResource("5_8lg57")
 
-[node name="Season" parent="Weather" instance=ExtResource("5_4nm7p")]
+[node name="Winter" parent="Weather" instance=ExtResource("5_4nm7p")]
+visible = false
 texture_filter = 1
 
 [node name="Environment" parent="." instance=ExtResource("5_h7xs0")]
@@ -923,7 +920,6 @@ visible = false
 position = Vector2(182, 224)
 
 [node name="Deck" type="Node2D" parent="."]
-visible = false
 position = Vector2(959.5, 795)
 scale = Vector2(5, 5)
 script = ExtResource("9_whvgy")
@@ -932,7 +928,6 @@ script = ExtResource("9_whvgy")
 unique_name_in_owner = true
 
 [node name="Mask" type="Polygon2D" parent="Deck/Ground"]
-visible = false
 clip_children = 1
 position = Vector2(989.211, 797)
 scale = Vector2(4.34701, 5)
@@ -946,7 +941,6 @@ scale = Vector2(0.230043, 0.2)
 texture = ExtResource("3_mxavo")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck/Ground"]
-visible = false
 z_index = 5
 texture_filter = 1
 texture_repeat = 1
@@ -954,7 +948,6 @@ position = Vector2(959, 490)
 texture = ExtResource("15_h3sir")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Deck/Ground"]
-visible = false
 z_index = 5
 position = Vector2(758, 605)
 emitting = false
@@ -1025,4 +1018,5 @@ position = Vector2(959, 578)
 [node name="Effect" parent="Garden" instance=ExtResource("19_wsyi1")]
 visible = false
 
+[connection signal="signal_animation_end" from="Weather/Winter" to="Weather" method="_on_winter_signal_animation_end"]
 [connection signal="timeout" from="Deck/Timer" to="Deck" method="_on_timer_timeout"]

@@ -1,32 +1,18 @@
-extends Sprite2D
+extends State
 
 class_name Weather
-const seasons = ['Winter','Winter', 'Winter', 'Winter']
 
-const signal_in = "WeatherPhase"
-const signal_out = "EnvironmentPhase"
-
-var scenes : Dictionary
+const next_state = "Environment"
+const seasons = ['Winter', 'Spring','Summer', 'Autumn']
 
 func _ready():
-	Signals.connect(signal_in, activate_weather)
-	
-	for child in get_children():
-		scenes[child.name]= child
-		
-func activate_weather():
-	var weather = seasons[GameManager.current_round%4]
-	display_entry_sign(weather)
-	play_entry_animation(scenes.get(weather))
+	$Season.end_weather.connect(end_weather)
 
-func play_entry_animation(scene):
-	scene.visible = true
-	scene.get_node(GameManager.animation_player).play_entry = true
-	
-func display_entry_sign(weather):
-	$Routine.change_texture(weather)
+func enter():
+	var weather = seasons[GameManger.current_round%4 - 1]
+	$IntroCard.change_texture(weather)
+	$Season.play_entry_animation(weather)
 
-	
-func _on_winter_signal_animation_end():
-	$Routine.stop_display = true
-	Signals.emit_signal(signal_out)
+func end_weather():
+	$IntroCard.display_state = false
+	Transition.emit(self, next_state)

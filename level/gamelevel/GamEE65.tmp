@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://i05j6u1pod1c" path="res://resource/images/game_level/board/board.png" id="3_mxavo"]
 [ext_resource type="Script" path="res://level/gamelevel/Weather.gd" id="4_cbj4g"]
 [ext_resource type="Texture2D" uid="uid://d1vu5kx8nrg7n" path="res://resource/images/game_level/routine/spring1.aseprite" id="4_vn1ca"]
-[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/Season.tscn" id="5_4nm7p"]
+[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/winter/Season.tscn" id="5_4nm7p"]
 [ext_resource type="Script" path="res://level/gamelevel/Routine.gd" id="5_8lg57"]
 [ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/environment/Environment.tscn" id="5_h7xs0"]
 [ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/beet/Beet.tscn" id="9_v8gl7"]
@@ -932,7 +932,6 @@ script = ExtResource("9_whvgy")
 unique_name_in_owner = true
 
 [node name="Mask" type="Polygon2D" parent="Deck/Ground"]
-visible = false
 clip_children = 1
 position = Vector2(989.211, 797)
 scale = Vector2(4.34701, 5)
@@ -946,7 +945,6 @@ scale = Vector2(0.230043, 0.2)
 texture = ExtResource("3_mxavo")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck/Ground"]
-visible = false
 z_index = 5
 texture_filter = 1
 texture_repeat = 1
@@ -954,7 +952,6 @@ position = Vector2(959, 490)
 texture = ExtResource("15_h3sir")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Deck/Ground"]
-visible = false
 z_index = 5
 position = Vector2(758, 605)
 emitting = false
@@ -1012,7 +1009,10 @@ libraries = {
 [node name="Timer" type="Timer" parent="Deck"]
 wait_time = 10.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Deck"]
+
 [node name="Garden" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -1)
 script = ExtResource("14_6vmu0")
 
