@@ -2,42 +2,23 @@ extends Sprite2D
 
 class_name Environ
 
-enum Types{
-	SUNLIGHT,
-	RAIN,
-	MUSIC,
-	LOVE
-}
-
-var scenes
-
+var scenes : Dictionary
+var environments : Array
 var signal_in = "EnvironmentPhase"
 var signal_out = "PlayerPhase"
 
 func _ready():
-	randomize()
-	assign_scenes()
+	for child in get_children():
+		environments.append(child.type)
+		scenes[child.type] = child
+			
 	Signals.connect(signal_in, activate_environment)
 
 func activate_environment():
-	var scene = scenes.get(select_environment_type())
+	var current_enviorn = environments[randi_range(0, environments.size()-1)]
+	var scene = scenes.get(current_enviorn)
 	scene.visible = true
 	scene.get_node(GameManager.animation_player).play_entry = true
-
-func select_environment_type():
-	match randi_range(0, len(Types)-1):
-		0: return Types.SUNLIGHT
-		1: return Types.RAIN
-		2: return Types.MUSIC
-		3: return Types.LOVE
-
-func assign_scenes():
-	scenes = {
-		Types.SUNLIGHT : $Sunlight,
-		Types.RAIN : $Sunlight,
-		Types.MUSIC : $Sunlight,
-		Types.LOVE : $Sunlight
-	}
 
 func _on_sunlight_signal_animation_end():
 	Signals.emit_signal(signal_out)

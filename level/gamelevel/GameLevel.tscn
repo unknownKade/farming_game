@@ -1,10 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=41 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level_background.png" id="1_pbpix"]
 [ext_resource type="Texture2D" uid="uid://deu4qowlx8exe" path="res://resource/images/game_level/environment_box.aseprite" id="3_adiyy"]
 [ext_resource type="Texture2D" uid="uid://i05j6u1pod1c" path="res://resource/images/game_level/board/board.png" id="3_mxavo"]
-[ext_resource type="Script" path="res://level/gamelevel/Environment.gd" id="4_2p28q"]
 [ext_resource type="Script" path="res://level/gamelevel/Weather.gd" id="4_cbj4g"]
 [ext_resource type="Texture2D" uid="uid://d1vu5kx8nrg7n" path="res://resource/images/game_level/routine/spring1.aseprite" id="4_vn1ca"]
 [ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/winter/Winter.tscn" id="5_4nm7p"]
@@ -17,7 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://ssl6ge77mc3l" path="res://level/card/tomato/Tomato.tscn" id="12_ge1t6"]
 [ext_resource type="Script" path="res://level/gamelevel/Garden.gd" id="14_6vmu0"]
 [ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/land/Land.tscn" id="14_wnyw6"]
+[ext_resource type="Texture2D" uid="uid://8px4aq6wukek" path="res://resource/images/game_level/land.aseprite" id="15_h3sir"]
 [ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/land/Back.tscn" id="16_kuwy0"]
+[ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/Effect.tscn" id="19_wsyi1"]
+
+[sub_resource type="Curve" id="Curve_ss4kd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.994382, 0.32967), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_ht44c"]
 length = 0.001
@@ -91,10 +96,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-0.1, -74.2), Vector2(-0.0999985, -35.6)]
+"values": [Vector2(-0.1, -74.2), Vector2(-0.0999985, 13.8)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -130,7 +135,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_pytl5"]
@@ -890,18 +895,16 @@ texture_repeat = 1
 texture = ExtResource("1_pbpix")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Background"]
-visible = false
-texture_filter = 1
-texture_repeat = 1
-position = Vector2(959.5, 432)
-texture = ExtResource("3_mxavo")
+[node name="EnvironmentFrame" type="Sprite2D" parent="Background"]
+position = Vector2(182, 224)
+texture = ExtResource("3_adiyy")
 
 [node name="Weather" type="Sprite2D" parent="."]
 position = Vector2(182, 79)
 script = ExtResource("4_cbj4g")
 
 [node name="Routine" type="Sprite2D" parent="Weather"]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(777, 345.5)
@@ -912,20 +915,52 @@ script = ExtResource("5_8lg57")
 visible = false
 texture_filter = 1
 
-[node name="Environment" type="Sprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
-position = Vector2(182, 224)
-texture = ExtResource("3_adiyy")
-script = ExtResource("4_2p28q")
-
-[node name="Sunlight" parent="Environment" instance=ExtResource("5_h7xs0")]
+[node name="Environment" parent="." instance=ExtResource("5_h7xs0")]
 visible = false
+position = Vector2(182, 224)
 
 [node name="Deck" type="Node2D" parent="."]
 position = Vector2(959.5, 795)
 scale = Vector2(5, 5)
 script = ExtResource("9_whvgy")
+
+[node name="Ground" type="Node" parent="Deck"]
+unique_name_in_owner = true
+
+[node name="Mask" type="Polygon2D" parent="Deck/Ground"]
+clip_children = 1
+position = Vector2(989.211, 797)
+scale = Vector2(4.34701, 5)
+polygon = PackedVector2Array(-55.4888, -34.4, 45.5, -34.4, 45.1, 27.6, -61.7, 22.6)
+
+[node name="MaskSprite" type="Sprite2D" parent="Deck/Ground/Mask"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-6.83478, -73)
+scale = Vector2(0.230043, 0.2)
+texture = ExtResource("3_mxavo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck/Ground"]
+z_index = 5
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(959, 490)
+texture = ExtResource("15_h3sir")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Deck/Ground"]
+z_index = 5
+position = Vector2(758, 605)
+emitting = false
+amount = 10
+lifetime = 0.5
+explosiveness = 0.52
+direction = Vector2(0, -1)
+spread = 67.13
+initial_velocity_min = 72.29
+initial_velocity_max = 313.25
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_ss4kd")
+color = Color(0.372549, 0.262745, 0.227451, 1)
 
 [node name="Beet" parent="Deck" instance=ExtResource("9_v8gl7")]
 z_index = 5
@@ -979,6 +1014,9 @@ position = Vector2(959, 262)
 
 [node name="Land" parent="Garden" instance=ExtResource("14_wnyw6")]
 position = Vector2(959, 578)
+
+[node name="Effect" parent="Garden" instance=ExtResource("19_wsyi1")]
+visible = false
 
 [connection signal="signal_animation_end" from="Weather/Winter" to="Weather" method="_on_winter_signal_animation_end"]
 [connection signal="timeout" from="Deck/Timer" to="Deck" method="_on_timer_timeout"]

@@ -22,9 +22,11 @@ func activate_weather():
 func play_entry_animation(scene):
 	scene.visible = true
 	scene.get_node(GameManager.animation_player).play_entry = true
-
+	
 func display_entry_sign(weather):
 	$Routine.change_texture(weather)
 
+	
 func _on_winter_signal_animation_end():
+	$Routine.stop_display = true
 	Signals.emit_signal(signal_out)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i05j6u1pod1c"
-path="res://.godot/imported/board.png-67233e1b71c468f496ed51b08951c1d2.ctex"
+uid="uid://c3ryouktjapu5"
+path="res://.godot/imported/Potato back.aseprite-bbdb0b9d40f584e6518f44d80eea5b99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/images/game_level/board.png"
-dest_files=["res://.godot/imported/board.png-67233e1b71c468f496ed51b08951c1d2.ctex"]
+source_file="res://resource/images/game_level/board/Potato back.aseprite"
+dest_files=["res://.godot/imported/Potato back.aseprite-bbdb0b9d40f584e6518f44d80eea5b99.ctex"]
 
 [params]
 
