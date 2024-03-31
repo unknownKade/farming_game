@@ -18,10 +18,13 @@ func play_land():
 	play_seeding()
 	var back = $Back
 	var land = $Land
+	back.visible = true
+	land.visible = true
 	get_node_and_play(back,GameManger.opponent_card)
 	get_node_and_play(land,GameManger.confirmed_card)
 	await get_tree().create_timer(2).timeout
-	play_enviornment()
+
+	$AnimationPlayer.play("fadeout")
 
 func play_enviornment():
 	$Effect.visible = true
@@ -40,4 +43,9 @@ func change_texture(card,level):
 	$Mask/Card.texture = load(path + file_name + extension)
 
 func _on_animation_player_animation_finished(anim_name):
-	play_land()
+	if anim_name == "seeding" :
+		play_land()
+	if anim_name == "fadeout" :
+		$Land.visible = false
+		$Back.visible = false
+		play_enviornment()

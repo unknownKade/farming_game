@@ -1212,10 +1212,12 @@ position = Vector2(0, -1)
 script = ExtResource("14_6vmu0")
 
 [node name="Back" parent="Garden" instance=ExtResource("16_kuwy0")]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(959, 262)
 
 [node name="Land" parent="Garden" instance=ExtResource("14_wnyw6")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(959, 578)
 
 [node name="Effect" parent="Garden" instance=ExtResource("19_wsyi1")]

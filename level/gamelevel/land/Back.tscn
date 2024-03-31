@@ -59,7 +59,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_dg6gg"]
 resource_name = "beet"
 length = 1.4
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
