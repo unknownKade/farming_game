@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dxofbby3bsmfa"]
 
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="1_bauuj"]
-[ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_eqvqw"]
+[ext_resource type="Script" path="res://scripts/Card.gd" id="1_e8hal"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_4xb23"]
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
@@ -79,7 +79,7 @@ size = Vector2(48, 64)
 [node name="Beet" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_eqvqw")
+script = ExtResource("1_e8hal")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

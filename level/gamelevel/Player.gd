@@ -1,6 +1,6 @@
 extends State
 
-class_name Deck
+class_name Player
 
 const next_state = "Garden"
 const child_node_type = "Node2D"
@@ -11,9 +11,10 @@ var cards = []
 
 func _ready():
 	for child in get_children():
-		if child.get_class() == child_node_type:
+		if child is Card:
 			cards.append(child.name)
-
+			child.end_player_turn.connect(confirm_card)
+	
 	select_opponent_card()
 	
 func enter():
@@ -25,12 +26,12 @@ func display_cards():
 	pass
 
 func confirm_card():
-	if GameManger.opponent_card != null :
+	if !GameManger.opponent_card.is_empty() :
 		end_player_phase()
 
 func _on_timer_timeout():
-	if GameManger.confirmed_card == null :
-		if GameManger.selected_card != null :
+	if GameManger.confirmed_card.is_empty() :
+		if !GameManger.selected_card.is_empty() :
 			GameManger.confirmed_card = GameManger.selected_card
 		else :
 			GameManger.confirmed_card = cards[randi_range(0,cards.size()-1)]
@@ -40,11 +41,8 @@ func _on_timer_timeout():
 func end_player_phase():
 	$Timer.stop()
 	GameManger.player_turn = false
+	#self.get_node(GameManger.confirmed_card).play_confirm()
 	Transition.emit(self, next_state)
-
-func exit():
-	self.get_node(GameManger.confirmed_card).play_confirm()
-	await get_tree().create_timer(2).timeout
 
 func select_opponent_card():
 	GameManger.opponent_card = cards[randi_range(0, cards.size()-1)]
