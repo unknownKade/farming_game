@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcjo6vxhmi3ti"]
+[gd_scene load_steps=11 format=3 uid="uid://bcjo6vxhmi3ti"]
 
-[ext_resource type="Script" path="res://scripts/Card.gd" id="1_8f286"]
+[ext_resource type="Script" path="res://scripts/Card.gd" id="1_4u5cq"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_yedh5"]
 
@@ -21,36 +21,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_vv637"]
-resource_name = "2"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-
-[sub_resource type="Animation" id="Animation_2feoo"]
-resource_name = "3"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-
 [sub_resource type="Animation" id="Animation_jv2ro"]
 length = 0.001
 tracks/0/type = "value"
@@ -66,11 +36,57 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_xejq2"]
+resource_name = "2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_qwspb"]
+resource_name = "3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_cpdey"]
+resource_name = "4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
 "1": SubResource("Animation_nlnwo"),
-"2": SubResource("Animation_vv637"),
-"3": SubResource("Animation_2feoo"),
+"2": SubResource("Animation_xejq2"),
+"3": SubResource("Animation_qwspb"),
+"4": SubResource("Animation_cpdey"),
 "RESET": SubResource("Animation_jv2ro")
 }
 
@@ -80,7 +96,7 @@ size = Vector2(48, 64)
 [node name="Potato" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_8f286")
+script = ExtResource("1_4u5cq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

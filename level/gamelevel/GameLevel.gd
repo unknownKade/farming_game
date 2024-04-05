@@ -17,9 +17,6 @@ func _ready():
 		initial_state.enter()
 		current_state = initial_state
 
-func calculate_result():
-	$Garden.play_seeding()
-
 func on_child_transition(state, next_state):
 	if state != current_state:
 		return

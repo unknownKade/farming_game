@@ -11,7 +11,7 @@ func _input(event):
 	
 	if mouse_in and event.button_index == MOUSE_BUTTON_LEFT :
 		signal_card_change.emit(true)
-	elif event.button_index == MOUSE_BUTTON_RIGHT and GameManger.selected_card == get_parent().name :
+	elif event.button_index == MOUSE_BUTTON_RIGHT and GameManger.selected_card != null and GameManger.selected_card.name == get_parent().name:
 		signal_card_change.emit(false)
 		
 func _mouse_enter():
