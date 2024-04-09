@@ -23,10 +23,10 @@ func play_land_animation():
 	back.play_land_animation(GameManger.opponent_card.name)
 	land.play_land_animation(GameManger.confirmed_card.name)
 	await get_tree().create_timer(2).timeout
-	get_node(GameManger.animation_player).play("fadeout")
+	effect.play_enviornment()
 
 func end_seeding():
-	Transition.emit(self, next_state)
+	get_node(GameManger.animation_player).play("fadeout")
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "seeding" :
@@ -34,4 +34,4 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fadeout" :
 		back.visible = false
 		land.visible = false
-		effect.play_enviornment()
+		Transition.emit(self, next_state)
