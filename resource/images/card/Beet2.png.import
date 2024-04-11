@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlm15pjssalb2"
-path="res://.godot/imported/Carrot.aseprite-1608f7d86619134a1da696646850ec5f.ctex"
+uid="uid://dcjwewnj7jm2v"
+path="res://.godot/imported/Beet2.png-5e644d67bbd03fa953b1a2097b5a2ce4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/images/card/Carrot.aseprite"
-dest_files=["res://.godot/imported/Carrot.aseprite-1608f7d86619134a1da696646850ec5f.ctex"]
+source_file="res://resource/images/card/Beet2.png"
+dest_files=["res://.godot/imported/Beet2.png-5e644d67bbd03fa953b1a2097b5a2ce4.ctex"]
 
 [params]
 

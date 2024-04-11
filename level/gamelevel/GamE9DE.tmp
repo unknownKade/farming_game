@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=50 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level_background.png" id="1_pbpix"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://06bul7hi5akv" path="res://level/card/carrot/Carrot.tscn" id="11_wd7mn"]
 [ext_resource type="PackedScene" uid="uid://ssl6ge77mc3l" path="res://level/card/tomato/Tomato.tscn" id="12_ge1t6"]
 [ext_resource type="Script" path="res://level/gamelevel/Garden.gd" id="14_6vmu0"]
-[ext_resource type="Script" path="res://level/gamelevel/Player2.gd" id="14_f6hlk"]
 [ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/land/Land.tscn" id="14_wnyw6"]
 [ext_resource type="Texture2D" uid="uid://8px4aq6wukek" path="res://resource/images/game_level/land.aseprite" id="15_h3sir"]
 [ext_resource type="Texture2D" uid="uid://bjtyn2fm2c4my" path="res://resource/images/card/Beet1.png" id="16_eyvwi"]
@@ -22,7 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/Effect.tscn" id="19_wsyi1"]
 [ext_resource type="Script" path="res://level/gamelevel/AnimationPlayer.gd" id="20_j7lw6"]
 [ext_resource type="Script" path="res://level/gamelevel/Center.gd" id="20_nhedu"]
-[ext_resource type="Script" path="res://level/gamelevel/Seeding.gd" id="20_wwddr"]
 [ext_resource type="Script" path="res://level/gamelevel/Result.gd" id="20_x2kq7"]
 
 [sub_resource type="Animation" id="Animation_ht44c"]
@@ -889,84 +887,6 @@ _data = {
 _data = [Vector2(0, 1), 0.0, -1.71805, 0, 0, Vector2(0.994382, 0.32967), -1.94153, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_2rn81"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(359, 480)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(775, 181)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Ground:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_3j0p8"]
-resource_name = "fadeout"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Back:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Land:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_ko5x3"]
 resource_name = "seeding"
 length = 2.5
@@ -977,10 +897,10 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4, 0.8, 1, 1.2, 1.6, 1.8, 2.5),
-"transitions": PackedFloat32Array(1, 1, -2, -2, -2, -2, 0.5),
+"times": PackedFloat32Array(0.1, 0.5, 0.8, 1, 1.2, 1.6, 1.8, 2.5),
+"transitions": PackedFloat32Array(1, 1, -2, -2, -2, -2, -2, 0.5),
 "update": 0,
-"values": [Vector2(359, 480), Vector2(359, 332), Vector2(359, 393.667), Vector2(359, 429.375), Vector2(359, 290), Vector2(359, 359.831), Vector2(359, 10)]
+"values": [Vector2(359, 480), Vector2(359, 480), Vector2(359, 332), Vector2(359, 393.667), Vector2(359, 429.375), Vector2(359, 290), Vector2(359, 359.831), Vector2(359, 10)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -989,7 +909,7 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.5, 0.8, 1, 1.2, 1.6, 1.8, 2.5),
+"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.8, 1, 1.2, 1.6, 1.8, 2.5),
 "transitions": PackedFloat32Array(1, 1, 1, -2, -2, -2, -2, -2, 0.5),
 "update": 0,
 "values": [Vector2(775, 181), Vector2(775, 95.3771), Vector2(775, 138.031), Vector2(775, 280.583), Vector2(775, 220.882), Vector2(775, 188.88), Vector2(775, 321), Vector2(775, 255.111), Vector2(775, 602)]
@@ -1091,6 +1011,84 @@ tracks/9/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_2rn81"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(359, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(775, 181)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Ground:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3j0p8"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Back:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Land:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_usd07"]
 _data = {
 "RESET": SubResource("Animation_2rn81"),
@@ -1161,7 +1159,6 @@ visible = false
 position = Vector2(182, 224)
 
 [node name="Player" type="Node2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(959.5, 795)
 scale = Vector2(5, 5)
 script = ExtResource("9_whvgy")
@@ -1209,36 +1206,32 @@ libraries = {
 [node name="Timer" type="Timer" parent="Player"]
 wait_time = 30.0
 
-[node name="Player2" type="Node" parent="Player"]
-script = ExtResource("14_f6hlk")
-
 [node name="Garden" type="Node2D" parent="."]
 z_index = 5
 position = Vector2(0, -1)
 script = ExtResource("14_6vmu0")
 
 [node name="Back" parent="Garden" instance=ExtResource("16_kuwy0")]
-visible = false
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(959, 262)
 
 [node name="Land" parent="Garden" instance=ExtResource("14_wnyw6")]
-visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(959, 578)
 
 [node name="Effect" parent="Garden" instance=ExtResource("19_wsyi1")]
 visible = false
 
-[node name="Card" type="ColorRect" parent="Garden"]
+[node name="Mask" type="ColorRect" parent="Garden"]
 visible = false
 clip_children = 1
 offset_left = 775.0
 offset_top = 181.0
 offset_right = 1134.0
 offset_bottom = 661.0
-script = ExtResource("20_wwddr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Garden/Card"]
+[node name="Card" type="Sprite2D" parent="Garden/Mask"]
 position = Vector2(179.496, 240.334)
 scale = Vector2(7.5, 7.5)
 texture = ExtResource("16_eyvwi")
@@ -1267,7 +1260,7 @@ explosiveness = 0.1
 direction = Vector2(0, -1)
 spread = 73.97
 initial_velocity_min = 10.0
-initial_velocity_max = 120.0
+initial_velocity_max = 80.0
 scale_amount_min = 2.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_ss4kd")
@@ -1285,7 +1278,7 @@ explosiveness = 0.1
 direction = Vector2(0, -1)
 spread = 73.97
 initial_velocity_min = 10.0
-initial_velocity_max = 120.0
+initial_velocity_max = 80.0
 scale_amount_min = 2.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_ss4kd")
@@ -1294,7 +1287,7 @@ hue_variation_min = 1.0
 hue_variation_max = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Garden"]
-root_node = NodePath("../Card")
+root_node = NodePath("../Mask")
 libraries = {
 "": SubResource("AnimationLibrary_usd07")
 }
@@ -1310,7 +1303,7 @@ z_index = 5
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(959, 426)
-scale = Vector2(4.71215, 5)
+scale = Vector2(5, 5)
 script = ExtResource("20_nhedu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Result/Center"]
