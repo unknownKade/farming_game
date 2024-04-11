@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxofbby3bsmfa"]
+[gd_scene load_steps=13 format=3 uid="uid://dxofbby3bsmfa"]
 
 [ext_resource type="Script" path="res://scripts/Card.gd" id="1_r7ue6"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="2_u3jgl"]
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [16]
 }
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
@@ -37,32 +37,34 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_vv637"]
 resource_name = "2"
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4]
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_2feoo"]
 resource_name = "3"
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5]
+"values": [8, 9, 10, 11]
 }
 
 [sub_resource type="Animation" id="Animation_jv2ro"]
@@ -80,12 +82,29 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_nhl0v"]
+resource_name = "4"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
 "0": SubResource("Animation_ihaaq"),
 "1": SubResource("Animation_nlnwo"),
 "2": SubResource("Animation_vv637"),
 "3": SubResource("Animation_2feoo"),
+"4": SubResource("Animation_nhl0v"),
 "RESET": SubResource("Animation_jv2ro")
 }
 
@@ -119,8 +138,8 @@ script = ExtResource("1_r7ue6")
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("2_u3jgl")
-hframes = 3
-vframes = 2
+hframes = 5
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
