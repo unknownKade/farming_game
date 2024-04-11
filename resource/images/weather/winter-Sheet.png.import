@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://js87lfj58sqn"
-path="res://.godot/imported/winter.aseprite-fe348ded22b745619c9f7f6ec47b00da.ctex"
+uid="uid://bm6cwomse3606"
+path="res://.godot/imported/winter-Sheet.png-00bae0472606513a63090d6a7c44f0af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/images/weather/winter.aseprite"
-dest_files=["res://.godot/imported/winter.aseprite-fe348ded22b745619c9f7f6ec47b00da.ctex"]
+source_file="res://resource/images/weather/winter-Sheet.png"
+dest_files=["res://.godot/imported/winter-Sheet.png-00bae0472606513a63090d6a7c44f0af.ctex"]
 
 [params]
 
