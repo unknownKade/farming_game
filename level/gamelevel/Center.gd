@@ -6,7 +6,7 @@ var new_level
 var swapped = false
 
 func result(old_level, new_level):
-	change_texture(GameManger.confirmed_card, old_level)
+	change_texture(GameManger.confirmed_card.name, old_level)
 	self.swapped = false
 	self.new_level = new_level
 	self.visible = true
@@ -14,7 +14,7 @@ func result(old_level, new_level):
 	
 func _process(delta):
 	if self.scale.x < 0.1 :
-		change_texture(GameManger.confirmed_card, new_level)
+		change_texture(GameManger.confirmed_card.name, new_level)
 		swapped = true
 	if swapped and self.scale.x > 0.9 * 5 :
 		self.scale. x = 5

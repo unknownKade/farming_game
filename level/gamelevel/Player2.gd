@@ -2,11 +2,9 @@ extends Node
 
 class_name Player2
 
-
 func _process(delta):
 	if GameManger.player_turn:
 		get_random_card()
-
 
 func get_random_card():
 	var live_cards: Array

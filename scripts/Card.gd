@@ -2,14 +2,14 @@ extends Node2D
 
 class_name Card
 
-const path ="res://resource/images/card/"
-const extension = ".png"
-
 signal signal_end_turn
 var level : int = 1
-
+var beet_frame = [16,0,4,8,12]
 func _ready():
+	GameManger.p1_deck["Beet"].level = 4
 	level = GameManger.p1_deck[self.name].level
+	GameManger.p2_deck["Tomato"].level = 2
+	change_card_image(level)
 
 func _on_area_2d_signal_card_change(is_left_click):
 	var confirming_this_card = GameManger.selected_card != null and GameManger.selected_card.name == self.name
@@ -23,9 +23,8 @@ func _on_area_2d_signal_card_change(is_left_click):
 	else :
 		deselect_card()
 
-func change_texture(level):
-	var file_name :String = self.name + str(level)
-	$Sprite2D.texture = load(path + file_name + extension)
+func change_card_image(level):
+	$Sprite2D.set_frame(beet_frame[level])
 
 func confirm_selected_card():
 	GameManger.confirm_card()

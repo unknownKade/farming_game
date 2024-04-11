@@ -1,38 +1,23 @@
 extends State
 
-var cards = ["potato", "tomato", "beet", "carrot"]
-var t = "Tomato"
-var p = "Potato"
-var b = "Beet"
-var c = "Carrot"
-
+var p1 : Crop
+var p2 : Crop
 func enter():
-	$Center.result(1,2)
+	p1 = GameManger.confirmed_card
+	p2 = GameManger.opponent_card
+	var old_level = p1.level
+	environment_affect(GameManger.current_environment)
+	card_affect(old_level)
 
-func environment_affect(environment, card):
-	if environment == "rain" and card.type != "tomato" :
+func play_result_animation(old_level, new_level):
+	$Center.result(old_level, new_level)
+
+func environment_affect(environment):
+	if environment == "rain" and p1 is Tomato:
 		return
 	else :
-		card.level += 1
+		p1.grow_card(1)
 
-func card_affect():
-	match GameManger.confirmed_card :
-		'Tomato' :
-			tomato_skill()
-
-func tomato_skill():
-	var p1 = GameManger.p1_deck[t]
-	var p2 = GameManger.opponent_card
-		
-	if p1.level == 4 :
-		if p2.name == 'Tomato' :
-			if p2.level == 4 :
-				explode()
-			else :
-				drain(2)
-		
-func explode():
-	pass
-	
-func drain(value):
-	pass
+func card_affect(old_level : int):
+	p1.skill(p2)
+	play_result_animation(old_level, p1.level)
