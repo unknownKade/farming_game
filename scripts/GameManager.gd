@@ -1,14 +1,5 @@
 extends Node
 
-class Crop :
-	var name : String
-	var level : int
-	var state
-	
-	func _init(name) : 
-		self.name = name
-		self.level = 1
-	
 const animation_player = "AnimationPlayer"
 
 var current_round : int = 1
@@ -22,12 +13,16 @@ var p1_deck : Dictionary
 var p2_deck : Dictionary
 
 func _ready():
-	var crops = ["Beet", "Carrot", "Potato", "Tomato"]
+	var crops = {
+	 	"Beet" : Beet,
+		"Carrot" : Carrot,
+		"Potato" : Potato,
+		"Tomato" : Tomato
+	}
+	
 	for crop in crops :
-		p1_deck[crop] = Crop.new(crop)
-		p2_deck[crop] = Crop.new(crop)
-		
-	p1_deck["Beet"].level = 3
+		p1_deck[crop] = crops[crop].new()
+		p2_deck[crop] = crops[crop].new()
 
 func get_random_card() -> Crop:
 	var live_crops: Array
@@ -52,3 +47,7 @@ func confirm_card() :
 		confirmed_card = get_random_card()
 	else : 
 		confirmed_card = selected_card
+
+func p2_result(crop : Crop, value : int, message = null):
+	crop.grow_card(value)
+	print(message)
