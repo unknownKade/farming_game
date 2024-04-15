@@ -9,7 +9,7 @@ func _ready():
 	$Season.end_weather.connect(end_weather)
 
 func enter():
-	var weather = seasons[GameManger.current_round%4 - 1]
+	var weather = seasons[GameManger.current_round%4]
 	$IntroCard.change_texture(weather)
 	$Season.play_entry_animation(weather)
 
