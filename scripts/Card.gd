@@ -48,7 +48,7 @@ func deselect_card():
 
 func return_card():
 	self.visible = true
-	if self.name == GameManger.selected_card.name :
+	if self.name == GameManger.confirmed_card.name :
 		$DeckAnimationPlayer.play("return")
 
 func roll_dice(min_dice_req : int) -> bool:
