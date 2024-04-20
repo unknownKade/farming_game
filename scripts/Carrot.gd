@@ -3,4 +3,5 @@ extends Crop
 class_name Carrot
 
 func _init():
-	name = "Carrot"
+	self.name = "Carrot"
+	self.level = 1

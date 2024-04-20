@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://5tyvct2gygig"]
+[gd_scene load_steps=14 format=3 uid="uid://5tyvct2gygig"]
 
 [ext_resource type="Script" path="res://level/environment/Environment.gd" id="1_cjsn7"]
 [ext_resource type="Texture2D" uid="uid://7vvvl2qsb2ly" path="res://resource/images/environment/sunlight-Sheet.png" id="1_dlnn4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://degflds6v67t3" path="res://resource/images/environment/rain-Sheet.png" id="3_wqifo"]
 [ext_resource type="Texture2D" uid="uid://bu81riyms5u1j" path="res://resource/images/environment/music-Sheet.png" id="5_3gi0p"]
 [ext_resource type="Texture2D" uid="uid://dtdbfet07bbsl" path="res://resource/images/environment/love-Sheet.png" id="5_sq6tb"]
+[ext_resource type="Texture2D" uid="uid://deu4qowlx8exe" path="res://resource/images/game_level/environment_box.aseprite" id="7_d5dig"]
 
 [sub_resource type="Animation" id="Animation_1kky2"]
 length = 0.001
@@ -171,6 +172,9 @@ libraries = {
 "": SubResource("AnimationLibrary_r462o")
 }
 script = ExtResource("2_rstkt")
+
+[node name="Frame" type="Sprite2D" parent="."]
+texture = ExtResource("7_d5dig")
 
 [connection signal="animation_end" from="AnimationPlayer" to="." method="_on_animation_player_animation_end"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

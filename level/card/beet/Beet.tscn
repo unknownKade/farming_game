@@ -1,8 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxofbby3bsmfa"]
+[gd_scene load_steps=16 format=3 uid="uid://dxofbby3bsmfa"]
 
 [ext_resource type="Script" path="res://scripts/Card.gd" id="1_r7ue6"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="2_u3jgl"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_4xb23"]
+[ext_resource type="Texture2D" uid="uid://8px4aq6wukek" path="res://resource/images/game_level/land.aseprite" id="4_6popk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7h4i"]
+size = Vector2(48, 64)
+
+[sub_resource type="Curve" id="Curve_avex5"]
+_data = [Vector2(0, 1), 0.0, -1.71805, 0, 0, Vector2(0.994382, 0.32967), -1.94153, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_3k3e1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0804598, 0.386973, 0.900383)
+colors = PackedColorArray(-0.00963011, -0.00963011, -0.00963011, 1, 0.686096, 0.686096, 0.686096, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_ihaaq"]
 resource_name = "0"
@@ -15,7 +28,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [16]
 }
 
@@ -27,11 +40,11 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [0, 1, 2, 3]
 }
 
@@ -43,11 +56,11 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [4, 5, 6, 7]
 }
 
@@ -59,27 +72,12 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [8, 9, 10, 11]
-}
-
-[sub_resource type="Animation" id="Animation_jv2ro"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_nhl0v"]
@@ -90,13 +88,16 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [12, 13, 14, 15]
 }
+
+[sub_resource type="Animation" id="Animation_jv2ro"]
+length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
@@ -126,9 +127,6 @@ func _on_animation_finished(anim_name):
 	pass
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7h4i"]
-size = Vector2(48, 64)
-
 [node name="Beet" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
@@ -140,12 +138,7 @@ texture_repeat = 1
 texture = ExtResource("2_u3jgl")
 hframes = 5
 vframes = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_4osns")
-}
-script = SubResource("GDScript_2f12x")
+frame = 15
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("3_4xb23")
@@ -153,5 +146,86 @@ script = ExtResource("3_4xb23")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d7h4i")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]
+[node name="Ground" type="Node2D" parent="."]
+visible = false
+z_as_relative = false
+position = Vector2(0, 18.0086)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+z_index = 5
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(3.5, -56.8)
+texture = ExtResource("4_6popk")
+
+[node name="DirtParticle" type="CPUParticles2D" parent="Ground"]
+z_index = 5
+position = Vector2(-99.6016, 57.7629)
+emitting = false
+amount = 10
+lifetime = 0.5
+explosiveness = 0.11
+randomness = 0.18
+emission_shape = 3
+emission_rect_extents = Vector2(20, 20)
+direction = Vector2(0, -1)
+spread = 142.52
+gravity = Vector2(10, -10)
+initial_velocity_min = 20.83
+initial_velocity_max = 112.93
+damping_min = 6.522
+damping_max = 23.913
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_avex5")
+color = Color(0.243137, 0.160784, 0.137255, 0.87451)
+color_ramp = SubResource("Gradient_3k3e1")
+
+[node name="DirtParticle3" type="CPUParticles2D" parent="Ground"]
+z_index = 5
+position = Vector2(-2.58367, 64.0697)
+amount = 10
+lifetime = 0.5
+explosiveness = 0.72
+randomness = 0.18
+direction = Vector2(0, -1)
+spread = 143.77
+gravity = Vector2(10, 10)
+initial_velocity_min = 8.33
+initial_velocity_max = 122.72
+damping_min = 2.038
+damping_max = 20.788
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_avex5")
+color = Color(0.243137, 0.160784, 0.137255, 0.87451)
+color_ramp = SubResource("Gradient_3k3e1")
+
+[node name="DirtParticle2" type="CPUParticles2D" parent="Ground"]
+z_index = 5
+position = Vector2(94.1195, 63.0185)
+amount = 10
+lifetime = 0.5
+explosiveness = 0.72
+randomness = 0.18
+emission_shape = 3
+emission_rect_extents = Vector2(20, 20)
+direction = Vector2(0, -1)
+spread = 143.77
+gravity = Vector2(0, -10)
+initial_velocity_min = 20.83
+initial_velocity_max = 185.22
+damping_min = 6.522
+damping_max = 23.913
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_avex5")
+color = Color(0.243137, 0.160784, 0.137255, 0.87451)
+color_ramp = SubResource("Gradient_3k3e1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4osns")
+}
+script = SubResource("GDScript_2f12x")
+
 [connection signal="signal_card_change" from="Area2D" to="." method="_on_area_2d_signal_card_change"]
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

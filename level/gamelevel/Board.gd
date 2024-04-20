@@ -7,8 +7,8 @@ const next_state = "Garden"
 var hand = {}
 
 func _ready():
-	for child in %Hand.get_children() :
-		hand[child.name] = child
+	pass
+	#%Hand.player_phase_ended.connect(end_player_phase)
 	
 func enter():
 	display_cards()
@@ -18,12 +18,16 @@ func enter():
 func display_cards():
 	for card in hand :
 		hand[card].level = GameManger.p1_deck[card].level
-		hand[card].signal_end_turn.connect(end_player_phase)
+		#hand[card].change_texture(hand[card].level)
+	
+	self.visible = true
 #TODO : Display cards animation
+
 
 func _on_timer_timeout():
 	GameManger.confirm_card()
 	end_player_phase()
+
 
 func end_player_phase():
 	$Timer.stop()
