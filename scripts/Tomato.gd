@@ -3,7 +3,8 @@ extends Crop
 class_name Tomato
 
 func _init():
-	name = "Tomato"
+	self.name = "Tomato"
+	self.level = 1
 
 func skill(p2 : Crop):
 	match level :
@@ -16,7 +17,7 @@ func skill(p2 : Crop):
 			if p2 is Tomato and p2.level == 4 :
 				explode(p2)
 			else :
-				grow_card(-2)
+				p2.grow_card(-2)
 
 func drain(p2 : Crop, value : int):
 	grow_card(1)
