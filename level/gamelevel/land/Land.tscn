@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1sql72y5avu8"]
+[gd_scene load_steps=14 format=3 uid="uid://d1sql72y5avu8"]
 
 [ext_resource type="Texture2D" uid="uid://bctoowkejaonl" path="res://resource/images/game_level/board/beet land-Sheet.png" id="1_1gd3k"]
 [ext_resource type="Script" path="res://level/gamelevel/land/Land.gd" id="1_d5iv8"]
@@ -125,11 +125,43 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_pv05u"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ftf64"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_40wxi"]
 _data = {
 "RESET": SubResource("Animation_nqdb5"),
 "beet": SubResource("Animation_opogg"),
 "carrot": SubResource("Animation_57yob"),
+"fadein": SubResource("Animation_pv05u"),
+"fadeout": SubResource("Animation_ftf64"),
 "potato": SubResource("Animation_kbjdm"),
 "tomato": SubResource("Animation_ns1u6")
 }
@@ -161,3 +193,5 @@ hframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_40wxi")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
