@@ -22,10 +22,12 @@ func display_cards():
 #TODO : Display cards animation
 
 func _on_timer_timeout():
+	if GameManger.selected_card != null :
+		hand[GameManger.selected_card.name].visible = false
 	GameManger.confirm_card()
 	end_player_phase()
 
 func end_player_phase():
-	$Timer.stop()
 	GameManger.player_turn = false
+	$Timer.stop()
 	Transition.emit(self, next_state)

@@ -9,11 +9,11 @@ func _ready():
 	land = $Land
 	effect = $Effect
 	
-	effect.end_seeding.connect(end_seeding)
+	effect.end_seeding.connect(end_land)
 	
 func enter():
 	play_seeding()
-
+	
 func play_seeding():
 	var level = GameManger.confirmed_card.level
 	$Card.change_texture(GameManger.confirmed_card.name, level )
@@ -22,10 +22,11 @@ func play_seeding():
 func play_land_animation():
 	back.play_land_animation(GameManger.opponent_card.name)
 	land.play_land_animation(GameManger.confirmed_card.name)
-	await get_tree().create_timer(2).timeout
-	effect.play_enviornment()
 
-func end_seeding():
+	await get_tree().create_timer(3).timeout
+	effect.play_enviornment()
+	
+func end_land() :
 	get_node(GameManger.animation_player).play("fadeout")
 
 func _on_animation_player_animation_finished(anim_name):

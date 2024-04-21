@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=56 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -77,6 +77,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Back:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Land:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3j0p8"]
@@ -230,9 +254,37 @@ tracks/9/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_m0dw8"]
+resource_name = "fadein"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Land:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Back:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_usd07"]
 _data = {
 "RESET": SubResource("Animation_2rn81"),
+"fadein": SubResource("Animation_m0dw8"),
 "fadeout": SubResource("Animation_3j0p8"),
 "seeding": SubResource("Animation_ko5x3")
 }
@@ -1364,11 +1416,10 @@ position = Vector2(0, -1)
 script = ExtResource("14_6vmu0")
 
 [node name="Back" parent="Garden" instance=ExtResource("16_kuwy0")]
-visible = false
 position = Vector2(959, 262)
 
 [node name="Land" parent="Garden" instance=ExtResource("14_wnyw6")]
-visible = false
+modulate = Color(1, 1, 1, 0)
 position = Vector2(959, 578)
 
 [node name="Effect" parent="Garden" instance=ExtResource("19_wsyi1")]
