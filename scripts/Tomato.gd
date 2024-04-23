@@ -5,9 +5,10 @@ class_name Tomato
 func _init():
 	self.name = "Tomato"
 	self.level = 1
+	self.state = States.NONE
 
 func skill(p2 : Crop):
-	match level :
+	match self.level :
 		2 :
 			if !(p2 is Tomato) :
 				drain(p2, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=57 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/land/Back.tscn" id="16_kuwy0"]
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/Effect.tscn" id="19_wsyi1"]
 [ext_resource type="Script" path="res://level/gamelevel/AnimationPlayer.gd" id="20_j7lw6"]
+[ext_resource type="Script" path="res://scripts/Card.gd" id="20_je43g"]
 [ext_resource type="Script" path="res://level/gamelevel/Center.gd" id="20_nhedu"]
 [ext_resource type="Script" path="res://level/gamelevel/Seeding.gd" id="20_wwddr"]
 [ext_resource type="Script" path="res://level/gamelevel/Result.gd" id="20_x2kq7"]
@@ -1558,8 +1559,14 @@ libraries = {
 "": SubResource("AnimationLibrary_au1u5")
 }
 
-[node name="Player2" type="Node" parent="."]
+[node name="Player2" type="Node" parent="." node_paths=PackedStringArray("board")]
 script = ExtResource("14_f6hlk")
+board = NodePath("../Board")
+
+[node name="Card" type="Node2D" parent="."]
+position = Vector2(0.00012207, 6.10352e-05)
+scale = Vector2(1, 1)
+script = ExtResource("20_je43g")
 
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden/AnimationPlayer" method="_on_animation_finished"]

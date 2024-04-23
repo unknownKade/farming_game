@@ -1,5 +1,7 @@
 extends Node
 
+signal triggered_swap_card
+
 const animation_player = "AnimationPlayer"
 
 var current_round : int = 1
@@ -23,15 +25,17 @@ func _ready():
 	for crop in crops :
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
-
+		
+	p1_deck["Carrot"].level = 2
+	
 func get_random_card() -> Crop:
 	var live_crops: Array
 	
 	for crop in p1_deck:
-		if p1_deck[crop].level > 0 :
+		if p1_deck[crop].state != Crop.States.LOCKED :
 			live_crops.append(p1_deck[crop])
 	
-	return live_crops[randi_range(0, live_crops.size())]
+	return live_crops[randi_range(0, live_crops.size() - 1)]
 
 func select_card(card_name : String) :
 	selected_card = p1_deck[card_name]
@@ -51,3 +55,6 @@ func confirm_card() :
 func p2_result(crop : Crop, value : int, message = null):
 	crop.grow_card(value)
 	print(message)
+
+func swap_card():
+	triggered_swap_card.emit()

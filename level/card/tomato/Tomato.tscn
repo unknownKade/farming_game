@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ssl6ge77mc3l"]
 
-[ext_resource type="Script" path="res://scripts/Card.gd" id="1_gyn5e"]
+[ext_resource type="Script" path="res://level/card/tomato/Tomato.gd" id="1_qbr1e"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="2_30hg2"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_6v2lb"]
 
@@ -115,7 +115,7 @@ size = Vector2(48, 64)
 [node name="Tomato" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_gyn5e")
+script = ExtResource("1_qbr1e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
