@@ -25,8 +25,6 @@ func _ready():
 	for crop in crops :
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
-		
-	p1_deck["Carrot"].level = 2
 	
 func get_random_card() -> Crop:
 	var live_crops: Array
