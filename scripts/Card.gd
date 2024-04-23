@@ -3,16 +3,17 @@ extends Node2D
 class_name Card
 
 signal signal_end_turn
-var level : int
+
+var level
 var locked : bool
 var frame_set
 
 func _on_area_2d_signal_card_change(is_left_click):
+	get_node(GameManger.animation_player).stop()
 	var confirming_this_card = GameManger.selected_card != null and GameManger.selected_card.name == self.name
 	#TODO: issue FARM-66 click miss when overlapping locked card
 	if locked :
 		return
-	
 	if is_left_click:
 		if confirming_this_card :
 			confirm_selected_card()
@@ -43,6 +44,7 @@ func deselect_card():
 	$DeckAnimationPlayer.play("deselect")
 
 func return_card():
+	sync_card_level()
 	self.visible = true
 	if self.name == GameManger.confirmed_card.name :
 		$DeckAnimationPlayer.play("return")

@@ -2,10 +2,8 @@ extends Node
 
 class_name Player2
 
-@export var board : Node2D
-
 func _ready():
-	board.player_turn_started.connect(start_turn)
+	get_parent().get_node("Board").player_turn_started.connect(start_turn)
 
 func start_turn():
 	get_random_card()

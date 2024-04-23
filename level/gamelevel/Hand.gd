@@ -1,9 +1,7 @@
 extends Node2D
 
-func ready():
-	pass
-func play_animation():
-	for child in self.get_children():
-		get_parent().get_node("Result").return_to_hand.connect("play_animation")
+func _ready():
+	%Result.return_to_hand.connect(return_card)
 
-func 
+func return_card(crop : Crop):
+	get_node(crop.name).return_card()

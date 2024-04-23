@@ -12,8 +12,7 @@ var is_swap : bool = false
 
 func _ready():
 	for child in %Hand.get_children() :
-		if child.name != "Card" :
-			hand[child.name] = child
+		hand[child.name] = child
 	
 func enter():
 	display_cards()
@@ -50,10 +49,10 @@ func check_carrot_skill(p1: Crop, p2: Crop):
 	
 	if !carrot_condition and !beet_swap_condition : 
 		Transition.emit(self, next_state)
-	if !p1.skill(p2):
+	elif !p1.skill(p2):
 		Transition.emit(self, next_state)
-	
-	if beet_swap_condition :
+		
+	elif beet_swap_condition :
 		GameManger.confirmed_card = null
 		hand[p1.name].deselect()
 		hand[carrot].select_card()

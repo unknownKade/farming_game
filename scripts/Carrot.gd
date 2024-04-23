@@ -6,13 +6,12 @@ var run_probability : int
 
 func _init():
 	self.name = "Carrot"
-	self.level = 0
+	self.level = 1
 	self.state = States.NONE
 	
 func skill(p2 : Crop) -> bool:
 	if p2 is Tomato or p2 is Beet :
-		#return roll_dice(run_probability)
-		return true
+		return roll_dice(run_probability)
 	return false
 	
 func get_run_probability(level) :
