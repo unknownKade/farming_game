@@ -2,6 +2,8 @@ extends Node
 
 class_name Player2
 
+@export_enum("Tomato", "Beet", "Carrot", "Potato") var test_crop : String
+
 func _ready():
 	get_parent().get_node("Board").player_turn_started.connect(start_turn)
 
@@ -15,4 +17,7 @@ func get_random_card():
 		if GameManger.p2_deck[crop].level > 0 :
 			live_cards.append(GameManger.p2_deck[crop])
 	
-	GameManger.opponent_card = live_cards[randi_range(0, live_cards.size() -1)]
+	if test_crop != null :
+		GameManger.opponent_card = GameManger.p2_deck[test_crop]
+	else :
+		GameManger.opponent_card = live_cards[randi_range(0, live_cards.size() -1)]
