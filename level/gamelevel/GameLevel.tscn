@@ -1669,6 +1669,7 @@ libraries = {
 }
 
 [node name="Carrot" parent="Hand" instance=ExtResource("11_wd7mn")]
+unique_name_in_owner = true
 z_index = 5
 position = Vector2(38.3, 9.8)
 rotation = 0.366519

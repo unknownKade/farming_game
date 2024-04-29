@@ -1,32 +1,33 @@
 extends Sprite2D
 
-# Parameters for the shake effect
-var shake_intensity = 10.0
-var shake_speed = 30.0
-var shake_duration = 0.5
-var shake_timer = 0.0
-var original_position
+# Parameters for the shiver effect
+var shiver_intensity = 2.0
+var shiver_speed = 20.0
+var shiver_duration = 1
+var shiver_timer = 0.0
+var original_position: Vector2
 
 func _ready():
 	# Initialize the original position of the sprite
 	original_position = position
 
 func _process(delta):
-	# Check if it's time to shake the sprite
-	if shake_timer > 0:
-		# Calculate the shake offset
-		var shake_offset = Vector2(randi_range(-shake_intensity, shake_intensity), randi_range(-shake_intensity, shake_intensity))
-		position = original_position + shake_offset
+	# Check if it's time to shiver the sprite
+	if shiver_timer > 0:
+		# Calculate the shiver offsets
+		var offset_x = randf_range(-shiver_intensity, shiver_intensity)
+		var offset_y = randf_range(-shiver_intensity * 0.1, shiver_intensity * 0.1)
+		position = original_position + Vector2(offset_x, 0)
 		
-		# Decrease the shake timer
-		shake_timer -= delta * shake_speed
-		if shake_timer <= 0:
-			# Reset the position when the shake timer is finished
+		# Decrease the shiver timer
+		shiver_timer -= delta
+		if shiver_timer <= 0:
+			# Reset the position when the shiver timer is finished
 			position = original_position
 	else:
-		# If not shaking, reset position
+		# If not shivering, reset position
 		position = original_position
 
-# Function to start the shake effect
+# Function to start the shiver effect
 func start_shake():
-	shake_timer = shake_duration
+	shiver_timer = shiver_duration

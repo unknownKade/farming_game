@@ -46,5 +46,8 @@ func deselect_card():
 func return_card():
 	sync_card_level()
 	self.visible = true
+	
 	if self.name == GameManger.confirmed_card.name :
 		$DeckAnimationPlayer.play("return")
+	if GameManger.carrot_escaped :
+		%Carrot/DeckAnimationPlayer.play("escape_return")
