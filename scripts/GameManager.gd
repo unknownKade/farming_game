@@ -35,14 +35,14 @@ func _ready():
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
 		
-		p1_deck["Potato"] = potato_lv
-		p1_deck["Beet"] = beet_lv
-		p1_deck["Tomato"] = tomato_lv
-		p1_deck["Carrot"] = carrot_lv
-		p2_deck["Potato"] = p2_potato_lv
-		p2_deck["Beet"] = p2_beet_lv
-		p2_deck["Tomato"] = p2_tomato_lv
-		p2_deck["Carrot"] = p2_carrot_lv
+	p1_deck["Potato"].level = potato_lv
+	p1_deck["Beet"].level = beet_lv
+	p1_deck["Tomato"].level = tomato_lv
+	p1_deck["Carrot"].level = carrot_lv
+	p2_deck["Potato"].level = p2_potato_lv
+	p2_deck["Beet"].level = p2_beet_lv
+	p2_deck["Tomato"].level = p2_tomato_lv
+	p2_deck["Carrot"].level = p2_carrot_lv
 	
 func get_random_card() -> Crop:
 	var live_crops: Array
