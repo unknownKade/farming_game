@@ -21,7 +21,7 @@ func grow_card(value : int) :
 		self.level = 4
 
 func roll_dice(probability : float) -> bool:
-	return randi() < probability
+	return randf() < probability
 
 func lock():
 	self.state = States.LOCKED
