@@ -13,6 +13,8 @@ var is_swap : bool = false
 func _ready():
 	for child in %Hand.get_children() :
 		hand[child.name] = child
+		if child.name == carrot :
+			child.carrot_escaped.connect(enter)
 	
 func enter():
 	display_cards()
@@ -25,7 +27,6 @@ func display_cards():
 	for card in hand :
 		hand[card].sync_card_level()
 		hand[card].signal_end_turn.connect(end_player_phase)
-	%Hand.visible = true
 #TODO : Display cards animation
 
 func _on_timer_timeout():
@@ -44,7 +45,7 @@ func end_player_phase():
 		check_carrot_skill(GameManger.confirmed_card, GameManger.opponent_card)
 
 func check_carrot_skill(p1: Crop, p2: Crop):
-	var carrot_condition = p1 is Carrot and p1.level > 1
+	var carrot_condition = p1 is Carrot and p1.level > 1 and p2 is Tomato
 	var beet_swap_condition = p2 is Beet and GameManger.p1_deck[carrot].level > 1
 	
 	if !carrot_condition and !beet_swap_condition : 
@@ -53,15 +54,18 @@ func check_carrot_skill(p1: Crop, p2: Crop):
 		Transition.emit(self, next_state)
 		
 	elif beet_swap_condition :
-		GameManger.confirmed_card = null
-		hand[p1.name].deselect()
-		hand[carrot].select_card()
-		hand[carrot].confirm_selected_card()
-		Transition.emit(self, next_state)
+		swap_confirmed_card(hand[carrot])
 	else :
 		swap_carrot_card()
 		
 func swap_carrot_card() :
 	is_swap = true
+	GameManger.nullify_select_and_confirm()
 	hand[carrot].run_away()
-	enter()
+	
+func swap_confirmed_card(card : Card):
+	hand[GameManger.confirmed_card.name].deselect()
+	GameManger.nullify_select_and_confirm()
+	hand[carrot].select_card()
+	hand[carrot].confirm_selected_card()
+	Transition.emit(self, next_state)

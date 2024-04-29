@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=61 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -1167,6 +1167,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_o44yw"]
 resource_name = "confirm"
@@ -1268,6 +1280,108 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [5, 0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_s1dey"]
+resource_name = "escape"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.0999985, -74.2), Vector2(186.578, -74.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:skew")
+tracks/3/interp = 4
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0261799, -0.0261799]
+}
+
+[sub_resource type="Animation" id="Animation_0ltym"]
+resource_name = "escape_return"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8.613, 46.168), Vector2(38.3, 9.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.366519]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_2ouei"]
@@ -1377,6 +1491,8 @@ _data = {
 "RESET": SubResource("Animation_4ed0x"),
 "confirm": SubResource("Animation_o44yw"),
 "deselect": SubResource("Animation_axc73"),
+"escape": SubResource("Animation_s1dey"),
+"escape_return": SubResource("Animation_0ltym"),
 "return": SubResource("Animation_2ouei"),
 "select": SubResource("Animation_pgle1")
 }
@@ -1564,6 +1680,7 @@ libraries = {
 
 [node name="Player2" type="Node" parent="."]
 script = ExtResource("14_f6hlk")
+test_crop = "Tomato"
 
 [node name="Card" type="Node2D" parent="."]
 position = Vector2(0.00012207, 6.10352e-05)
@@ -1575,3 +1692,4 @@ script = ExtResource("25_nkn5x")
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden/AnimationPlayer" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Result/Center/AnimationPlayer" to="Result" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
