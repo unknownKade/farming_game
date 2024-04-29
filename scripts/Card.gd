@@ -3,22 +3,17 @@ extends Node2D
 class_name Card
 
 signal signal_end_turn
-var level : int = 1
-var frame_set = {
-	"Beet" : [16,0,4,8,12],
-	"Carrot" : [19,0,4,8,15],
-	"Tomato" : [31,0,7,17,24],
-	"Potato" : [33,0,6,14,25]
-}
-var beet_frame = [16,0,4,8,12]
 
-func _ready():
-	%Result.return_to_hand.connect(return_card)
-	level = GameManger.p1_deck[self.name].level
-	change_card_image(level)
+var level
+var locked : bool
+var frame_set
 
 func _on_area_2d_signal_card_change(is_left_click):
+	get_node(GameManger.animation_player).stop()
 	var confirming_this_card = GameManger.selected_card != null and GameManger.selected_card.name == self.name
+	#TODO: issue FARM-66 click miss when overlapping locked card
+	if locked :
+		return
 	if is_left_click:
 		if confirming_this_card :
 			confirm_selected_card()
@@ -29,8 +24,9 @@ func _on_area_2d_signal_card_change(is_left_click):
 	else :
 		deselect_card()
 
-func change_card_image(level):
-	$Sprite2D.set_frame(frame_set[self.name][level])
+func sync_card_level():
+	level = GameManger.p1_deck[self.name].level
+	$Sprite2D.set_frame(frame_set[level])
 
 func confirm_selected_card():
 	GameManger.confirm_card()
@@ -43,13 +39,15 @@ func select_card():
 	$AnimationPlayer.play(str(level))
 
 func deselect_card():
+	self.visible = true
 	GameManger.deselect_card()
 	$DeckAnimationPlayer.play("deselect")
 
 func return_card():
+	sync_card_level()
 	self.visible = true
+	
 	if self.name == GameManger.confirmed_card.name :
 		$DeckAnimationPlayer.play("return")
-
-func roll_dice(min_dice_req : int) -> bool:
-	return randi_range(0, 4) > min_dice_req
+	if GameManger.carrot_escaped :
+		%Carrot/DeckAnimationPlayer.play("escape_return")

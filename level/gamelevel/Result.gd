@@ -1,6 +1,6 @@
 extends State
 
-var next_state = "Hand"
+var next_state = "Disaster"
 signal return_to_hand
 var p1 : Crop
 var p2 : Crop
@@ -28,5 +28,5 @@ func card_affect(old_level : int):
 func _on_animation_player_animation_finished(anim_name):
 	self.visible = false
 	GameManger.selected_card = null
-	return_to_hand.emit()
-	#Transition.emit(self, next_state)
+	return_to_hand.emit(p1)
+	Transition.emit(self, next_state)

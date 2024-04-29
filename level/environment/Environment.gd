@@ -16,7 +16,6 @@ func enter():
 	GameManger.current_environment = current_environment
 	var scene = scenes.get(current_environment)
 	scene.visible = true
-	print(current_environment)
 
 func _on_animation_player_animation_end():
 	Transition.emit(self, next_state)

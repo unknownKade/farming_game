@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://06bul7hi5akv"]
+[gd_scene load_steps=13 format=3 uid="uid://06bul7hi5akv"]
 
-[ext_resource type="Script" path="res://scripts/Card.gd" id="1_6o04h"]
+[ext_resource type="Script" path="res://level/card/carrot/Carrot.gd" id="1_4vqkg"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="2_twubf"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_lh00u"]
+[ext_resource type="Script" path="res://level/card/carrot/Sprite2D.gd" id="3_tl22c"]
 
 [sub_resource type="Animation" id="Animation_s3f36"]
 resource_name = "0"
@@ -114,7 +115,7 @@ size = Vector2(48, 64)
 [node name="Carrot" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_6o04h")
+script = ExtResource("1_4vqkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -122,6 +123,7 @@ texture_repeat = 1
 texture = ExtResource("2_twubf")
 hframes = 5
 vframes = 4
+script = ExtResource("3_tl22c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
