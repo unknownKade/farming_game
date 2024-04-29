@@ -10,9 +10,18 @@ var selected_card : Crop
 var confirmed_card : Crop
 var opponent_card : Crop
 var current_environment: String
+var carrot_escaped : bool
 
 var p1_deck : Dictionary
 var p2_deck : Dictionary
+@export_range(0,4) var potato_lv : int = 1
+@export_range(0,4) var beet_lv : int = 1
+@export_range(0,4) var tomato_lv : int = 1
+@export_range(0,4) var carrot_lv : int = 1
+@export_range(0,4) var p2_potato_lv : int = 1
+@export_range(0,4) var p2_beet_lv : int = 1
+@export_range(0,4) var p2_tomato_lv : int = 1
+@export_range(0,4) var p2_carrot_lv : int = 1
 
 func _ready():
 	var crops = {
@@ -25,6 +34,15 @@ func _ready():
 	for crop in crops :
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
+		
+		p1_deck["Potato"] = potato_lv
+		p1_deck["Beet"] = beet_lv
+		p1_deck["Tomato"] = tomato_lv
+		p1_deck["Carrot"] = carrot_lv
+		p2_deck["Potato"] = p2_potato_lv
+		p2_deck["Beet"] = p2_beet_lv
+		p2_deck["Tomato"] = p2_tomato_lv
+		p2_deck["Carrot"] = p2_carrot_lv
 	
 func get_random_card() -> Crop:
 	var live_crops: Array
@@ -56,3 +74,7 @@ func p2_result(crop : Crop, value : int, message = null):
 
 func swap_card():
 	triggered_swap_card.emit()
+
+func nullify_select_and_confirm():
+	selected_card = null
+	confirmed_card = null
