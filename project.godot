@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="farming"
+run/main_scene="res://level/gamelevel/GameLevel.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,11 +19,33 @@ config/icon="res://icon.svg"
 
 aseprite_executable_path="D:/programs/Aseprite-v1.3.5-x64/Aseprite.exe"
 
+[autoload]
+
+GameManger="*res://scripts/GameManager.gd"
+
+[display]
+
+window/size/viewport_width=1536
+window/size/viewport_height=864
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
+[input]
+
+"Left Click"={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(134, 11),"global_position":Vector2(138, 52),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
