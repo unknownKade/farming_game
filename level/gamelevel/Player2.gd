@@ -17,7 +17,7 @@ func get_random_card():
 		if GameManger.p2_deck[crop].level > 0 :
 			live_cards.append(GameManger.p2_deck[crop])
 	
-	if test_crop != null :
+	if !test_crop.is_empty() :
 		GameManger.opponent_card = GameManger.p2_deck[test_crop]
 	else :
 		GameManger.opponent_card = live_cards[randi_range(0, live_cards.size() -1)]

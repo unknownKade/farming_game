@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=61 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -466,6 +466,35 @@ tracks/3/keys = {
 "values": [5]
 }
 
+[sub_resource type="Animation" id="Animation_u5a7g"]
+resource_name = "revive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-36.8, 9.8), Vector2(-19.4123, 53.7163), Vector2(-19.4123, 53.7163), Vector2(-36.8, 9.8)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sync_card_level"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_6ynlk"]
 resource_name = "select"
 tracks/0/type = "value"
@@ -522,6 +551,7 @@ _data = {
 "RESET": SubResource("Animation_r7gsn"),
 "deselect": SubResource("Animation_klsn4"),
 "return": SubResource("Animation_rgvl5"),
+"revive": SubResource("Animation_u5a7g"),
 "select": SubResource("Animation_6ynlk")
 }
 
@@ -678,6 +708,35 @@ tracks/3/keys = {
 "values": [5]
 }
 
+[sub_resource type="Animation" id="Animation_1rk36"]
+resource_name = "revive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-12.2, 1.6), Vector2(-2.27253, 49.9628), Vector2(-2.27253, 49.9628), Vector2(-12.2, 1.6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sync_card_level"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_58rbv"]
 resource_name = "select"
 tracks/0/type = "value"
@@ -734,6 +793,7 @@ _data = {
 "RESET": SubResource("Animation_dlvlx"),
 "deselect": SubResource("Animation_tv4c8"),
 "return": SubResource("Animation_t8ojj"),
+"revive": SubResource("Animation_1rk36"),
 "select": SubResource("Animation_58rbv")
 }
 
@@ -1004,6 +1064,35 @@ tracks/3/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_u8a2m"]
+resource_name = "revive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(13.2, 1.6), Vector2(3.17713, 51.3079), Vector2(3.17713, 51.3079), Vector2(13.2, 1.6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sync_card_level"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_pgle1"]
 resource_name = "select"
 tracks/0/type = "value"
@@ -1062,6 +1151,7 @@ _data = {
 "escape": SubResource("Animation_s1dey"),
 "escape_return": SubResource("Animation_0ltym"),
 "return": SubResource("Animation_2ouei"),
+"revive": SubResource("Animation_u8a2m"),
 "select": SubResource("Animation_pgle1")
 }
 
@@ -1230,6 +1320,35 @@ tracks/3/keys = {
 "values": [5]
 }
 
+[sub_resource type="Animation" id="Animation_m5nlr"]
+resource_name = "revive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38.3, 9.8), Vector2(22.3171, 51.4369), Vector2(22.3171, 51.4369), Vector2(38.3, 9.8)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sync_card_level"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_y6rh6"]
 resource_name = "select"
 tracks/0/type = "value"
@@ -1286,6 +1405,7 @@ _data = {
 "RESET": SubResource("Animation_ht44c"),
 "deselect": SubResource("Animation_pytl5"),
 "return": SubResource("Animation_8qtjt"),
+"revive": SubResource("Animation_m5nlr"),
 "select": SubResource("Animation_y6rh6")
 }
 
@@ -1485,4 +1605,8 @@ script = ExtResource("25_nkn5x")
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden/AnimationPlayer" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Result/Center/AnimationPlayer" to="Result" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Hand/Potato/DeckAnimationPlayer" to="Card" method="_on_deck_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Hand/Tomato/DeckAnimationPlayer" to="Card" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Card" method="_on_deck_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Hand/Beet/DeckAnimationPlayer" to="Card" method="_on_deck_animation_player_animation_finished"]
