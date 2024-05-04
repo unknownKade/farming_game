@@ -26,7 +26,10 @@ func _on_area_2d_signal_card_change(is_left_click):
 		deselect_card()
 
 func sync_card_level():
-	level = GameManger.p1_deck[self.name].level
+	var card = GameManger.p1_deck[self.name]
+	self.level = card.level
+	if card.level == 0 or card.state == Crop.States.LOCKED :
+		self.locked = true
 	$Sprite2D.set_frame(frame_set[level])
 
 func confirm_selected_card():
