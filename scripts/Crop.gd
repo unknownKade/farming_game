@@ -3,8 +3,9 @@ class_name Crop
 var name : String
 var level : int = 1
 var state : States 
+
 enum States{
-	NONE, LOCKED
+	NONE, LOCKED, ENVY, PHOBIA
 }
 
 const tomato = "Tomato"

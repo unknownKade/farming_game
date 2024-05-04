@@ -3,6 +3,7 @@ extends Node2D
 class_name Card
 
 signal signal_end_turn
+signal crop_revived
 
 var level
 var locked : bool
@@ -11,7 +12,7 @@ var frame_set
 func _on_area_2d_signal_card_change(is_left_click):
 	get_node(GameManger.animation_player).stop()
 	var confirming_this_card = GameManger.selected_card != null and GameManger.selected_card.name == self.name
-	#TODO: issue FARM-66 click miss when overlapping locked card
+
 	if locked :
 		return
 	if is_left_click:
@@ -25,7 +26,10 @@ func _on_area_2d_signal_card_change(is_left_click):
 		deselect_card()
 
 func sync_card_level():
-	level = GameManger.p1_deck[self.name].level
+	var card = GameManger.p1_deck[self.name]
+	self.level = card.level
+	if card.level == 0 or card.state == Crop.States.LOCKED :
+		self.locked = true
 	$Sprite2D.set_frame(frame_set[level])
 
 func confirm_selected_card():
@@ -51,3 +55,8 @@ func return_card():
 		$DeckAnimationPlayer.play("return")
 	if GameManger.carrot_escaped :
 		%Carrot/DeckAnimationPlayer.play("escape_return")
+
+
+func _on_deck_animation_player_animation_finished(anim_name):
+	if anim_name == "revive" :
+		crop_revived.emit()

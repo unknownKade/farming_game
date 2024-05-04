@@ -41,14 +41,16 @@ func end_player_phase():
 	
 	if is_swap :
 		Transition.emit(self, next_state)
+
 	if !is_swap:
 		check_carrot_skill(GameManger.confirmed_card, GameManger.opponent_card)
 
 func check_carrot_skill(p1: Crop, p2: Crop):
 	var carrot_condition = p1 is Carrot and p1.level > 1 and p2 is Tomato
 	var beet_swap_condition = p2 is Beet and GameManger.p1_deck[carrot].level > 1
+	var potato_condition = GameManger.p1_deck["Potato"].state == Crop.States.PHOBIA
 	
-	if !carrot_condition and !beet_swap_condition : 
+	if !carrot_condition and !beet_swap_condition or potato_condition: 
 		Transition.emit(self, next_state)
 	elif !p1.skill(p2):
 		Transition.emit(self, next_state)
