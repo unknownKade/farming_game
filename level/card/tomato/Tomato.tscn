@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ssl6ge77mc3l"]
+[gd_scene load_steps=13 format=3 uid="uid://ssl6ge77mc3l"]
 
 [ext_resource type="Script" path="res://level/card/tomato/Tomato.gd" id="1_qbr1e"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="2_30hg2"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_6v2lb"]
+[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_pl4oj"]
 
 [sub_resource type="Animation" id="Animation_kldtj"]
 resource_name = "0"
@@ -123,6 +124,7 @@ texture_repeat = 1
 texture = ExtResource("2_30hg2")
 hframes = 6
 vframes = 6
+script = ExtResource("3_pl4oj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxofbby3bsmfa"]
+[gd_scene load_steps=13 format=3 uid="uid://dxofbby3bsmfa"]
 
 [ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_qfixi"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="2_u3jgl"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_4xb23"]
+[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_8va6e"]
 
 [sub_resource type="Animation" id="Animation_ihaaq"]
 resource_name = "0"
@@ -122,6 +123,7 @@ texture_repeat = 1
 texture = ExtResource("2_u3jgl")
 hframes = 5
 vframes = 4
+script = ExtResource("3_8va6e")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

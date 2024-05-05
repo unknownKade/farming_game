@@ -15,13 +15,13 @@ var carrot_escaped : bool
 var p1_deck : Dictionary
 var p2_deck : Dictionary
 @export_range(0,4) var potato_lv : int = 1
-@export_range(0,4) var beet_lv : int = 1
+@export_range(0,4) var beet_lv : int = 2
 @export_range(0,4) var tomato_lv : int = 1
 @export_range(0,4) var carrot_lv : int = 1
 @export_range(0,4) var p2_potato_lv : int = 1
 @export_range(0,4) var p2_beet_lv : int = 1
 @export_range(0,4) var p2_tomato_lv : int = 1
-@export_range(0,4) var p2_carrot_lv : int = 1
+@export_range(0,4) var p2_carrot_lv : int = 4
 
 func _ready():
 	var crops = {
@@ -44,6 +44,8 @@ func _ready():
 	p2_deck["Tomato"].level = p2_tomato_lv
 	p2_deck["Carrot"].level = p2_carrot_lv
 	
+	
+	p1_deck["Potato"].state = Crop.States.PHOBIA
 func get_random_card() -> Crop:
 	var live_crops: Array
 	
@@ -70,7 +72,6 @@ func confirm_card() :
 
 func p2_result(crop : Crop, value : int, message = null):
 	crop.grow_card(value)
-	print(message)
 
 func swap_card():
 	triggered_swap_card.emit()

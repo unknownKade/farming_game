@@ -6,7 +6,7 @@ var mouse_in : bool = false
 func _input(event):
 	var is_click : bool = event is InputEventMouseButton and event.is_pressed()
 	
-	if !is_click or !GameManger.player_turn:
+	if !is_click or !GameManger.player_turn or get_parent().locked:
 		return
 	
 	if mouse_in and event.button_index == MOUSE_BUTTON_LEFT:

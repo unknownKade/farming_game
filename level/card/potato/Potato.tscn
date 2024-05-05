@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bcjo6vxhmi3ti"]
+[gd_scene load_steps=13 format=3 uid="uid://bcjo6vxhmi3ti"]
 
 [ext_resource type="Script" path="res://level/card/potato/Potato.gd" id="1_31pbs"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
+[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_78bf0"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_yedh5"]
 
 [sub_resource type="Animation" id="Animation_1ec1v"]
@@ -125,6 +126,7 @@ texture_repeat = 1
 texture = ExtResource("2_3wut7")
 hframes = 6
 vframes = 6
+script = ExtResource("3_78bf0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

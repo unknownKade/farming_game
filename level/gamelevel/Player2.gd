@@ -5,7 +5,7 @@ class_name Player2
 @export_enum("Tomato", "Beet", "Carrot", "Potato") var test_crop : String
 
 func _ready():
-	get_parent().get_node("Board").player_turn_started.connect(start_turn)
+	%Board.player_turn_started.connect(start_turn)
 
 func start_turn():
 	get_random_card()
