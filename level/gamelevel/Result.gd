@@ -5,6 +5,7 @@ signal return_to_hand
 var p1 : Crop
 var p2 : Crop
 
+
 func enter():
 	p1 = GameManger.confirmed_card
 	p2 = GameManger.opponent_card
@@ -28,6 +29,7 @@ func card_affect(old_level : int):
 func _on_animation_player_animation_finished(anim_name):
 	if p1 is Beet and p1.level == 4:
 		check_beet_skill()
+	end_phase()
 	
 func end_phase():
 	if p1 is Potato :

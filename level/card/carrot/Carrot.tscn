@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://level/card/carrot/Carrot.gd" id="1_4vqkg"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="2_twubf"]
+[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_eybfm"]
 [ext_resource type="Script" path="res://scripts/Click.gd" id="3_lh00u"]
-[ext_resource type="Script" path="res://level/card/carrot/Sprite2D.gd" id="3_tl22c"]
 
 [sub_resource type="Animation" id="Animation_s3f36"]
 resource_name = "0"
@@ -123,7 +123,7 @@ texture_repeat = 1
 texture = ExtResource("2_twubf")
 hframes = 5
 vframes = 4
-script = ExtResource("3_tl22c")
+script = ExtResource("3_eybfm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
