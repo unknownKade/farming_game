@@ -3,9 +3,10 @@ extends Node2D
 class_name GameLevel
 
 @export var initial_state : State
-
+@export var last_state : State
 var current_state
 var states : Dictionary
+var next_round = "NextRound"
 
 func _ready():
 	for child in get_children():
@@ -20,11 +21,17 @@ func _ready():
 func on_child_transition(state, next_state):
 	if state != current_state:
 		return
+		
+	if state == last_state:
+		new_year()
 	
 	var new_state = states.get(next_state.to_lower())
 	
 	if current_state : 
 		current_state.exit()
 	
-	new_state.enter()
 	current_state = new_state
+	new_state.enter()
+	
+func new_year():
+	GameManger.current_round += 1
