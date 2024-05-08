@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ysr8yebe3ke"]
+[gd_scene load_steps=12 format=3 uid="uid://ysr8yebe3ke"]
 
 [ext_resource type="Script" path="res://level/weather/Season.gd" id="1_7jomj"]
 [ext_resource type="Texture2D" uid="uid://b8xm5m3l6nux3" path="res://resource/images/weather/spring-Sheet.png" id="2_mho15"]
-[ext_resource type="Script" path="res://level/weather/AnimationPlayer.gd" id="3_1tynp"]
 [ext_resource type="Texture2D" uid="uid://cx2jlv8wo27vt" path="res://resource/images/weather/summer-Sheet.png" id="3_8yjdi"]
 [ext_resource type="Texture2D" uid="uid://b5y31id2lob4w" path="res://resource/images/weather/authum-Sheet.png" id="4_7q2xc"]
 [ext_resource type="Texture2D" uid="uid://bm6cwomse3606" path="res://resource/images/weather/winter-Sheet.png" id="5_crtm1"]
@@ -162,6 +161,5 @@ vframes = 3
 libraries = {
 "": SubResource("AnimationLibrary_c7gj2")
 }
-script = ExtResource("3_1tynp")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

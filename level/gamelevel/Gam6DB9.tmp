@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=64 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -1486,26 +1486,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Beet:rotation")
+tracks/6/path = NodePath("Beet:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.366519]
+"values": [Vector2(38.3, 9.8)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Beet:position")
+tracks/7/path = NodePath("Beet:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(38.3, 9.8)]
+"values": [0.366519]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1518,165 +1518,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(921, 798)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath(".:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5, 5)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath(".:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_w0iom"]
-resource_name = "after_disaster"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Potato:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-36.8, 9.8), Vector2(-103.143, -4.76837e-06)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Potato:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.376991, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tomato:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-12.2, 1.6), Vector2(-48.7143, -5.96046e-06)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("%Carrot:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(13.2, 1.6), Vector2(5.85716, -5.96046e-06)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("%Carrot:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.198968, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Tomato:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.202458, 0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Beet:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(38.3, 9.8), Vector2(59.2857, -4.76837e-06)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Beet:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.366519, 0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath(".:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(921, 798), Vector2(921, 423)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".:scale")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(5, 5), Vector2(7, 7)]
 }
 
 [sub_resource type="Animation" id="Animation_u3uyn"]
@@ -1756,26 +1597,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Beet:rotation")
-tracks/6/interp = 1
+tracks/6/path = NodePath("Beet:position")
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-0.383972, 0.366519]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Beet:position")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.5, 1),
 "transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5),
 "update": 0,
 "values": [Vector2(-22, 55), Vector2(-40, 9.8), Vector2(-40, 9.8), Vector2(38.3, 9.8)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Beet:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-0.383972, 0.366519]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1789,50 +1630,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath(".:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(921, 798)]
-}
-
-[sub_resource type="Animation" id="Animation_vydra"]
-resource_name = "after_disaster_fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6mre"]
 _data = {
 "RESET": SubResource("Animation_1pwq1"),
-"after_disaster": SubResource("Animation_w0iom"),
-"after_disaster_fade": SubResource("Animation_vydra"),
 "display": SubResource("Animation_u3uyn")
 }
 
-[node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state", "last_state")]
+[node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state")]
 texture_filter = 1
 texture_repeat = 1
 script = ExtResource("1_lq06n")
 initial_state = NodePath("Weather")
-last_state = NodePath("Disaster")
 metadata/_edit_horizontal_guides_ = [0.0, 864.0, 423.0, 429.0, 737.0]
-metadata/_edit_vertical_guides_ = [0.0, 383.0, 1536.02]
+metadata/_edit_vertical_guides_ = [0.0, 383.134, 1536.02]
 
 [node name="Side" parent="." instance=ExtResource("2_pyyde")]
 position = Vector2(192, 432)
@@ -1858,6 +1669,10 @@ texture_filter = 1
 
 [node name="Environment" parent="." instance=ExtResource("5_h7xs0")]
 position = Vector2(182, 224)
+
+[node name="Disaster" parent="." instance=ExtResource("26_xqr1u")]
+position = Vector2(189, 680.409)
+scale = Vector2(6, 6)
 
 [node name="Garden" type="Node2D" parent="."]
 z_index = 5
@@ -1962,14 +1777,10 @@ libraries = {
 "": SubResource("AnimationLibrary_nhc3y")
 }
 
-[node name="Disaster" parent="." instance=ExtResource("26_xqr1u")]
-position = Vector2(189, 680.409)
-scale = Vector2(6, 6)
-
 [node name="Hand" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-position = Vector2(921, 798)
+position = Vector2(943.655, 803.234)
 scale = Vector2(5, 5)
 script = ExtResource("19_yccec")
 
@@ -2035,4 +1846,3 @@ script = ExtResource("20_je43g")
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Card" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Beet/DeckAnimationPlayer" to="Card" method="_on_deck_animation_player_animation_finished"]
-[connection signal="animation_finished" from="LevelAnimation" to="Disaster" method="_on_level_animation_animation_finished"]

@@ -32,7 +32,6 @@ func enter():
 		end_round()
 
 func end_round():
-	%Hand.visible = false
 	Transition.emit(self, next_state)
 
 func _on_level_animation_animation_finished(anim_name):
@@ -40,6 +39,7 @@ func _on_level_animation_animation_finished(anim_name):
 		result_anim : 
 			can_click = true
 		fade_anim :
+			%LevelAnimation.play("RESET")
 			end_round()
 
 func _on_animation_player_animation_finished(anim_name):
