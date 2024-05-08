@@ -15,10 +15,14 @@ func change_texture(weather):
 	self.visible = true
 
 func _process(delta):
+	#intro card appears
 	if display_state && self.scale.y <= 1:
 		self.scale.y += delta * 2
 	
+	#intro card disappears
 	if !display_state && self.scale.y >= 0:
-		self.scale.y -= delta * 2 
+		self.scale.y -= delta * 2
+	
+	#hide intro card
 	elif !display_state:
 		self.visible = false

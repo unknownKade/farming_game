@@ -27,7 +27,8 @@ func display_cards():
 	for card in hand :
 		hand[card].sync_card_level()
 		hand[card].signal_end_turn.connect(end_player_phase)
-	%LevelAnimation.play("display")
+	if GameManger.current_round%4 == 1 :
+		%LevelAnimation.play("display")
 
 func _on_timer_timeout():
 	if GameManger.selected_card != null :

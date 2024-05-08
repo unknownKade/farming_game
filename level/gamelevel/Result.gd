@@ -1,10 +1,12 @@
 extends State
 
-var next_state = "Disaster"
+const next_state = "Disaster"
 signal return_to_hand
 var p1 : Crop
 var p2 : Crop
 
+func _ready():
+	%Hand.returned_card.connect(end_result)
 
 func enter():
 	p1 = GameManger.confirmed_card
@@ -38,7 +40,6 @@ func end_phase():
 	self.visible = false
 	GameManger.selected_card = null
 	return_to_hand.emit(p1)
-	Transition.emit(self, next_state)
 
 func check_beet_skill():
 	var revived_crop = p1.revive()
@@ -52,3 +53,6 @@ func check_potato_state() :
 		p1.clear_state()
 	elif p1.level == 2 and p1.is_buffable:
 		p1.random_debuff()
+
+func end_result():
+	Transition.emit(self, next_state)

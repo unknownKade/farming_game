@@ -6,7 +6,6 @@ class_name GameLevel
 @export var last_state : State
 var current_state
 var states : Dictionary
-var next_round = "NextRound"
 
 func _ready():
 	for child in get_children():
@@ -35,3 +34,6 @@ func on_child_transition(state, next_state):
 	
 func new_year():
 	GameManger.current_round += 1
+	GameManger.confirmed_card = null
+	GameManger.selected_card = null
+	GameManger.opponent_card = null
