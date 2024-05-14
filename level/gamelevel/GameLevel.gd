@@ -34,6 +34,7 @@ func on_child_transition(state, next_state):
 	
 func new_year():
 	GameManger.current_round += 1
+	
 	GameManger.confirmed_card = null
 	GameManger.selected_card = null
 	GameManger.opponent_card = null

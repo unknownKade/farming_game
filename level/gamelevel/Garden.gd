@@ -12,12 +12,14 @@ func _ready():
 	effect.end_seeding.connect(end_land)
 
 func enter():
-	play_seeding()
+	play_land_animation()
+	#play_seeding()
 	
 func play_seeding():
-	var level = GameManger.confirmed_card.level
-	$Card.change_texture(GameManger.confirmed_card.name, level )
-	get_node(GameManger.animation_player).play("seeding")
+	var card = %Hand.get_node(GameManger.confirmed_card.name)
+	var mask = %Hand.get_node("Mask")
+	card.reparent(mask)
+	card.get_node("DeckAnimationPlayer").play("seeding")
 
 func play_land_animation():
 	back.play_land_animation(GameManger.opponent_card.name)
@@ -30,8 +32,6 @@ func end_land() :
 	get_node(GameManger.animation_player).play("fadeout")
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "seeding" :
-		play_land_animation()
 	if anim_name == "fadeout" :
 		reset(back)
 		reset(land)

@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://06bul7hi5akv"]
+[gd_scene load_steps=18 format=3 uid="uid://bcjo6vxhmi3ti"]
 
-[ext_resource type="Script" path="res://level/card/carrot/Carrot.gd" id="1_4vqkg"]
-[ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_88n83"]
-[ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="2_twubf"]
-[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_eybfm"]
-[ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/land.png" id="5_3kpdi"]
+[ext_resource type="Script" path="res://level/card/potato/Potato.gd" id="1_31pbs"]
+[ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
+[ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_kc2vf"]
+[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_78bf0"]
+[ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/land.png" id="5_dbqba"]
+[ext_resource type="Texture2D" uid="uid://i05j6u1pod1c" path="res://resource/images/game_level/board/board.png" id="6_w4d4s"]
+[ext_resource type="Texture2D" uid="uid://dv5jni7f4x6v4" path="res://resource/images/card/Tomato.aseprite" id="7_lvj5r"]
 
-[sub_resource type="Animation" id="Animation_s3f36"]
+[sub_resource type="Animation" id="Animation_1ec1v"]
 resource_name = "0"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,26 +21,27 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [33]
 }
 
 [sub_resource type="Animation" id="Animation_nlnwo"]
 resource_name = "1"
+length = 1.1
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_vv637"]
+[sub_resource type="Animation" id="Animation_xejq2"]
 resource_name = "2"
 loop_mode = 2
 tracks/0/type = "value"
@@ -47,14 +51,15 @@ tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7]
+"values": [6, 7, 8, 9, 10, 11, 12, 13]
 }
 
-[sub_resource type="Animation" id="Animation_2feoo"]
+[sub_resource type="Animation" id="Animation_qwspb"]
 resource_name = "3"
+length = 1.2
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,13 +68,13 @@ tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11, 14]
+"values": [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 }
 
-[sub_resource type="Animation" id="Animation_ju1rg"]
+[sub_resource type="Animation" id="Animation_cpdey"]
 resource_name = "4"
 loop_mode = 2
 tracks/0/type = "value"
@@ -79,10 +84,10 @@ tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [15, 16, 17, 18]
+"values": [25, 26, 27, 28, 29, 30, 31, 32]
 }
 
 [sub_resource type="Animation" id="Animation_jv2ro"]
@@ -102,78 +107,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ground:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Ground/DirtParticle:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Ground/DirtParticle2:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mask/Sprite2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(24, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_ywdec"]
-resource_name = "seeding"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ground:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/path = NodePath("Ground/DirtParticle:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.1, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true, false, true, false]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -182,10 +123,10 @@ tracks/2/path = NodePath("Ground/DirtParticle2:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.9, 1.1, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true, false, true, false]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -194,51 +135,134 @@ tracks/3/path = NodePath("Mask/Sprite2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.7, 1, 1.2, 1.7, 1.9),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 32)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ground:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/Sprite2D2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-469, -382)]
+}
+
+[sub_resource type="Animation" id="Animation_5vp4y"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(550.667, 427), Vector2(570.667, 430.333)]
+}
+
+[sub_resource type="Animation" id="Animation_a8hks"]
+resource_name = "seeding"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Ground/DirtParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Ground/DirtParticle2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mask/Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1.1, 1.3, 1.71, 1.9),
 "transitions": PackedFloat32Array(2, 2, 0.5, 2, 0.5, 2, 0.5),
 "update": 0,
 "values": [Vector2(24, 32), Vector2(24, 81), Vector2(24, 66), Vector2(24, 93), Vector2(24, 77), Vector2(24, 102), Vector2(24, 114)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Ground:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
-"0": SubResource("Animation_s3f36"),
+"0": SubResource("Animation_1ec1v"),
 "1": SubResource("Animation_nlnwo"),
-"2": SubResource("Animation_vv637"),
-"3": SubResource("Animation_2feoo"),
-"4": SubResource("Animation_ju1rg"),
+"2": SubResource("Animation_xejq2"),
+"3": SubResource("Animation_qwspb"),
+"4": SubResource("Animation_cpdey"),
 "RESET": SubResource("Animation_jv2ro"),
-"seeding": SubResource("Animation_ywdec")
+"new_animation": SubResource("Animation_5vp4y"),
+"seeding": SubResource("Animation_a8hks")
 }
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1b7ei"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="Curve" id="Curve_avcuf"]
+[sub_resource type="Curve" id="Curve_082ru"]
 _data = [Vector2(0, 1), 0.0, -0.524917, 0, 0, Vector2(0.512658, 0.527472), -2.4512, -2.4512, 0, 0, Vector2(0.632911, 0.032967), -0.99215, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_76m31"]
-particles_animation = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[node name="Carrot" type="Node2D"]
+[node name="Potato" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
-script = ExtResource("1_4vqkg")
+scale = Vector2(3, 3)
+script = ExtResource("1_31pbs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4osns")
 }
+movie_quit_on_finish = true
 
 [node name="Mask" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 clip_contents = true
 anchors_preset = 8
@@ -252,21 +276,22 @@ offset_right = 24.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_88n83")
+script = ExtResource("2_kc2vf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Mask"]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(24, 32)
-texture = ExtResource("2_twubf")
-hframes = 5
-vframes = 4
-script = ExtResource("3_eybfm")
+texture = ExtResource("2_3wut7")
+hframes = 6
+vframes = 6
+script = ExtResource("3_78bf0")
 
 [node name="Ground" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-z_index = 1
+z_index = 10
+z_as_relative = false
 position = Vector2(0, 17)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground"]
@@ -275,27 +300,26 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(1.77636e-15, 31)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_3kpdi")
+texture = ExtResource("5_dbqba")
 
 [node name="DirtParticle" type="CPUParticles2D" parent="Ground"]
 z_index = 5
-material = SubResource("CanvasItemMaterial_1b7ei")
-position = Vector2(18, 30)
+position = Vector2(12, 30)
 emitting = false
 amount = 20
 explosiveness = 0.54
 lifetime_randomness = 0.12
-direction = Vector2(0, -10)
-spread = 53.9
-initial_velocity_min = 24.6
-initial_velocity_max = 108.01
-angular_velocity_min = -720.0
-angular_velocity_max = -582.17
+direction = Vector2(10, -80)
+spread = 56.72
+gravity = Vector2(0, 900)
+initial_velocity_min = 82.19
+initial_velocity_max = 191.78
+angular_velocity_min = -377.99
+angular_velocity_max = 216.99
 linear_accel_min = -52.05
 linear_accel_max = 26.03
-scale_amount_min = 5.0
-scale_amount_max = 20.0
-scale_amount_curve = SubResource("Curve_avcuf")
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_082ru")
 color = Color(0.207843, 0.133333, 0.113725, 1)
 hue_variation_min = -0.32
 hue_variation_max = 1.0
@@ -303,27 +327,42 @@ anim_speed_max = 73.64
 
 [node name="DirtParticle2" type="CPUParticles2D" parent="Ground"]
 z_index = 5
-material = SubResource("CanvasItemMaterial_76m31")
-position = Vector2(-13.6667, 31)
+position = Vector2(-22, 30)
 emitting = false
 amount = 20
 explosiveness = 0.54
 lifetime_randomness = 0.12
-direction = Vector2(0, -10)
+direction = Vector2(10, -80)
 spread = 56.72
-initial_velocity_min = 35.0
-initial_velocity_max = 108.01
+gravity = Vector2(0, 900)
+initial_velocity_min = 82.19
+initial_velocity_max = 191.78
 angular_velocity_min = -377.99
 angular_velocity_max = 216.99
 linear_accel_min = -52.05
 linear_accel_max = 26.03
-scale_amount_min = 5.0
-scale_amount_max = 20.0
-scale_amount_curve = SubResource("Curve_avcuf")
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_082ru")
 color = Color(0.207843, 0.133333, 0.113725, 1)
 hue_variation_min = -0.32
 hue_variation_max = 1.0
 anim_speed_max = 73.64
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(-535, -406)
+texture = ExtResource("6_w4d4s")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-469, -382)
+scale = Vector2(3.66667, 3.46667)
+texture = ExtResource("7_lvj5r")
+hframes = 6
+vframes = 6
+frame = 33
+script = ExtResource("3_78bf0")
+
 [connection signal="gui_input" from="Mask" to="Mask" method="_on_gui_input"]
+[connection signal="signal_click" from="Mask" to="." method="_on_mask_signal_click"]

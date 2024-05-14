@@ -42,10 +42,10 @@ func _on_level_animation_animation_finished(anim_name):
 			%LevelAnimation.play("RESET")
 			end_round()
 
+#cards shake after disaster
 func _on_animation_player_animation_finished(anim_name):
-	#cards shake after disaster
 	for child in %Hand.get_children() :
-		child.get_node("Sprite2D").start_shake()
+		child.get_node("Mask").get_node("Sprite2D").start_shake()
 	await get_tree().create_timer(2).timeout
 	
-	%LevelAnimation.play(result_anim)
+	%HandAnimationPlayer.play(result_anim)

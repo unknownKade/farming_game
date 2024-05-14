@@ -6,7 +6,7 @@ var p1 : Crop
 var p2 : Crop
 
 func _ready():
-	%Hand.returned_card.connect(end_result)
+	%Hand.card_return_ended.connect(end_result)
 
 func enter():
 	p1 = GameManger.confirmed_card
@@ -38,7 +38,7 @@ func end_phase():
 		check_potato_state()
 	
 	self.visible = false
-	GameManger.selected_card = null
+	#GameManger.selected_card = null
 	return_to_hand.emit(p1)
 
 func check_beet_skill():

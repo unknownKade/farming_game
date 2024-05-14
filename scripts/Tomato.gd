@@ -22,7 +22,7 @@ func skill(p2 : Crop):
 
 func drain(p2 : Crop, value : int):
 	grow_card(1)
-	GameManger.p2_result(p2, 1, "drain")
+	GameManger.p2_result(p2, -1, "drain")
 
 func explode(p2 : Crop):
 	grow_card(-4)

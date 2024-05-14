@@ -2,24 +2,27 @@ extends Node2D
 
 class_name Card
 
-signal signal_end_turn
+signal confirmed_card
 signal crop_revived
+signal card_return_ended
 
-var level
+var level : int
 var locked : bool
-var frame_set
+var frame_set : Array
+var sprite : Sprite2D
+var anim_player : AnimationPlayer
+var deck_anim_player : AnimationPlayer
 
-func _on_area_2d_signal_card_change(is_left_click):
-	get_node(GameManger.animation_player).stop()
-	var confirming_this_card = GameManger.selected_card != null and GameManger.selected_card.name == self.name
+func process_click(is_left_click):
+	get_node(GameManger.animation_player).stop() 
 
 	if locked :
 		return
 	if is_left_click:
-		if confirming_this_card :
-			confirm_selected_card()
-		elif GameManger.selected_card == null :
+		if GameManger.selected_card == null :
 			select_card()
+		elif GameManger.selected_card.name == self.name :
+			confirm_selected_card()
 		else :
 			return
 	else :
@@ -30,33 +33,32 @@ func sync_card_level():
 	self.level = card.level
 	if card.level == 0 or card.state == Crop.States.LOCKED :
 		self.locked = true
-	$Sprite2D.set_frame(frame_set[level])
+		
+	$Mask/Sprite2D.set_frame(frame_set[level])
+	$Mask.signal_click.connect(process_click)
 
 func confirm_selected_card():
 	GameManger.confirm_card()
-	self.visible = false
-	signal_end_turn.emit()
+	deck_anim_player.play("confirm")
 
 func select_card():
 	GameManger.select_card(self.name)
-	$DeckAnimationPlayer.play("select")
+	deck_anim_player.play("select")
 	$AnimationPlayer.play(str(level))
 
 func deselect_card():
 	self.visible = true
 	GameManger.deselect_card()
-	$DeckAnimationPlayer.play("deselect")
+	deck_anim_player.play("deselect")
 
 func return_card():
 	sync_card_level()
-	self.visible = true
 	
 	if self.name == GameManger.confirmed_card.name :
-		$DeckAnimationPlayer.play("return")
+		get_node("AnimationPlayer").play("RESET")
+		deck_anim_player.play("return")
+	else :
+		print('no card to return. current confirmed card :', GameManger.confirmed_card.name)
 	if GameManger.carrot_escaped :
 		%Carrot/DeckAnimationPlayer.play("escape_return")
 
-
-func _on_deck_animation_player_animation_finished(anim_name):
-	if anim_name == "revive" :
-		crop_revived.emit()

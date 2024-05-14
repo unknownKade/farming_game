@@ -24,20 +24,21 @@ func enter():
 	GameManger.player_turn = true
 
 func display_cards():
+	%Hand.hand_turn_ended.connect(end_player_phase)
 	for card in hand :
 		hand[card].sync_card_level()
-		hand[card].signal_end_turn.connect(end_player_phase)
+		#hand[card].signal_end_turn.connect(end_player_phase)
+
 	if GameManger.current_round%4 == 1 :
-		%LevelAnimation.play("display")
+		%HandAnimationPlayer.play("display")
 
 func _on_timer_timeout():
-	if GameManger.selected_card != null :
-		hand[GameManger.selected_card.name].visible = false
+	#if GameManger.selected_card != null :
+		#hand[GameManger.selected_card.name].visible = false
 	GameManger.confirm_card()
-	end_player_phase()
+	hand[GameManger.confirmed_card.name].confirm_selected_card()
 
 func end_player_phase():
-	GameManger.player_turn = false
 	$Timer.stop()
 	
 	if is_swap :
