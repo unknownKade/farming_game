@@ -4,7 +4,6 @@ const next_state = "Board"
 
 var scenes : Dictionary
 var environments : Array
-
 func _ready():
 	for child in get_children():
 		if child is Sprite2D and child.name != "Frame":
@@ -14,6 +13,7 @@ func _ready():
 func enter():
 	reset()
 	var current_environment = environments[randi_range(0, environments.size()-1)]
+
 	GameManger.current_environment = current_environment
 	var scene = scenes.get(current_environment)
 	
