@@ -7,12 +7,18 @@ const extension = ".aseprite"
 var display_state: bool = true
 
 func change_texture(weather):
-	var file_name :String = str(GameManger.current_round/4 +1) + weather
+	var file_name :String = get_year(GameManger.current_round) + weather
 	self.texture = load(path + file_name + extension)
 	
 	display_state = true
 	self.scale.y = 0
 	self.visible = true
+
+func get_year(round : int) -> String:
+	if round%4 == 0 :
+		return str(round/4)
+	return str(round/4 +1)
+	
 
 func _process(delta):
 	#intro card appears
