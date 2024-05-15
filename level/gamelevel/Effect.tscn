@@ -59,6 +59,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GrayScale:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5m7bv"]
 resource_name = "love"
@@ -110,6 +122,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../GrayScale:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 0.9, 1.4, 1.6, 2.1, 2.3, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_v4q3v"]
@@ -198,7 +222,6 @@ hframes = 7
 vframes = 4
 
 [node name="Love" type="Sprite2D" parent="."]
-visible = false
 z_index = 20
 texture_filter = 1
 texture_repeat = 1
@@ -243,6 +266,7 @@ texture = ExtResource("8_dyj62")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = 20
 offset_right = 1539.0
 offset_bottom = 862.0

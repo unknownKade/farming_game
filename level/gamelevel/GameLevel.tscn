@@ -20,13 +20,40 @@
 [ext_resource type="Script" path="res://level/gamelevel/Hand.gd" id="19_yccec"]
 [ext_resource type="Script" path="res://scripts/Card.gd" id="20_je43g"]
 [ext_resource type="Script" path="res://level/gamelevel/Result.gd" id="20_x2kq7"]
-[ext_resource type="Shader" path="res://level/gamelevel/gardenShader.gdshader" id="22_j3v3g"]
 [ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/Disaster.tscn" id="26_xqr1u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
 
+[sub_resource type="Shader" id="Shader_ytimo"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 input_color = texture(TEXTURE, UV);
+	// Called for every pixel the material is visible on.
+	//COLOR = input_color;
+	float color_average = (input_color.r + input_color.g + input_color.b)/3.0;
+	vec4 output_color = vec4(color_average,color_average,color_average, input_color.a);
+	//if (output_color.r > 0.8 && output_color.g > 0.8 && output_color.b > 0.8){
+		//output_color.a = 0.0;
+	//}
+	
+	COLOR.rgb = mix(vec3((COLOR.r + COLOR.g + COLOR.b) / 3.0),
+	  vec3(0.299 * COLOR.r + 0.587 * COLOR.g + 0.114 * COLOR.b), float(true));
+	//COLOR  = output_color;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jk7f5"]
-shader = ExtResource("22_j3v3g")
+shader = SubResource("Shader_ytimo")
 
 [sub_resource type="Animation" id="Animation_akpfm"]
 length = 0.001
@@ -2265,7 +2292,6 @@ libraries = {
 
 [node name="Player2" type="Node" parent="."]
 script = ExtResource("14_f6hlk")
-test_crop = "Carrot"
 
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
