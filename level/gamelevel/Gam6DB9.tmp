@@ -1825,7 +1825,7 @@ libraries = {
 "": SubResource("AnimationLibrary_wbt0y")
 }
 
-[node name="LevelAnimation" type="AnimationPlayer" parent="."]
+[node name="HandAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 root_node = NodePath("../Hand")
 libraries = {
