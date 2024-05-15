@@ -20,7 +20,7 @@ func play_land_animation():
 	land.play_land_animation(GameManger.confirmed_card.name)
 
 	await get_tree().create_timer(3).timeout
-	effect.play_enviornment()
+	effect.play_environment()
 
 func end_land() :
 	get_node(GameManger.animation_player).play("fadeout")
