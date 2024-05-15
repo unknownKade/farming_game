@@ -29,6 +29,8 @@ func _on_deck_animation_player_animation_finished(anim_name):
 		crop_revived.emit()
 	elif anim_name == "confirm" :
 		anim_player.play("seeding")
+	elif anim_name == "flip" :
+		self.return_card()
 	elif anim_name == "return" :
 		card_return_ended.emit()
 

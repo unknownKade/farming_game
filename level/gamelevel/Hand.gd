@@ -4,7 +4,6 @@ signal card_return_ended
 signal hand_turn_ended
 
 func _ready():
-	%Result.return_to_hand.connect(return_card)
 	for child in get_children() :
 		child.confirmed_card.connect(end_board_phase)
 		child.card_return_ended.connect(end_return_card)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbvpiyvhbpqwa"]
+[gd_scene load_steps=5 format=3 uid="uid://bbvpiyvhbpqwa"]
 
 [ext_resource type="Texture2D" uid="uid://rjen2pb2hlmg" path="res://resource/images/environment/raining-Sheet.png" id="1_5exvj"]
 [ext_resource type="Script" path="res://level/gamelevel/Effect.gd" id="1_onv4j"]
-[ext_resource type="Script" path="res://level/gamelevel/AnimationPlayer.gd" id="3_hgwxy"]
 
 [sub_resource type="Animation" id="Animation_ocwk4"]
 resource_name = "rain"
@@ -42,6 +41,5 @@ root_node = NodePath("../Raining")
 libraries = {
 "": SubResource("AnimationLibrary_nboom")
 }
-script = ExtResource("3_hgwxy")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

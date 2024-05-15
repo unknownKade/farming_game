@@ -51,14 +51,12 @@ func deselect_card():
 	GameManger.deselect_card()
 	deck_anim_player.play("deselect")
 
-func return_card():
-	sync_card_level()
-	
-	if self.name == GameManger.confirmed_card.name :
-		get_node("AnimationPlayer").play("RESET")
-		deck_anim_player.play("return")
-	else :
-		print('no card to return. current confirmed card :', GameManger.confirmed_card.name)
-	if GameManger.carrot_escaped :
-		%Carrot/DeckAnimationPlayer.play("escape_return")
+func play_result_animation():
+	anim_player.play("RESET")
+	deck_anim_player.play("flip");
 
+func return_card():
+	if self.name == GameManger.confirmed_card.name :
+		deck_anim_player.play("return")
+	if GameManger.carrot_escaped :
+		%Carrot.deck_anim_player.play("escape_return")

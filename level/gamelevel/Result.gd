@@ -11,12 +11,13 @@ func _ready():
 func enter():
 	p1 = GameManger.confirmed_card
 	p2 = GameManger.opponent_card
-	var old_level = p1.level
+	#var old_level = p1.level
 	environment_affect(GameManger.current_environment)
-	card_affect(old_level)
+	card_affect()
 
-func play_result_animation(old_level, new_level):
-	$Center.result(old_level, new_level)
+func play_result_animation():
+	%Hand.get_node(p1.name).play_result_animation();
+	#$Center.result(old_level, new_level)
 
 func environment_affect(environment):
 	if environment == "Rain" and p1 is Tomato:
@@ -24,9 +25,9 @@ func environment_affect(environment):
 	else :
 		p1.grow_card(1)
 
-func card_affect(old_level : int):
+func card_affect():
 	p1.skill(p2)
-	play_result_animation(old_level, p1.level)
+	play_result_animation()
 
 func _on_animation_player_animation_finished(anim_name):
 	if p1 is Beet and p1.level == 4:

@@ -4,6 +4,7 @@ const next_state = "Result"
 var back
 var land
 var effect
+
 func _ready():
 	back = $Back
 	land = $Land
@@ -13,13 +14,6 @@ func _ready():
 
 func enter():
 	play_land_animation()
-	#play_seeding()
-	
-func play_seeding():
-	var card = %Hand.get_node(GameManger.confirmed_card.name)
-	var mask = %Hand.get_node("Mask")
-	card.reparent(mask)
-	card.get_node("DeckAnimationPlayer").play("seeding")
 
 func play_land_animation():
 	back.play_land_animation(GameManger.opponent_card.name)
