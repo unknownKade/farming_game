@@ -26,9 +26,6 @@ func on_child_transition(state, next_state):
 	
 	var new_state = states.get(next_state.to_lower())
 	
-	if current_state : 
-		current_state.exit()
-	
 	current_state = new_state
 	new_state.enter()
 	

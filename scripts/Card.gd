@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Card
 
-signal confirmed_card
+signal confirmed_card 	#signal to Board
 signal crop_revived
 signal card_return_ended
 
@@ -22,7 +22,11 @@ func process_click(is_left_click):
 		if GameManger.selected_card == null :
 			select_card()
 		elif GameManger.selected_card.name == self.name :
-			confirm_selected_card()
+			if GameManger.carrot_escaped :
+				confirm_card()
+				GameManger.confirmed_card = GameManger.p1_deck[self.name]
+			else :
+				GameManger.confirm_card()
 		else :
 			return
 	else :
@@ -37,17 +41,15 @@ func sync_card_level():
 	$Mask/Sprite2D.set_frame(frame_set[level])
 	$Mask.signal_click.connect(process_click)
 
-func confirm_selected_card():
-	GameManger.confirm_card()
+func confirm_card():
 	deck_anim_player.play("confirm")
 
 func select_card():
 	GameManger.select_card(self.name)
 	deck_anim_player.play("select")
-	$AnimationPlayer.play(str(level))
+	anim_player.play(str(level))
 
 func deselect_card():
-	self.visible = true
 	GameManger.deselect_card()
 	deck_anim_player.play("deselect")
 
@@ -58,5 +60,3 @@ func play_result_animation():
 func return_card():
 	if self.name == GameManger.confirmed_card.name :
 		deck_anim_player.play("return")
-	if GameManger.carrot_escaped :
-		%Carrot.deck_anim_player.play("escape_return")

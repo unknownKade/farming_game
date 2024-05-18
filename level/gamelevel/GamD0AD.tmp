@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=68 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://06bul7hi5akv" path="res://level/card/carrot/Carrot.tscn" id="11_wd7mn"]
 [ext_resource type="PackedScene" uid="uid://ssl6ge77mc3l" path="res://level/card/tomato/Tomato.tscn" id="12_ge1t6"]
 [ext_resource type="Script" path="res://level/gamelevel/Garden.gd" id="14_6vmu0"]
+[ext_resource type="Script" path="res://level/gamelevel/Player2.gd" id="14_f6hlk"]
 [ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/land/Land.tscn" id="14_wnyw6"]
 [ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/land/Back.tscn" id="16_kuwy0"]
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/Effect.tscn" id="19_wsyi1"]
@@ -2288,6 +2289,10 @@ root_node = NodePath("../Hand")
 libraries = {
 "": SubResource("AnimationLibrary_v6mre")
 }
+
+[node name="Player2" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("14_f6hlk")
 
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
