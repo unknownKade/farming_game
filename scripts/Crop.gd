@@ -11,7 +11,7 @@ enum States{
 const tomato = "Tomato"
 const potato = "Potato"
 const beet = "Beet"
-var carrot = "Carrot"
+const carrot = "Carrot"
 
 func grow_card(value : int) :
 	self.level += value

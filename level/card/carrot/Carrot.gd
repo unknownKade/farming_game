@@ -8,16 +8,14 @@ func _ready():
 	frame_set = [19,0,4,8,15]
 	sync_card_level()
 	anim_player = $AnimationPlayer
-	sprite = $Sprite2D
+	sprite = $Mask/Sprite2D
 	deck_anim_player = $DeckAnimationPlayer
 	
 func run_away():
-	self.visible = true
 	deck_anim_player.play("escape")
-	GameManger.carrot_escaped = true
 
 func come_back():
-	self.visible = true
+	GameManger.carrot_escaped = false
 	deck_anim_player.play("escape_return")
 
 func _on_deck_animation_player_animation_finished(anim_name):
@@ -32,10 +30,10 @@ func _on_deck_animation_player_animation_finished(anim_name):
 	elif anim_name == "flip" :
 		self.return_card()
 	elif anim_name == "return" :
-		card_return_ended.emit()
+		card_return_ended.emit() #Hand
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "seeding":
-		anim_player.play("reset")
+		anim_player.play("RESET")
 		$Ground.visible = false
 		confirmed_card.emit()

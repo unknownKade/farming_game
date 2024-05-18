@@ -10,7 +10,7 @@ func _init():
 	self.state = States.NONE
 
 func skill(p2 : Crop):
-	if state == States.ENVY :
+	if States.get(state) == States.ENVY :
 		GameManger.p2_result(p2, -1, "attack")
 
 func clear_state():
