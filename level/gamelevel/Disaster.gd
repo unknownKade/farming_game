@@ -29,9 +29,10 @@ func enter():
 		scenes[current_disaster].visible = true
 		get_node(GameManger.animation_player).play(current_disaster.to_lower())
 	else :
-		end_round()
+		exit()
 
-func end_round():
+func exit():
+	can_click = false
 	Transition.emit(self, next_state)
 
 func _on_level_animation_animation_finished(anim_name):
@@ -40,7 +41,7 @@ func _on_level_animation_animation_finished(anim_name):
 			can_click = true
 		fade_anim :
 			%HandAnimationPlayer.play("RESET")
-			end_round()
+			exit()
 
 #cards shake after disaster
 func _on_animation_player_animation_finished(anim_name):
