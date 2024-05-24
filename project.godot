@@ -27,7 +27,6 @@ GameManger="*res://scripts/GameManager.gd"
 
 window/size/viewport_width=1536
 window/size/viewport_height=864
-window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
 [editor_plugins]

@@ -6,9 +6,9 @@ func _ready():
 	frame_set = [33,0,6,14,25]
 	sync_card_level()
 	anim_player = $AnimationPlayer
-	sprite = $Sprite2D
+	sprite = $Mask/Sprite2D
 	deck_anim_player = $DeckAnimationPlayer
-
+	
 func _on_deck_animation_player_animation_finished(anim_name):
 	if anim_name == "revive" :
 		crop_revived.emit()

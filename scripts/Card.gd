@@ -38,7 +38,7 @@ func sync_card_level():
 	if card.level == 0 or card.state == Crop.States.LOCKED :
 		self.locked = true
 		
-	$Mask/Sprite2D.set_frame(frame_set[level])
+	sprite.set_frame(frame_set[level])
 	$Mask.signal_click.connect(process_click)
 
 func confirm_card():

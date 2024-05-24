@@ -4,6 +4,7 @@ const next_state = "Board"
 
 var scenes : Dictionary
 var environments : Array
+
 func _ready():
 	for child in get_children():
 		if child is Sprite2D and child.name != "Frame":

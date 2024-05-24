@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
 [ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_kc2vf"]
 [ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_78bf0"]
-[ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/land.png" id="5_dbqba"]
+[ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="5_dbqba"]
 
 [sub_resource type="Animation" id="Animation_1ec1v"]
 resource_name = "0"
