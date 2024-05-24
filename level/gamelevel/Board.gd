@@ -17,7 +17,6 @@ func enter():
 	GameManger.player_turn = true
 	
 func _on_timer_timeout():
-	print('timedout')
 	$Timer.stop()
 	GameManger.confirm_card()
 

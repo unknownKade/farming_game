@@ -58,8 +58,6 @@ func confirm_card() :
 
 	#get player2 card with carrot checked
 	get_p2_card(get_random_card(p2_deck))
-	opponent_card = p2_deck['Potato']
-	print(p2_deck['Potato'].level)
 	check_carrot_skill(true).emit()
 		
 func check_carrot_skill(is_host :bool):
