@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=69 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://level/gamelevel/Hand.gd" id="19_yccec"]
 [ext_resource type="Script" path="res://scripts/Card.gd" id="20_je43g"]
 [ext_resource type="Script" path="res://level/gamelevel/Result.gd" id="20_x2kq7"]
+[ext_resource type="Script" path="res://level/gamelevel/TestUI.gd" id="21_7hm5e"]
 [ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/Disaster.tscn" id="26_xqr1u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
@@ -2166,6 +2167,8 @@ _data = {
 "display": SubResource("Animation_u3uyn")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1feu"]
+
 [node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state", "last_state")]
 texture_filter = 1
 texture_repeat = 1
@@ -2291,6 +2294,17 @@ libraries = {
 
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TestUI" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_v1feu")
+offset_left = 1215.0
+offset_top = 25.0
+offset_right = 1523.0
+offset_bottom = 267.0
+script = ExtResource("21_7hm5e")
 
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Potato/DeckAnimationPlayer" to="Hand/Potato" method="_on_deck_animation_player_animation_finished"]

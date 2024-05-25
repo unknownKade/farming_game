@@ -264,6 +264,9 @@ _data = {
 
 [node name="Back" type="Node2D"]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+texture_repeat = 1
+use_parent_material = true
 script = ExtResource("1_lcl0p")
 
 [node name="Beet" type="Sprite2D" parent="."]

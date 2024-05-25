@@ -34,6 +34,5 @@ func _on_deck_animation_player_animation_finished(anim_name):
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "seeding":
-		anim_player.play("RESET")
 		$Ground.visible = false
 		confirmed_card.emit()
