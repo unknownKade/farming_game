@@ -32,6 +32,9 @@ func enter():
 		exit()
 
 func exit():
+	if current_disaster != null :
+		scenes[current_disaster].visible = false
+		current_disaster = null
 	can_click = false
 	Transition.emit(self, next_state)
 
