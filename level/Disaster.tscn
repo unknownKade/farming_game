@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c65ks63ypbe66"]
+[gd_scene load_steps=12 format=3 uid="uid://c65ks63ypbe66"]
 
 [ext_resource type="Script" path="res://level/gamelevel/Disaster.gd" id="1_ctiwy"]
 [ext_resource type="Texture2D" uid="uid://cyei33r8j4n6s" path="res://resource/images/disaster/flood-Sheet.png" id="2_11i4r"]
+[ext_resource type="Texture2D" uid="uid://cqncex5k6lw8b" path="res://resource/images/disaster/drought-Sheet.png" id="3_3ajxy"]
+[ext_resource type="Texture2D" uid="uid://5lq435vmpv5e" path="res://resource/images/disaster/insect-Sheet.png" id="4_w3swu"]
+[ext_resource type="Texture2D" uid="uid://d1km5swqvfv3h" path="res://resource/images/disaster/pollution-Sheet.png" id="5_2pbwr"]
 
 [sub_resource type="Animation" id="Animation_i6ora"]
 length = 0.001
@@ -12,6 +15,42 @@ tracks/0/path = NodePath("Flood:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pollution:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Insect:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drought:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -34,10 +73,61 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_jfpir"]
+resource_name = "drought"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drought:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_vpenc"]
+resource_name = "pollution"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pollution:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_hsqbr"]
+resource_name = "insect"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Insect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qt2mx"]
 _data = {
 "RESET": SubResource("Animation_i6ora"),
-"flood": SubResource("Animation_sqbko")
+"drought": SubResource("Animation_jfpir"),
+"flood": SubResource("Animation_sqbko"),
+"insect": SubResource("Animation_hsqbr"),
+"pollution": SubResource("Animation_vpenc")
 }
 
 [node name="Disaster" type="Node2D"]
@@ -48,6 +138,24 @@ visible = false
 texture = ExtResource("2_11i4r")
 hframes = 5
 vframes = 4
+
+[node name="Drought" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_3ajxy")
+hframes = 4
+vframes = 3
+
+[node name="Insect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_w3swu")
+hframes = 3
+vframes = 2
+
+[node name="Pollution" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_2pbwr")
+hframes = 4
+vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
