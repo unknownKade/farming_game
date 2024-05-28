@@ -18,7 +18,8 @@ func enter():
 	
 func _on_timer_timeout():
 	$Timer.stop()
-	GameManger.confirm_card()
+	if GameManger.player_turn:
+		GameManger.confirm_card()
 
 func exit():
 	$Timer.stop()
