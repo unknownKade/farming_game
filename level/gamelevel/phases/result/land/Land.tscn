@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6xd15gko1r23"]
+[gd_scene load_steps=14 format=3 uid="uid://d1sql72y5avu8"]
 
-[ext_resource type="Script" path="res://level/gamelevel/land/Back.gd" id="1_lcl0p"]
-[ext_resource type="Texture2D" uid="uid://cimu7pj8jv2h8" path="res://resource/images/game_level/board/beet back-Sheet.png" id="1_lcwse"]
-[ext_resource type="Texture2D" uid="uid://t4lseu7ewgwq" path="res://resource/images/game_level/board/carrot back-Sheet.png" id="2_6ll8f"]
-[ext_resource type="Texture2D" uid="uid://bmepim1c337yf" path="res://resource/images/game_level/board/potato back-Sheet.png" id="3_u4fxx"]
-[ext_resource type="Texture2D" uid="uid://dma65mrd8qoav" path="res://resource/images/game_level/board/tomato back-Sheet.png" id="4_66cab"]
+[ext_resource type="Texture2D" uid="uid://bctoowkejaonl" path="res://resource/images/game_level/board/beet land-Sheet.png" id="1_1gd3k"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/result/land/Land.gd" id="1_d5iv8"]
+[ext_resource type="Texture2D" uid="uid://edw6yb52h0qw" path="res://resource/images/game_level/board/carrot land-Sheet.png" id="2_t7ur3"]
+[ext_resource type="Texture2D" uid="uid://cwmr33v57nb8s" path="res://resource/images/game_level/board/potato land-Sheet.png" id="3_tf5m2"]
+[ext_resource type="Texture2D" uid="uid://d00s6foqormiw" path="res://resource/images/game_level/board/tomato land-Sheet.png" id="4_4oqwh"]
 
-[sub_resource type="Animation" id="Animation_mjcmg"]
+[sub_resource type="Animation" id="Animation_nqdb5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -153,14 +153,31 @@ tracks/11/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_dg6gg"]
+[sub_resource type="Animation" id="Animation_opogg"]
 resource_name = "beet"
-length = 1.4
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Beet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_57yob"]
+resource_name = "carrot"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Carrot:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -170,24 +187,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_fm545"]
-resource_name = "carrot"
-length = 1.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Carrot:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_05isa"]
+[sub_resource type="Animation" id="Animation_pv05u"]
 resource_name = "fadein"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -202,7 +202,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_bv34w"]
+[sub_resource type="Animation" id="Animation_ftf64"]
 resource_name = "fadeout"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -214,12 +214,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_02htj"]
+[sub_resource type="Animation" id="Animation_kbjdm"]
 resource_name = "potato"
-length = 1.4
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -228,15 +228,15 @@ tracks/0/path = NodePath("Potato:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 4]
 }
 
-[sub_resource type="Animation" id="Animation_b26td"]
+[sub_resource type="Animation" id="Animation_ns1u6"]
 resource_name = "tomato"
-length = 1.4
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -245,55 +245,49 @@ tracks/0/path = NodePath("Tomato:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pw01"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40wxi"]
 _data = {
-"RESET": SubResource("Animation_mjcmg"),
-"beet": SubResource("Animation_dg6gg"),
-"carrot": SubResource("Animation_fm545"),
-"fadein": SubResource("Animation_05isa"),
-"fadeout": SubResource("Animation_bv34w"),
-"potato": SubResource("Animation_02htj"),
-"tomato": SubResource("Animation_b26td")
+"RESET": SubResource("Animation_nqdb5"),
+"beet": SubResource("Animation_opogg"),
+"carrot": SubResource("Animation_57yob"),
+"fadein": SubResource("Animation_pv05u"),
+"fadeout": SubResource("Animation_ftf64"),
+"potato": SubResource("Animation_kbjdm"),
+"tomato": SubResource("Animation_ns1u6")
 }
 
-[node name="Back" type="Node2D"]
-modulate = Color(1, 1, 1, 0)
-texture_filter = 1
-texture_repeat = 1
-use_parent_material = true
-script = ExtResource("1_lcl0p")
+[node name="Land" type="Node2D"]
+script = ExtResource("1_d5iv8")
 
 [node name="Beet" type="Sprite2D" parent="."]
 visible = false
-texture_filter = 1
-texture = ExtResource("1_lcwse")
-hframes = 8
+texture = ExtResource("1_1gd3k")
+hframes = 7
 
 [node name="Carrot" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("2_6ll8f")
-hframes = 10
+texture = ExtResource("2_t7ur3")
+hframes = 8
 
 [node name="Potato" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 2)
-texture = ExtResource("3_u4fxx")
-hframes = 8
+texture = ExtResource("3_tf5m2")
+hframes = 6
 
 [node name="Tomato" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("4_66cab")
-hframes = 8
+texture = ExtResource("4_4oqwh")
+hframes = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5pw01")
+"": SubResource("AnimationLibrary_40wxi")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

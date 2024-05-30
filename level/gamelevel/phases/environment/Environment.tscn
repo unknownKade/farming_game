@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://5tyvct2gygig"]
 
-[ext_resource type="Script" path="res://level/environment/Environment.gd" id="1_cjsn7"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/environment/Environment.gd" id="1_cjsn7"]
 [ext_resource type="Texture2D" uid="uid://7vvvl2qsb2ly" path="res://resource/images/environment/sunlight-Sheet.png" id="1_dlnn4"]
 [ext_resource type="Texture2D" uid="uid://degflds6v67t3" path="res://resource/images/environment/rain-Sheet.png" id="3_wqifo"]
 [ext_resource type="Texture2D" uid="uid://bu81riyms5u1j" path="res://resource/images/environment/music-Sheet.png" id="5_3gi0p"]
