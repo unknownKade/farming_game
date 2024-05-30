@@ -23,7 +23,9 @@ func _input(event):
 		%HandAnimationPlayer.play(fade_anim)
 
 func enter():
-	if GameManger.current_round%4 == 0 :
+	if GameManger.current_round == 12 :
+		Transition.emit(self, "end")
+	elif GameManger.current_round%4 == 0 :
 		#get random disaster
 		current_disaster = disasters[randi_range(0, disasters.size()-1)]
 		scenes[current_disaster].visible = true
@@ -50,6 +52,7 @@ func _on_level_animation_animation_finished(anim_name):
 func _on_animation_player_animation_finished(anim_name):
 	for child in %Hand.get_children() :
 		child.get_node("Mask").get_node("Sprite2D").start_shake()
+	%Player2.start_shake()
 	await get_tree().create_timer(2).timeout
 	
 	%HandAnimationPlayer.play(result_anim)
