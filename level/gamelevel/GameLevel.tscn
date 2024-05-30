@@ -1,35 +1,33 @@
-[gd_scene load_steps=88 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=87 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
-[ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
-[ext_resource type="Script" path="res://level/gamelevel/Weather.gd" id="4_cbj4g"]
+[ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/gamelevel/Side.tscn" id="2_pyyde"]
 [ext_resource type="Texture2D" uid="uid://dbbxuqpa75ifm" path="res://resource/images/game_level/routine/1Spring.aseprite" id="4_vn1ca"]
-[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/weather/Season.tscn" id="5_4nm7p"]
-[ext_resource type="Script" path="res://level/gamelevel/Routine.gd" id="5_8lg57"]
-[ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/environment/Environment.tscn" id="5_h7xs0"]
+[ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/gamelevel/phases/season/Season.tscn" id="5_4nm7p"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/season/Routine.gd" id="5_8lg57"]
+[ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/gamelevel/phases/environment/Environment.tscn" id="5_h7xs0"]
 [ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/beet/Beet.tscn" id="9_v8gl7"]
 [ext_resource type="PackedScene" uid="uid://bcjo6vxhmi3ti" path="res://level/card/potato/Potato.tscn" id="10_goo3l"]
-[ext_resource type="PackedScene" uid="uid://b3gfbk2cbrhle" path="res://level/Board.tscn" id="10_pw725"]
+[ext_resource type="PackedScene" uid="uid://b3gfbk2cbrhle" path="res://level/gamelevel/phases/board/Board.tscn" id="10_pw725"]
 [ext_resource type="PackedScene" uid="uid://06bul7hi5akv" path="res://level/card/carrot/Carrot.tscn" id="11_wd7mn"]
 [ext_resource type="PackedScene" uid="uid://ssl6ge77mc3l" path="res://level/card/tomato/Tomato.tscn" id="12_ge1t6"]
-[ext_resource type="Script" path="res://level/gamelevel/Garden.gd" id="14_6vmu0"]
-[ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/land/Land.tscn" id="14_wnyw6"]
-[ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/land/Back.tscn" id="16_kuwy0"]
-[ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/Effect.tscn" id="19_wsyi1"]
-[ext_resource type="Script" path="res://level/gamelevel/Hand.gd" id="19_yccec"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/result/Garden.gd" id="14_6vmu0"]
+[ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/phases/result/land/Land.tscn" id="14_wnyw6"]
+[ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/phases/result/land/Back.tscn" id="16_kuwy0"]
+[ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/phases/result/Effect.tscn" id="19_wsyi1"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/board/Hand.gd" id="19_yccec"]
 [ext_resource type="Script" path="res://scripts/Card.gd" id="20_je43g"]
-[ext_resource type="Script" path="res://level/gamelevel/Result.gd" id="20_x2kq7"]
-[ext_resource type="Script" path="res://level/gamelevel/Gradient.gd" id="21_4gx2m"]
-[ext_resource type="Script" path="res://level/gamelevel/End.gd" id="21_4r248"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/result/Result.gd" id="20_x2kq7"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/end/Gradient.gd" id="21_4gx2m"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/end/End.gd" id="21_4r248"]
 [ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/dialogue_theme.tres" id="22_wbslj"]
 [ext_resource type="FontFile" uid="uid://cuhv1vev6iboh" path="res://resource/fonts/m12.TTF" id="23_7hag4"]
-[ext_resource type="Script" path="res://level/gamelevel/GridContainer.gd" id="24_sbiro"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="24_tlqqd"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="25_db010"]
 [ext_resource type="Script" path="res://level/gamelevel/TextGridContainer.gd" id="25_ko6rr"]
-[ext_resource type="Script" path="res://level/gamelevel/Player2.gd" id="25_vgpto"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/board/Player2.gd" id="25_vgpto"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="26_6avfx"]
-[ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/Disaster.tscn" id="26_xqr1u"]
+[ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/gamelevel/phases/disaster/Disaster.tscn" id="26_xqr1u"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="27_c0sb0"]
 [ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="28_qbqrl"]
 [ext_resource type="Script" path="res://scripts/Shiver.gd" id="28_xieop"]
@@ -67,6 +65,27 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jk7f5"]
 shader = SubResource("Shader_ytimo")
+
+[sub_resource type="GDScript" id="GDScript_ma5pm"]
+script/source = "extends State
+
+class_name Weather
+
+const next_state = \"Environment\"
+const seasons = ['Winter', 'Spring','Summer', 'Autumn']
+
+func _ready():
+	$Season.end_weather.connect(end_weather)
+
+func enter():
+	var weather = seasons[GameManger.current_round%4]
+	$IntroCard.change_texture(weather)
+	$Season.play_entry_animation(weather)
+
+func end_weather():
+	$IntroCard.display_state = false
+	Transition.emit(self, next_state)
+"
 
 [sub_resource type="Animation" id="Animation_akpfm"]
 length = 0.001
@@ -2659,7 +2678,7 @@ texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_qa1h4")
 script = ExtResource("1_lq06n")
-initial_state = NodePath("Weather")
+initial_state = NodePath("Season")
 last_state = NodePath("Disaster")
 test_year = 3
 metadata/_edit_horizontal_guides_ = [0.0, 864.0, 423.0, 429.0, 737.0]
@@ -2673,11 +2692,11 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_jk7f5")
 position = Vector2(960, 432)
 
-[node name="Weather" type="Node2D" parent="."]
+[node name="Season" type="Node2D" parent="."]
 position = Vector2(182, 79)
-script = ExtResource("4_cbj4g")
+script = SubResource("GDScript_ma5pm")
 
-[node name="IntroCard" type="Sprite2D" parent="Weather"]
+[node name="IntroCard" type="Sprite2D" parent="Season"]
 visible = false
 texture_filter = 1
 texture_repeat = 1
@@ -2685,7 +2704,7 @@ position = Vector2(777, 345.5)
 texture = ExtResource("4_vn1ca")
 script = ExtResource("5_8lg57")
 
-[node name="Season" parent="Weather" instance=ExtResource("5_4nm7p")]
+[node name="Season" parent="Season" instance=ExtResource("5_4nm7p")]
 texture_filter = 1
 
 [node name="Environment" parent="." instance=ExtResource("5_h7xs0")]
@@ -2837,7 +2856,6 @@ offset_right = 199.0
 offset_bottom = 110.0
 theme_override_constants/h_separation = 0
 columns = 2
-script = ExtResource("24_sbiro")
 
 [node name="Panel" type="PanelContainer" parent="SpeechBubble/GridContainer"]
 texture_filter = 1

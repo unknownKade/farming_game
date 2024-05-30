@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqwbj61y4b5i8"]
+[gd_scene load_steps=6 format=3 uid="uid://bqwbj61y4b5i8"]
 
-[ext_resource type="Script" path="res://level/MainMenu.gd" id="1_5b4bg"]
-[ext_resource type="Texture2D" uid="uid://dx26hii5ewfmu" path="res://resource/reference/main_menu_reference.jpg" id="1_otua0"]
+[ext_resource type="Script" path="res://level/mainmenu/MainMenu.gd" id="1_5b4bg"]
 [ext_resource type="Texture2D" uid="uid://r4px6vp5s4yv" path="res://resource/images/main_menu_button/start.png" id="2_e1ipm"]
 [ext_resource type="Texture2D" uid="uid://cj8gv8v3e7bhb" path="res://resource/images/main_menu_button/rule.png" id="3_ciqft"]
 [ext_resource type="Texture2D" uid="uid://c5rjspw07mlp" path="res://resource/images/main_menu_button/exit.png" id="4_x1sk7"]
@@ -15,17 +14,12 @@ script = ExtResource("1_5b4bg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1536.0
+offset_left = 1.0
+offset_right = 1537.0
 offset_bottom = 864.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0352941, 0.0784314, 0.0156863, 1)
-
-[node name="PlacementReference" type="Sprite2D" parent="Background"]
-visible = false
-texture_filter = 1
-texture = ExtResource("1_otua0")
-centered = false
 
 [node name="ButtonContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 0

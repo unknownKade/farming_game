@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c65ks63ypbe66"]
 
-[ext_resource type="Script" path="res://level/gamelevel/Disaster.gd" id="1_ctiwy"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/disaster/Disaster.gd" id="1_ctiwy"]
 [ext_resource type="Texture2D" uid="uid://cyei33r8j4n6s" path="res://resource/images/disaster/flood-Sheet.png" id="2_11i4r"]
 [ext_resource type="Texture2D" uid="uid://cqncex5k6lw8b" path="res://resource/images/disaster/drought-Sheet.png" id="3_3ajxy"]
 [ext_resource type="Texture2D" uid="uid://5lq435vmpv5e" path="res://resource/images/disaster/insect-Sheet.png" id="4_w3swu"]
