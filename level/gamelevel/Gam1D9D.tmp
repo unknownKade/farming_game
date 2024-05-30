@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=82 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/side.tscn" id="2_pyyde"]
@@ -21,8 +21,7 @@
 [ext_resource type="Script" path="res://level/gamelevel/Result.gd" id="20_x2kq7"]
 [ext_resource type="Script" path="res://level/gamelevel/Gradient.gd" id="21_4gx2m"]
 [ext_resource type="Script" path="res://level/gamelevel/End.gd" id="21_4r248"]
-[ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/dialogue_theme.tres" id="22_wbslj"]
-[ext_resource type="FontFile" uid="uid://cuhv1vev6iboh" path="res://resource/fonts/m12.TTF" id="23_7hag4"]
+[ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/game_theme.tres" id="22_wbslj"]
 [ext_resource type="Script" path="res://level/gamelevel/GridContainer.gd" id="24_sbiro"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="24_tlqqd"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="25_db010"]
@@ -31,9 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="26_6avfx"]
 [ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/Disaster.tscn" id="26_xqr1u"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="27_c0sb0"]
-[ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="28_qbqrl"]
-[ext_resource type="Script" path="res://scripts/Shiver.gd" id="28_xieop"]
-[ext_resource type="Texture2D" uid="uid://br8db3gxyp35s" path="res://resource/images/speech_tail.png" id="29_hs00y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
 
@@ -476,7 +472,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-36.8, 9.8), Vector2(-1.69999, 70.4), Vector2(-0.1, 74.2), Vector2(7, -76)]
@@ -488,7 +484,7 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-0.376991, 0.0]
@@ -500,7 +496,7 @@ tracks/2/path = NodePath(".:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 1.5)]
@@ -512,7 +508,7 @@ tracks/3/path = NodePath(".:z_index")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [5, 10]
@@ -2405,9 +2401,116 @@ gradient = SubResource("Gradient_4flrq")
 fill_from = Vector2(0.5, -1)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6eyxt"]
-font = ExtResource("23_7hag4")
-font_size = 50
+[sub_resource type="Animation" id="Animation_3t5cq"]
+resource_name = "display"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potato:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(915, 279), Vector2(735, 80), Vector2(735, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potato:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-0.383972, -0.376991]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tomato:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(915, 279), Vector2(735, 80), Vector2(856, 39)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tomato:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-0.383972, -0.202458]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Carrot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(915, 279), Vector2(735, 80), Vector2(987, 38)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Carrot:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-0.383972, 0.191986]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Beet:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(915, 279), Vector2(735, 80), Vector2(1112, 79)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Beet:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [-0.383972, 0.366519]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_v40up"]
 length = 0.001
@@ -2520,138 +2623,10 @@ tracks/8/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_3t5cq"]
-resource_name = "display"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Potato:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(915, 279), Vector2(735, 80), Vector2(735, 80)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Potato:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-0.383972, -0.376991]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tomato:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(915, 279), Vector2(735, 80), Vector2(856, 39)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Tomato:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-0.383972, -0.202458]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Carrot:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(915, 279), Vector2(735, 80), Vector2(987, 38)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Carrot:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-0.383972, 0.191986]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Beet:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 0.5, 0.5),
-"update": 0,
-"values": [Vector2(915, 279), Vector2(735, 80), Vector2(1112, 79)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Beet:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(0.5, 0.5),
-"update": 0,
-"values": [-0.383972, 0.366519]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath(".:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_yqor7"]
-resource_name = "potato_select"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Potato:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(735, 80), Vector2(825.999, 273.002)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_minb2"]
 _data = {
 "RESET": SubResource("Animation_v40up"),
-"display": SubResource("Animation_3t5cq"),
-"potato_select": SubResource("Animation_yqor7")
+"display": SubResource("Animation_3t5cq")
 }
 
 [node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state", "last_state")]
@@ -2661,9 +2636,8 @@ material = SubResource("ShaderMaterial_qa1h4")
 script = ExtResource("1_lq06n")
 initial_state = NodePath("Weather")
 last_state = NodePath("Disaster")
-test_year = 3
 metadata/_edit_horizontal_guides_ = [0.0, 864.0, 423.0, 429.0, 737.0]
-metadata/_edit_vertical_guides_ = [0.0, 383.0, 1536.0]
+metadata/_edit_vertical_guides_ = [0.0, 383.0, 1536.02]
 
 [node name="Side" parent="." instance=ExtResource("2_pyyde")]
 position = Vector2(192, 432)
@@ -2706,7 +2680,6 @@ position = Vector2(959, 262)
 position = Vector2(959, 578)
 
 [node name="Effect" parent="Garden" instance=ExtResource("19_wsyi1")]
-position = Vector2(3, 42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Garden"]
 libraries = {
@@ -2782,53 +2755,24 @@ libraries = {
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
 
-[node name="End" type="Control" parent="."]
+[node name="End" type="Node2D" parent="."]
 unique_name_in_owner = true
 visible = false
-layout_mode = 3
-anchors_preset = 0
 script = ExtResource("21_4r248")
 
 [node name="Gradient" type="TextureRect" parent="End"]
 self_modulate = Color(0, 0, 0, 1)
-z_index = 10
-layout_mode = 0
 offset_right = 1546.0
 offset_bottom = 861.0
 texture = SubResource("GradientTexture2D_ro7he")
 script = ExtResource("21_4gx2m")
 
-[node name="CenterContainer" type="CenterContainer" parent="End"]
-visible = false
-z_index = 10
-layout_direction = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1543.0
-offset_bottom = 870.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="End/CenterContainer"]
-z_index = 10
-layout_mode = 2
-size_flags_horizontal = 8
-label_settings = SubResource("LabelSettings_6eyxt")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SpeechBubble" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 468.0
-offset_top = 289.0
-offset_right = 751.0
-offset_bottom = 419.0
+offset_right = 199.0
+offset_bottom = 110.0
 theme = ExtResource("22_wbslj")
 
 [node name="GridContainer" type="GridContainer" parent="SpeechBubble"]
@@ -2842,72 +2786,81 @@ script = ExtResource("24_sbiro")
 [node name="Panel" type="PanelContainer" parent="SpeechBubble/GridContainer"]
 texture_filter = 1
 layout_mode = 2
+theme = ExtResource("22_wbslj")
+theme_type_variation = &"Potato"
 
 [node name="PanelMarginContainer" type="MarginContainer" parent="SpeechBubble/GridContainer/Panel"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="TextContainer" type="VBoxContainer" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer"]
+[node name="TextGridContainer" type="GridContainer" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer"]
 layout_mode = 2
 script = ExtResource("25_ko6rr")
 
-[node name="CropLabel" type="Label" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer/TextContainer"]
-custom_minimum_size = Vector2(235, 0)
+[node name="CropLabel" type="Label" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer/TextGridContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Beet"
-uppercase = true
+text = "Potato"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer/TextContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer/TextGridContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("28_qbqrl")
-theme_override_font_sizes/normal_font_size = 20
-text = "Very relatable problem, that. Could happen to anybody.”"
+text = "
+"
 fit_content = true
 scroll_active = false
 
-[node name="TextureRect" type="TextureRect" parent="SpeechBubble/GridContainer"]
+[node name="Tail" type="PanelContainer" parent="SpeechBubble/GridContainer"]
+custom_minimum_size = Vector2(17, 36.9)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("29_hs00y")
-stretch_mode = 4
+theme_type_variation = &"PotatoTail"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Player2")
+libraries = {
+"": SubResource("AnimationLibrary_minb2")
+}
 
 [node name="Player2" type="Node2D" parent="."]
-unique_name_in_owner = true
 visible = false
-modulate = Color(0.427451, 0.427451, 0.427451, 1)
 texture_filter = 1
-position = Vector2(1844, 0)
+position = Vector2(1884, 73)
 rotation = 3.14159
 script = ExtResource("25_vgpto")
 
 [node name="Potato" type="Sprite2D" parent="Player2"]
+z_index = 5
 position = Vector2(735, 80)
 rotation = -0.376991
 scale = Vector2(5, 5)
 texture = ExtResource("24_tlqqd")
 hframes = 6
 vframes = 6
-script = ExtResource("28_xieop")
 
 [node name="Tomato" type="Sprite2D" parent="Player2"]
+z_index = 5
 position = Vector2(856, 39)
 rotation = -0.202458
 scale = Vector2(5, 5)
 texture = ExtResource("25_db010")
 hframes = 6
 vframes = 6
-script = ExtResource("28_xieop")
 
 [node name="Carrot" type="Sprite2D" parent="Player2"]
+z_index = 5
 position = Vector2(987, 38)
 rotation = 0.191986
 scale = Vector2(5, 5)
 texture = ExtResource("26_6avfx")
 hframes = 5
 vframes = 4
-script = ExtResource("28_xieop")
 
 [node name="Beet" type="Sprite2D" parent="Player2"]
+z_index = 5
 texture_filter = 1
 position = Vector2(1112, 79)
 rotation = 0.366519
@@ -2915,12 +2868,6 @@ scale = Vector2(5, 5)
 texture = ExtResource("27_c0sb0")
 hframes = 5
 vframes = 4
-script = ExtResource("28_xieop")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player2"]
-libraries = {
-"": SubResource("AnimationLibrary_minb2")
-}
 
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Potato/DeckAnimationPlayer" to="Hand/Potato" method="_on_deck_animation_player_animation_finished"]
@@ -2928,4 +2875,3 @@ libraries = {
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Beet/DeckAnimationPlayer" to="Hand/Beet" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="HandAnimationPlayer" to="Disaster" method="_on_level_animation_animation_finished"]
-[connection signal="faded_out" from="End/Gradient" to="End" method="_on_gradient_faded_out"]
