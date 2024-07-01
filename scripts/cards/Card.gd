@@ -48,6 +48,8 @@ func select_card():
 	GameManger.select_card(self.name)
 	deck_anim_player.play("select")
 	anim_player.play(str(level))
+	
+	%Board.make_speech_bubble(self.name, "this is text")
 
 func deselect_card():
 	GameManger.deselect_card()

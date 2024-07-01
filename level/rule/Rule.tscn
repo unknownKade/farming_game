@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cd5jldoye2hxu"]
+
+[ext_resource type="Texture2D" uid="uid://re6mbdrgeq7u" path="res://resource/reference/rule_reference.aseprite" id="1_bads4"]
+[ext_resource type="Script" path="res://level/rule/Rule.gd" id="1_tiovs"]
+[ext_resource type="PackedScene" uid="uid://bp2vb26sg7ojg" path="res://level/dialouge/Dialouge.tscn" id="2_3i6yd"]
+[ext_resource type="Texture2D" uid="uid://c6lij3kfickxb" path="res://resource/images/speech_tail_up.png" id="3_2e5pd"]
+[ext_resource type="Texture2D" uid="uid://ctv8ya60nw511" path="res://resource/images/card/rule/potato.png" id="5_vkq5i"]
+[ext_resource type="Texture2D" uid="uid://dl2pd0kc7enq4" path="res://resource/images/card/rule/tomato.png" id="6_m13tk"]
+[ext_resource type="Texture2D" uid="uid://cajjwe86is1ip" path="res://resource/images/card/rule/carrot.png" id="7_jjwyy"]
+[ext_resource type="Texture2D" uid="uid://bw5lmlgswpbql" path="res://resource/images/card/rule/beet.png" id="8_mwfrw"]
+
+[node name="Rule" type="Node2D"]
+script = ExtResource("1_tiovs")
+dialouge = ExtResource("2_3i6yd")
+metadata/_edit_vertical_guides_ = [54.0, 1482.0]
+metadata/_edit_horizontal_guides_ = [462.0, 792.0]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1537.0
+offset_bottom = 864.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0784314, 0.0156863, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(768, 432)
+scale = Vector2(6, 6)
+texture = ExtResource("1_bads4")
+
+[node name="TopTail" type="Sprite2D" parent="."]
+position = Vector2(227, 442)
+scale = Vector2(4, 4)
+texture = ExtResource("3_2e5pd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 55.0
+offset_top = 76.0
+offset_right = 1483.0
+offset_bottom = 395.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Potato" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("5_vkq5i")
+expand_mode = 3
+
+[node name="Tomato" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_m13tk")
+expand_mode = 3
+
+[node name="Carrot" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_jjwyy")
+expand_mode = 3
+
+[node name="Beet" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_mwfrw")
+expand_mode = 3
+
+[node name="Dialouge" parent="." instance=ExtResource("2_3i6yd")]
+visible = false
+offset_left = 54.0
+offset_top = 462.0
+offset_right = 54.0
+offset_bottom = 462.0
+
+[connection signal="gui_input" from="HBoxContainer/Potato" to="." method="_on_potato_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Tomato" to="." method="_on_tomato_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Carrot" to="." method="_on_carrot_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/Beet" to="." method="_on_beet_gui_input"]
