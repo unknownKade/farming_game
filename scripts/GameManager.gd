@@ -30,8 +30,6 @@ func _ready():
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
 	
-	p2_deck["Beet"].level = 4
-	
 func get_random_card(deck) -> Crop:
 	var live_crops: Array
 	
