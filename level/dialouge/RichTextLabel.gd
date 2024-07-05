@@ -13,6 +13,8 @@ func start_typing(dialouge):
 	type_dialouge()
 
 func type_dialouge():
+	if self.dialouge.is_empty():
+		return
 	text += dialouge[letter_index]
 	letter_index +=1
 	
@@ -31,6 +33,4 @@ func _on_dialouge_clicked_dialouge():
 func stop_typing():
 	text = dialouge
 	$TextTimer.stop()
-	GameManger.text_typing = false
 	finished_displaying.emit()
-	return

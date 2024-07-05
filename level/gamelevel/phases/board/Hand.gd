@@ -7,7 +7,7 @@ func _ready():
 	GameManger.swapped_to_carrot.connect(swap_to_carrot)
 	GameManger.swapped_from_carrot.connect(carrot_escape)
 	GameManger.confirmed_selected_card.connect(play_confirm_card_animation)
-
+	
 	for child in get_children():
 		child.confirmed_card.connect(end_board_phase)
 		child.card_return_ended.connect(end_return_card)
@@ -54,3 +54,7 @@ func return_card(crop : Crop):
 #after result phase
 func end_return_card():
 	card_return_ended.emit()
+
+func _on_dialouge_manager_finished_speech_bubble(crop, event):
+	if event == "confirm" :
+		get_node(str(crop)).play_this_anim("confirm")
