@@ -265,9 +265,9 @@ position = Vector2(767, 434)
 texture = ExtResource("8_dyj62")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 20
+offset_top = -193.0
 offset_right = 1539.0
 offset_bottom = 862.0
 color = Color(0.560784, 0, 0, 1)
