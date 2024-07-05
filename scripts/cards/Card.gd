@@ -16,7 +16,9 @@ var deck_anim_player : AnimationPlayer
 func process_click(is_left_click):
 	get_node(GameManger.animation_player).stop() 
 
-	if locked :
+	if GameManger.text_typing == true :
+		return
+	if locked:
 		return
 	if is_left_click:
 		if GameManger.selected_card == null :
@@ -42,7 +44,8 @@ func sync_card_level():
 	$Mask.signal_click.connect(process_click)
 
 func confirm_card():
-	deck_anim_player.play("confirm")
+	var dialougeManger = get_parent().get_parent().get_node("DialougeManager")
+	dialougeManger.make_speech_bubble(self.name,"confirm")
 
 func select_card():
 	GameManger.select_card(self.name)
@@ -60,3 +63,7 @@ func play_result_animation():
 func return_card():
 	if self.name == GameManger.confirmed_card.name :
 		deck_anim_player.play("return")
+
+func play_this_anim(anim_name):
+	deck_anim_player.play(anim_name)
+

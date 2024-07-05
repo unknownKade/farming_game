@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpk0yuafrxxsh"]
+
+[ext_resource type="Script" path="res://level/gamelevel/phases/end/End.gd" id="1_ljiy1"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/end/Gradient.gd" id="2_hy562"]
+[ext_resource type="FontFile" uid="uid://cuhv1vev6iboh" path="res://resource/fonts/m12.TTF" id="3_lriy7"]
+
+[sub_resource type="Gradient" id="Gradient_4flrq"]
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ro7he"]
+gradient = SubResource("Gradient_4flrq")
+fill_from = Vector2(0.5, -1)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6eyxt"]
+font = ExtResource("3_lriy7")
+font_size = 50
+
+[node name="End" type="Control"]
+visible = false
+z_index = 10
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ljiy1")
+
+[node name="Gradient" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+z_as_relative = false
+layout_mode = 0
+offset_right = 1546.0
+offset_bottom = 900.0
+texture = SubResource("GradientTexture2D_ro7he")
+script = ExtResource("2_hy562")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+z_as_relative = false
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1543.0
+offset_bottom = 870.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="CenterContainer"]
+z_as_relative = false
+layout_mode = 2
+size_flags_horizontal = 8
+label_settings = SubResource("LabelSettings_6eyxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="faded_out" from="Gradient" to="." method="_on_gradient_faded_out"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp2vb26sg7ojg"]
+
+[ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/dialogue_theme.tres" id="1_fd0sy"]
+[ext_resource type="Script" path="res://level/dialouge/Dialouge.gd" id="2_b8d0q"]
+[ext_resource type="Script" path="res://level/dialouge/TextGridContainer.gd" id="2_hynwp"]
+[ext_resource type="Script" path="res://level/dialouge/Panel.gd" id="2_rktjp"]
+[ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="3_266vk"]
+[ext_resource type="Texture2D" uid="uid://br8db3gxyp35s" path="res://resource/images/speech_tail.png" id="4_ty772"]
+[ext_resource type="Script" path="res://level/dialouge/RichTextLabel.gd" id="6_61spw"]
+[ext_resource type="Script" path="res://level/dialouge/TextureRect.gd" id="7_ry7i6"]
+
+[node name="Dialouge" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 468.0
+offset_top = 289.0
+offset_right = 751.0
+offset_bottom = 419.0
+theme = ExtResource("1_fd0sy")
+script = ExtResource("2_b8d0q")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 199.0
+offset_bottom = 110.0
+theme_override_constants/h_separation = 0
+columns = 2
+
+[node name="Panel" type="PanelContainer" parent="GridContainer"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+script = ExtResource("2_rktjp")
+
+[node name="PanelMarginContainer" type="MarginContainer" parent="GridContainer/Panel"]
+layout_mode = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="GridContainer/Panel/PanelMarginContainer"]
+layout_mode = 2
+script = ExtResource("2_hynwp")
+
+[node name="CropLabel" type="Label" parent="GridContainer/Panel/PanelMarginContainer/TextContainer"]
+custom_minimum_size = Vector2(235, 0)
+layout_mode = 2
+text = "Beet"
+uppercase = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GridContainer/Panel/PanelMarginContainer/TextContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_266vk")
+theme_override_font_sizes/normal_font_size = 20
+text = "gg"
+fit_content = true
+scroll_active = false
+script = ExtResource("6_61spw")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer/Panel/PanelMarginContainer/TextContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_ty772")
+stretch_mode = 4
+script = ExtResource("7_ry7i6")
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_ty772")
+stretch_mode = 4
