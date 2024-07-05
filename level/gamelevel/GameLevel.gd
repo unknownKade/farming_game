@@ -6,12 +6,14 @@ class_name GameLevel
 @export var last_state : State
 @export_range(1,3) var test_year : int = 1
 @export var timer_sec : int = 5
+
 var current_state
 var states : Dictionary
 
 func _ready():
 	%Board/Timer.set_wait_time(timer_sec)
 	GameManger.current_round = test_year * 4 - 4 + 1
+	
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child

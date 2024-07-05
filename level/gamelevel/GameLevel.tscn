@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=82 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/gamelevel/Side.tscn" id="2_pyyde"]
@@ -16,22 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/phases/result/land/Back.tscn" id="16_kuwy0"]
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/phases/result/Effect.tscn" id="19_wsyi1"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Hand.gd" id="19_yccec"]
-[ext_resource type="Script" path="res://scripts/Card.gd" id="20_je43g"]
+[ext_resource type="Script" path="res://scripts/cards/Card.gd" id="20_je43g"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/result/Result.gd" id="20_x2kq7"]
-[ext_resource type="Script" path="res://level/gamelevel/phases/end/Gradient.gd" id="21_4gx2m"]
-[ext_resource type="Script" path="res://level/gamelevel/phases/end/End.gd" id="21_4r248"]
-[ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/dialogue_theme.tres" id="22_wbslj"]
-[ext_resource type="FontFile" uid="uid://cuhv1vev6iboh" path="res://resource/fonts/m12.TTF" id="23_7hag4"]
+[ext_resource type="PackedScene" uid="uid://dpk0yuafrxxsh" path="res://level/gamelevel/phases/end/End.tscn" id="20_x4yi0"]
+[ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="23_ckdfh"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="24_tlqqd"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="25_db010"]
-[ext_resource type="Script" path="res://level/gamelevel/TextGridContainer.gd" id="25_ko6rr"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Player2.gd" id="25_vgpto"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="26_6avfx"]
 [ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/gamelevel/phases/disaster/Disaster.tscn" id="26_xqr1u"]
+[ext_resource type="Script" path="res://level/gamelevel/DailogueManager.gd" id="27_4wjva"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="27_c0sb0"]
-[ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="28_qbqrl"]
-[ext_resource type="Script" path="res://scripts/Shiver.gd" id="28_xieop"]
-[ext_resource type="Texture2D" uid="uid://br8db3gxyp35s" path="res://resource/images/speech_tail.png" id="29_hs00y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
 
@@ -2415,19 +2410,6 @@ _data = {
 "display": SubResource("Animation_u3uyn")
 }
 
-[sub_resource type="Gradient" id="Gradient_4flrq"]
-offsets = PackedFloat32Array(0, 0.8)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ro7he"]
-gradient = SubResource("Gradient_4flrq")
-fill_from = Vector2(0.5, -1)
-fill_to = Vector2(0.5, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_6eyxt"]
-font = ExtResource("23_7hag4")
-font_size = 50
-
 [sub_resource type="Animation" id="Animation_v40up"]
 length = 0.001
 tracks/0/type = "value"
@@ -2537,6 +2519,38 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6xsk0"]
+resource_name = "beet_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1112, 79), Vector2(1033, 285.003)]
+}
+
+[sub_resource type="Animation" id="Animation_8chom"]
+resource_name = "carrot_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Carrot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(987, 38), Vector2(941.999, 271.002)]
 }
 
 [sub_resource type="Animation" id="Animation_3t5cq"]
@@ -2666,11 +2680,30 @@ tracks/0/keys = {
 "values": [Vector2(735, 80), Vector2(825.999, 273.002)]
 }
 
+[sub_resource type="Animation" id="Animation_tlkn8"]
+resource_name = "tomato_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tomato:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(856, 39), Vector2(899.999, 252.002)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_minb2"]
 _data = {
 "RESET": SubResource("Animation_v40up"),
+"beet_select": SubResource("Animation_6xsk0"),
+"carrot_select": SubResource("Animation_8chom"),
 "display": SubResource("Animation_3t5cq"),
-"potato_select": SubResource("Animation_yqor7")
+"potato_select": SubResource("Animation_yqor7"),
+"tomato_select": SubResource("Animation_tlkn8")
 }
 
 [node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state", "last_state")]
@@ -2678,25 +2711,26 @@ texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_qa1h4")
 script = ExtResource("1_lq06n")
-initial_state = NodePath("Season")
+initial_state = NodePath("Weather")
 last_state = NodePath("Disaster")
-test_year = 3
+timer_sec = 30
 metadata/_edit_horizontal_guides_ = [0.0, 864.0, 423.0, 429.0, 737.0]
 metadata/_edit_vertical_guides_ = [0.0, 383.0, 1536.0]
 
 [node name="Side" parent="." instance=ExtResource("2_pyyde")]
 position = Vector2(192, 432)
+metadata/_edit_horizontal_guides_ = [432.0, 410.0]
 
 [node name="Board" parent="." instance=ExtResource("10_pw725")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_jk7f5")
 position = Vector2(960, 432)
 
-[node name="Season" type="Node2D" parent="."]
+[node name="Weather" type="Node2D" parent="."]
 position = Vector2(182, 79)
 script = SubResource("GDScript_ma5pm")
 
-[node name="IntroCard" type="Sprite2D" parent="Season"]
+[node name="IntroCard" type="Sprite2D" parent="Weather"]
 visible = false
 texture_filter = 1
 texture_repeat = 1
@@ -2704,7 +2738,7 @@ position = Vector2(777, 345.5)
 texture = ExtResource("4_vn1ca")
 script = ExtResource("5_8lg57")
 
-[node name="Season" parent="Season" instance=ExtResource("5_4nm7p")]
+[node name="Season" parent="Weather" instance=ExtResource("5_4nm7p")]
 texture_filter = 1
 
 [node name="Environment" parent="." instance=ExtResource("5_h7xs0")]
@@ -2801,93 +2835,8 @@ libraries = {
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
 
-[node name="End" type="Control" parent="."]
+[node name="End" parent="." instance=ExtResource("20_x4yi0")]
 unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("21_4r248")
-
-[node name="Gradient" type="TextureRect" parent="End"]
-self_modulate = Color(0, 0, 0, 1)
-z_index = 10
-layout_mode = 0
-offset_right = 1546.0
-offset_bottom = 861.0
-texture = SubResource("GradientTexture2D_ro7he")
-script = ExtResource("21_4gx2m")
-
-[node name="CenterContainer" type="CenterContainer" parent="End"]
-visible = false
-z_index = 10
-layout_direction = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1543.0
-offset_bottom = 870.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="End/CenterContainer"]
-z_index = 10
-layout_mode = 2
-size_flags_horizontal = 8
-label_settings = SubResource("LabelSettings_6eyxt")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SpeechBubble" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 468.0
-offset_top = 289.0
-offset_right = 751.0
-offset_bottom = 419.0
-theme = ExtResource("22_wbslj")
-
-[node name="GridContainer" type="GridContainer" parent="SpeechBubble"]
-layout_mode = 0
-offset_right = 199.0
-offset_bottom = 110.0
-theme_override_constants/h_separation = 0
-columns = 2
-
-[node name="Panel" type="PanelContainer" parent="SpeechBubble/GridContainer"]
-texture_filter = 1
-layout_mode = 2
-
-[node name="PanelMarginContainer" type="MarginContainer" parent="SpeechBubble/GridContainer/Panel"]
-layout_mode = 2
-
-[node name="TextContainer" type="VBoxContainer" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer"]
-layout_mode = 2
-script = ExtResource("25_ko6rr")
-
-[node name="CropLabel" type="Label" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer/TextContainer"]
-custom_minimum_size = Vector2(235, 0)
-layout_mode = 2
-text = "Beet"
-uppercase = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="SpeechBubble/GridContainer/Panel/PanelMarginContainer/TextContainer"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("28_qbqrl")
-theme_override_font_sizes/normal_font_size = 20
-text = "Very relatable problem, that. Could happen to anybody.”"
-fit_content = true
-scroll_active = false
-
-[node name="TextureRect" type="TextureRect" parent="SpeechBubble/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("29_hs00y")
-stretch_mode = 4
 
 [node name="Player2" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -2905,7 +2854,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("24_tlqqd")
 hframes = 6
 vframes = 6
-script = ExtResource("28_xieop")
+script = ExtResource("23_ckdfh")
 
 [node name="Tomato" type="Sprite2D" parent="Player2"]
 position = Vector2(856, 39)
@@ -2914,7 +2863,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("25_db010")
 hframes = 6
 vframes = 6
-script = ExtResource("28_xieop")
+script = ExtResource("23_ckdfh")
 
 [node name="Carrot" type="Sprite2D" parent="Player2"]
 position = Vector2(987, 38)
@@ -2923,7 +2872,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("26_6avfx")
 hframes = 5
 vframes = 4
-script = ExtResource("28_xieop")
+script = ExtResource("23_ckdfh")
 
 [node name="Beet" type="Sprite2D" parent="Player2"]
 texture_filter = 1
@@ -2933,12 +2882,16 @@ scale = Vector2(5, 5)
 texture = ExtResource("27_c0sb0")
 hframes = 5
 vframes = 4
-script = ExtResource("28_xieop")
+script = ExtResource("23_ckdfh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player2"]
 libraries = {
 "": SubResource("AnimationLibrary_minb2")
 }
+
+[node name="DialougeManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("27_4wjva")
 
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Potato/DeckAnimationPlayer" to="Hand/Potato" method="_on_deck_animation_player_animation_finished"]
@@ -2946,4 +2899,4 @@ libraries = {
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Beet/DeckAnimationPlayer" to="Hand/Beet" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="HandAnimationPlayer" to="Disaster" method="_on_level_animation_animation_finished"]
-[connection signal="faded_out" from="End/Gradient" to="End" method="_on_gradient_faded_out"]
+[connection signal="finished_speech_bubble" from="DialougeManager" to="Hand" method="_on_dialouge_manager_finished_speech_bubble"]
