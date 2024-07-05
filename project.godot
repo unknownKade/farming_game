@@ -27,11 +27,16 @@ GameManger="*res://scripts/GameManager.gd"
 
 window/size/viewport_width=1536
 window/size/viewport_height=864
+window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+
+[gui]
+
+theme/custom="res://resource/dialogue_theme.tres"
 
 [input]
 
