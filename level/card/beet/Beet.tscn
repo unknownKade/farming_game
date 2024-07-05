@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_qfixi"]
 [ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_2fc7b"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="2_u3jgl"]
-[ext_resource type="Script" path="res://scripts/Shiver.gd" id="3_8va6e"]
+[ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_8va6e"]
 [ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="5_2gouy"]
 
 [sub_resource type="Animation" id="Animation_ihaaq"]
