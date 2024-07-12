@@ -56,5 +56,5 @@ func end_return_card():
 	card_return_ended.emit()
 
 func _on_dialouge_manager_finished_speech_bubble(crop, event):
-	if event == "confirm" :
+	if event == "select" :
 		get_node(str(crop)).play_this_anim("confirm")

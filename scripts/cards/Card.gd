@@ -45,7 +45,7 @@ func sync_card_level():
 
 func confirm_card():
 	var dialougeManger = get_parent().get_parent().get_node("DialougeManager")
-	dialougeManger.make_speech_bubble(self.name,"confirm")
+	dialougeManger.make_speech_bubble(self.name,"select")
 
 func select_card():
 	GameManger.select_card(self.name)
