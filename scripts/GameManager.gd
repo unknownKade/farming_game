@@ -94,7 +94,12 @@ func check_carrot_skill(is_host :bool):
 		return swapped_from_carrot
 
 func p2_result(crop : Crop, value : int, message = null):
-	crop.grow_card(value)
+	if message == "revive" :
+		print("beet used revive on " + crop.name)
+		crop.level = 1
+	else :
+		print(message, " ", crop.name, " by ", value)
+		crop.grow_card(value)
 
 func get_p2_card(p2 : Crop):
 	opponent_card = p2
