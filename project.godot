@@ -19,9 +19,14 @@ config/icon="res://icon.svg"
 
 aseprite_executable_path="D:/programs/Aseprite-v1.3.5-x64/Aseprite.exe"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 GameManger="*res://scripts/GameManager.gd"
+ContentManager="*res://scripts/ContentManager.gd"
 
 [display]
 

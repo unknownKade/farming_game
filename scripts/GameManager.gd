@@ -3,11 +3,9 @@ extends Node
 signal confirmed_selected_card
 signal swapped_to_carrot
 signal swapped_from_carrot
-signal dialouge_finished
 
 const animation_player = "AnimationPlayer"
 
-const file_path = "res://resource/dialouge.json"
 var current_round : int = 1
 var selected_card : Crop
 var confirmed_card : Crop
@@ -20,7 +18,6 @@ var text_typing : bool = false
 
 var p1_deck : Dictionary
 var p2_deck : Dictionary
-var dialouge_dict
 
 func _ready():
 	var crops = {
@@ -29,25 +26,11 @@ func _ready():
 		"Potato" : Potato,
 		"Tomato" : Tomato
 	}
-	dialouge_dict = load_json_file(file_path)
-	
+
 	for crop in crops :
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
-		
-func load_json_file(path: String):
-	if FileAccess.file_exists(path):
-		var dataFile = FileAccess.open(path, FileAccess.READ)
-		var text = dataFile.get_as_text()
-		var parsedResult = JSON.parse_string(text)
-		
-		if parsedResult is Dictionary :
-			return parsedResult
-		else:
-			print("parsing file error")
-	else:
-		print("file doesn't exist")
-		
+
 func get_random_card(deck) -> Crop:
 	var live_crops: Array
 	
@@ -111,12 +94,9 @@ func get_p2_card(p2 : Crop):
 			opponent_card = get_random_card(p2_deck)
 		swapped_to_carrot :
 			opponent_card = p2_deck[Crop.carrot]
-
-func dialouge_manager():
-	dialouge_finished.emit()
 	
 func disaster_result():
-	for crop in p1_deck:
-		p1_deck[crop].grow_card(-1)
-	for crop in p2_deck:
-		p2_deck[crop].grow_card(-1)
+	for crop in GameManger.p1_deck:
+		GameManger.p1_deck[crop].grow_card(-1)
+	for crop in GameManger.p2_deck:
+		GameManger.p2_deck[crop].grow_card(-1)

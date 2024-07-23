@@ -2,12 +2,6 @@ extends Node2D
 
 @export var dialouge : PackedScene
 
-const color_dictionary = {
-	Crop.potato : "009192",
-	Crop.tomato : "de0030",
-	Crop.carrot : "e05d00",
-	Crop.beet : "a049f6",
-}
 const margin = 53
 const pos_unit = (1536 -(53 * 2))/4
 const dialouge_init_position = Vector2(54, 462)
@@ -36,7 +30,7 @@ func setup(crop, event):
 	speech.setup(crop, event, true)
 
 func setup_tail(crop):
-	$TopTail.self_modulate = color_dictionary[crop]
+	$TopTail.self_modulate = ContentManager.color_dictionary[crop]
 	$TopTail.position.x = tail_position[crop]
 	$TopTail.visible = true
 
@@ -58,4 +52,4 @@ func _on_beet_gui_input(event):
 		setup(Crop.beet,dialouge_event_type)
 
 func _on_home_button_pressed():
-	get_tree().change_scene_to_file("res://level/mainmenu/MainMenu.tscn")
+	get_tree().change_scene_to_file(ContentManager.menu_scene_path)
