@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=83 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/gamelevel/Side.tscn" id="2_pyyde"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://level/gamelevel/phases/result/Garden.gd" id="14_6vmu0"]
 [ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/phases/result/land/Land.tscn" id="14_wnyw6"]
 [ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/phases/result/land/Back.tscn" id="16_kuwy0"]
+[ext_resource type="AudioStream" uid="uid://du78u8bwgfmi4" path="res://resource/audio/display_cards.mp3" id="19_b6nn1"]
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/phases/result/Effect.tscn" id="19_wsyi1"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Hand.gd" id="19_yccec"]
 [ext_resource type="Script" path="res://scripts/cards/Card.gd" id="20_je43g"]
@@ -2401,6 +2402,21 @@ tracks/18/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/19/type = "audio"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../HandAnimationPlayer/AudioStreamPlayer2D")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"clips": [{
+"end_offset": 0.15,
+"start_offset": 0.0,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/19/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6mre"]
 _data = {
@@ -2831,6 +2847,10 @@ root_node = NodePath("../Hand")
 libraries = {
 "": SubResource("AnimationLibrary_v6mre")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HandAnimationPlayer"]
+position = Vector2(0.00012207, 6.10352e-05)
+attenuation = -2.0
 
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
