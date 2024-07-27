@@ -11,7 +11,6 @@ var current_state
 var states : Dictionary
 
 func _ready():
-	%Board/Timer.set_wait_time(timer_sec)
 	GameManger.current_round = test_year * 4 - 4 + 1
 	
 	for child in get_children():

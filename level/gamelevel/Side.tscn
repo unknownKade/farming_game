@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://drpcmsyafktro"]
+[gd_scene load_steps=5 format=3 uid="uid://drpcmsyafktro"]
 
 [ext_resource type="Texture2D" uid="uid://bgwt2k01i7m0q" path="res://resource/images/game_level/side.png" id="1_gj4sr"]
-[ext_resource type="Script" path="res://level/gamelevel/Side.gd" id="1_k3wo2"]
 [ext_resource type="Texture2D" uid="uid://2m6qxj1fo1fl" path="res://resource/images/game_level/menu_button/home.png" id="3_d2yjh"]
 [ext_resource type="Texture2D" uid="uid://dg6swxt3c2kjm" path="res://resource/images/game_level/menu_button/pause.png" id="4_5x4vg"]
 [ext_resource type="Texture2D" uid="uid://btmd1b64gh0w0" path="res://resource/images/game_level/menu_button/setting.png" id="5_r51lq"]
 
-[node name="Side" type="Node2D" node_paths=PackedStringArray("timer_label")]
-script = ExtResource("1_k3wo2")
-timer_label = NodePath("Label")
+[node name="Side" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-172.0, -192.0]
 metadata/_edit_horizontal_guides_ = [432.0, 410.0, 370.0]
 

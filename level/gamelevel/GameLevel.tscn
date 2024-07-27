@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=84 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/gamelevel/Side.tscn" id="2_pyyde"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dpk0yuafrxxsh" path="res://level/gamelevel/phases/end/End.tscn" id="20_x4yi0"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="23_ckdfh"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="24_tlqqd"]
+[ext_resource type="Script" path="res://level/gamelevel/ColorRect.gd" id="25_7q5rd"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="25_db010"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Player2.gd" id="25_vgpto"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="26_6avfx"]
@@ -2876,6 +2877,14 @@ hframes = 6
 vframes = 6
 script = ExtResource("23_ckdfh")
 
+[node name="ColorRect" type="ColorRect" parent="Player2/Potato"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
+
 [node name="Tomato" type="Sprite2D" parent="Player2"]
 position = Vector2(856, 39)
 rotation = -0.202458
@@ -2884,6 +2893,14 @@ texture = ExtResource("25_db010")
 hframes = 6
 vframes = 6
 script = ExtResource("23_ckdfh")
+
+[node name="ColorRect" type="ColorRect" parent="Player2/Tomato"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
 
 [node name="Carrot" type="Sprite2D" parent="Player2"]
 position = Vector2(987, 38)
@@ -2894,6 +2911,14 @@ hframes = 5
 vframes = 4
 script = ExtResource("23_ckdfh")
 
+[node name="ColorRect" type="ColorRect" parent="Player2/Carrot"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
+
 [node name="Beet" type="Sprite2D" parent="Player2"]
 texture_filter = 1
 position = Vector2(1112, 79)
@@ -2903,6 +2928,14 @@ texture = ExtResource("27_c0sb0")
 hframes = 5
 vframes = 4
 script = ExtResource("23_ckdfh")
+
+[node name="ColorRect" type="ColorRect" parent="Player2/Beet"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player2"]
 libraries = {
@@ -2919,4 +2952,8 @@ script = ExtResource("27_4wjva")
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Beet/DeckAnimationPlayer" to="Hand/Beet" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="HandAnimationPlayer" to="Disaster" method="_on_level_animation_animation_finished"]
+[connection signal="signal_click" from="Player2/Potato/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="signal_click" from="Player2/Tomato/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="signal_click" from="Player2/Carrot/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="signal_click" from="Player2/Beet/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
 [connection signal="finished_speech_bubble" from="DialougeManager" to="Hand" method="_on_dialouge_manager_finished_speech_bubble"]
