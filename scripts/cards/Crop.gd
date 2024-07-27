@@ -15,7 +15,7 @@ const carrot = "Carrot"
 
 func grow_card(value : int) :
 	self.level += value
-	if self.level < 0 :
+	if self.level < 1 :
 		self.state = States.LOCKED
 		self.level = 0
 	elif self.level > 4 :
