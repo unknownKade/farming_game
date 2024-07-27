@@ -36,6 +36,8 @@ func end_phase():
 		check_potato_state()
 	if GameManger.carrot_escaped :
 		%Carrot.come_back()
+		
+	%Player2.deselect_card(GameManger.opponent_card)
 	
 	self.visible = false
 	end_result()

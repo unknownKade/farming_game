@@ -54,14 +54,13 @@ func confirm_card() :
 		confirmed_card = get_random_card(p1_deck)
 	else : 
 		confirmed_card = selected_card
-
-	#get player2 card with carrot checked
-	get_p2_card(get_random_card(p2_deck))
+	
 	check_carrot_skill(true).emit()
-		
+
 func check_carrot_skill(is_host :bool):
 	var p1  = confirmed_card if is_host else opponent_card
 	var p2 = opponent_card if is_host else confirmed_card
+	
 	var deck = p1_deck if is_host else p2_deck
 	var carrot_condition = p1 is Carrot and p1.level > 1 and p2 is Tomato
 	var beet_swap_condition = !(p1 is Carrot) and p2 is Beet and deck[Crop.carrot].level > 1
@@ -100,3 +99,10 @@ func disaster_result():
 		GameManger.p1_deck[crop].grow_card(-1)
 	for crop in GameManger.p2_deck:
 		GameManger.p2_deck[crop].grow_card(-1)
+		
+	for child in %Hand.get_children() :
+		child.get_node("Mask").get_node("Sprite2D").start_shake()
+		child.sync_card_level()
+		
+	%Player2.start_shake()
+	%Player2.sync_card_level()

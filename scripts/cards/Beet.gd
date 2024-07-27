@@ -37,7 +37,7 @@ func revive() :
 	
 	var revived_crop = dead_crops[randi_range(0, dead_crops.size() - 1)]
 	
-	GameManger.p2_result(revived_crop.name, 0, "revive")
+	GameManger.p2_result(revived_crop, 0, "revive")
 
 	has_revive = false
 	can_have_revive = false
