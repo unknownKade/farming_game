@@ -34,7 +34,7 @@ func end_phase():
 		check_beet_skill()
 	if p1 is Potato :
 		check_potato_state()
-	if GameManger.carrot_escaped :
+	if GameManger.p1_carrot_escaped :
 		%Carrot.come_back()
 		
 	%Player2.deselect_card(GameManger.opponent_card)

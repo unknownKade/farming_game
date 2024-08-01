@@ -15,7 +15,7 @@ func run_away():
 	deck_anim_player.play("escape")
 
 func come_back():
-	GameManger.carrot_escaped = false
+	GameManger.p1_carrot_escaped = false
 	deck_anim_player.play("escape_return")
 
 func _on_deck_animation_player_animation_finished(anim_name):

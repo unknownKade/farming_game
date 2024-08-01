@@ -14,7 +14,8 @@ func _ready():
 func enter():
 	%Hand.confirmed_card.connect(exit)
 	%Hand.display_cards()
-	GameManger.player_turn = true
+	GameManger.p1_turn = true
+	GameManger.p2_turn = true
 
 func exit():
 	Transition.emit(self, next_state)

@@ -1,8 +1,7 @@
 extends Node
 
-signal confirmed_selected_card
-signal swapped_to_carrot
-signal swapped_from_carrot
+signal p1_carrot_action(result)
+signal p2_carrot_action(result)
 
 const animation_player = "AnimationPlayer"
 
@@ -12,8 +11,10 @@ var confirmed_card : Crop
 var opponent_card : Crop
 var current_environment: String
 
-var player_turn :bool =  false
-var carrot_escaped : bool = false
+var p1_turn :bool =  false
+var p2_turn : bool = false
+var p1_carrot_escaped : bool = false
+var p2_carrot_escaped : bool = false
 var text_typing : bool = false
 
 var p1_deck : Dictionary
@@ -47,33 +48,43 @@ func deselect_card():
 	selected_card = null
 	confirmed_card = null
 
-func confirm_card() :
-	player_turn = false
-
-	if selected_card == null:
-		confirmed_card = get_random_card(p1_deck)
-	else : 
+func play_card(is_p1 : bool) :
+	if is_p1 :
 		confirmed_card = selected_card
+		p1_turn = false
 	
-	check_carrot_skill(true).emit()
-
-func check_carrot_skill(is_host :bool):
-	var p1  = confirmed_card if is_host else opponent_card
-	var p2 = opponent_card if is_host else confirmed_card
-	
-	var deck = p1_deck if is_host else p2_deck
-	var carrot_condition = p1 is Carrot and p1.level > 1 and p2 is Tomato
-	var beet_swap_condition = !(p1 is Carrot) and p2 is Beet and deck[Crop.carrot].level > 1
-	var potato_condition = deck["Potato"].state == Crop.States.PHOBIA
-
-	if !carrot_condition and !beet_swap_condition or potato_condition: 
-		return confirmed_selected_card
-	elif beet_swap_condition :
-		return swapped_to_carrot
-	elif !p1.skill(p2):
-		return confirmed_selected_card
+	if opponent_card == null or confirmed_card == null :
+		return
 	else :
-		return swapped_from_carrot
+		check_played_cards()
+	
+
+# called when both players have chosen cards
+func check_played_cards() :
+	if p1_deck[Crop.potato].state != Crop.States.PHOBIA :
+		if confirmed_card is Carrot and opponent_card is Tomato and confirmed_card.skill(opponent_card):
+			p1_carrot_escaped = true
+			deselect_card()
+			p1_carrot_action.emit(Carrot.Action.ESCAPE)
+			p1_turn = true
+			return
+		elif opponent_card is Beet and p1_deck[Crop.carrot].skill(opponent_card) :
+			p1_carrot_action.emit(Carrot.Action.SWAP)
+			return
+
+	if p2_deck[Crop.potato].state != Crop.States.PHOBIA :
+		if opponent_card is Carrot and confirmed_card is Tomato and opponent_card.skill(confirmed_card) :
+			opponent_card = null
+			p2_carrot_escaped =true
+			p2_carrot_action.emit(Carrot.Action.ESCAPE)
+			p2_turn = true
+			return
+		elif confirmed_card is Beet and p2_deck[Crop.carrot].skill(confirmed_card) :
+			p2_carrot_action.emit(Carrot.Action.SWAP)
+			return
+	
+	p2_carrot_action.emit(Carrot.Action.NONE)
+	p1_carrot_action.emit(Carrot.Action.NONE)
 
 func p2_result(crop : Crop, value : int, message = null):
 	if message == "revive" :
@@ -82,27 +93,11 @@ func p2_result(crop : Crop, value : int, message = null):
 	else :
 		print(message, " ", crop.name, " by ", value)
 		crop.grow_card(value)
-
-func get_p2_card(p2 : Crop):
-	opponent_card = p2
-	check_carrot_skill(false)
-	
-	match check_carrot_skill(false) :
-		swapped_from_carrot :
-			p2_deck[Crop.carrot].state = Crop.States.LOCKED
-			opponent_card = get_random_card(p2_deck)
-		swapped_to_carrot :
-			opponent_card = p2_deck[Crop.carrot]
-	
-func disaster_result():
-	for crop in GameManger.p1_deck:
-		GameManger.p1_deck[crop].grow_card(-1)
-	for crop in GameManger.p2_deck:
-		GameManger.p2_deck[crop].grow_card(-1)
 		
-	for child in %Hand.get_children() :
-		child.get_node("Mask").get_node("Sprite2D").start_shake()
-		child.sync_card_level()
-		
-	%Player2.start_shake()
-	%Player2.sync_card_level()
+func new_year():
+	current_round += 1
+	confirmed_card = null
+	selected_card = null
+	opponent_card = null
+	p1_carrot_escaped = false
+	p2_carrot_escaped = false

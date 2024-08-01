@@ -27,16 +27,11 @@ func on_child_transition(state, next_state):
 		return
 		
 	if state == last_state:
-		new_year()
+		GameManger.new_year()
 	
 	var new_state = states.get(next_state.to_lower())
 	
 	current_state = new_state
 	new_state.enter()
 	
-func new_year():
-	GameManger.current_round += 1
-	
-	GameManger.confirmed_card = null
-	GameManger.selected_card = null
-	GameManger.opponent_card = null
+

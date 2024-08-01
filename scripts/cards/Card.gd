@@ -16,22 +16,27 @@ var deck_anim_player : AnimationPlayer
 func process_click(is_left_click):
 	get_node(GameManger.animation_player).stop() 
 
-	if GameManger.text_typing == true :
+	if GameManger.text_typing == true or locked :
 		return
-	if locked:
-		return
+
 	if is_left_click:
+		#select new card
 		if GameManger.selected_card == null :
 			select_card()
 		elif GameManger.selected_card.name == self.name :
-			if GameManger.carrot_escaped :
-				confirm_card()
+			#play card after carrot runs away
+			if GameManger.p1_carrot_escaped :
+				card_dialouge("select")
 				GameManger.confirmed_card = GameManger.p1_deck[self.name]
+			#play card and end turn
 			else :
-				GameManger.confirm_card()
+				GameManger.confirmed_card = GameManger.selected_card
+				GameManger.play_card(true)
+		#clicked somewhere else
 		else :
 			return
-	else :
+	#right click anywhere deselect
+	elif GameManger.selected_card != null :
 		deselect_card()
 
 func sync_card_level():
@@ -43,9 +48,9 @@ func sync_card_level():
 	$Mask/Sprite2D.set_frame(frame_set[level])
 	$Mask.signal_click.connect(process_click)
 
-func confirm_card():
+func card_dialouge(dialouge_event):
 	var dialougeManger = get_parent().get_parent().get_node("DialougeManager")
-	dialougeManger.make_speech_bubble(self.name,"select")
+	dialougeManger.make_speech_bubble(self.name, dialouge_event)
 
 func select_card():
 	GameManger.select_card(self.name)
@@ -66,4 +71,3 @@ func return_card():
 
 func play_this_anim(anim_name):
 	deck_anim_player.play(anim_name)
-
