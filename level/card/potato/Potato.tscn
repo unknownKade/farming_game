@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcjo6vxhmi3ti"]
+[gd_scene load_steps=21 format=3 uid="uid://bcjo6vxhmi3ti"]
 
 [ext_resource type="Script" path="res://level/card/potato/Potato.gd" id="1_31pbs"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
 [ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_kc2vf"]
+[ext_resource type="AudioStream" uid="uid://df3msb5vjreq4" path="res://resource/audio/card_seeding.wav" id="2_rltp2"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_78bf0"]
+[ext_resource type="AudioStream" uid="uid://bb71iw7jqwny8" path="res://resource/audio/card_seeding 2.wav" id="3_xo1bn"]
 [ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="5_dbqba"]
+[ext_resource type="Script" path="res://level/card/potato/AudioStreamPlayer.gd" id="8_y0bp6"]
+[ext_resource type="AudioEffectDistortion" uid="uid://cyjeg65ux1yjr" path="res://resource/DistortionEffect.tres" id="9_uq23u"]
 
 [sub_resource type="Animation" id="Animation_1ec1v"]
 resource_name = "0"
@@ -202,6 +206,55 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_rltp2")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_rltp2")
+}],
+"times": PackedFloat32Array(0.7, 1.4)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_xo1bn")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_xo1bn")
+}],
+"times": PackedFloat32Array(0.8)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
@@ -328,6 +381,11 @@ color = Color(0.207843, 0.133333, 0.113725, 1)
 hue_variation_min = -0.32
 hue_variation_max = 1.0
 anim_speed_max = 73.64
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+script = ExtResource("8_y0bp6")
+effect = ExtResource("9_uq23u")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="gui_input" from="Mask" to="Mask" method="_on_gui_input"]

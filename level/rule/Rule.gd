@@ -52,4 +52,5 @@ func _on_beet_gui_input(event):
 		setup(Crop.beet,dialouge_event_type)
 
 func _on_home_button_pressed():
+	SoundManager.sfx_play(&"menu_click")
 	get_tree().change_scene_to_file(ContentManager.menu_scene_path)

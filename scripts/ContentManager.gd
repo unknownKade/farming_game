@@ -2,7 +2,10 @@ extends Node
 
 signal dialouge_finished
 
-@export var menu_scene_path : String = "res://level/mainmenu/MainMenu.tscn"
+const menu_scene_path : String = "res://level/mainmenu/MainMenu.tscn"
+const rule_scene_path : String = "res://level/rule/Rule.tscn"
+const game_scene_path : String = "res://level/gamelevel/GameLevel.tscn"
+
 const file_path = "res://resource/dialouge.json"
 const color_dictionary = {
 	Crop.potato : "009192",

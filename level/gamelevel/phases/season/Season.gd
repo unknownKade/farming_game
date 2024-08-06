@@ -20,6 +20,7 @@ func play_entry_animation(weather):
 	initialize()
 	var scene = scenes.get(weather)
 	scene.visible = true
+	SoundManager.sfx_play(&"weather_side")
 	get_node(GameManger.animation_player).play(weather.to_lower())
 
 func _on_animation_player_animation_finished(anim_name):

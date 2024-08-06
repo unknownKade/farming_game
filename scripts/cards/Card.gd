@@ -17,6 +17,7 @@ func process_click(is_left_click):
 	get_node(GameManger.animation_player).stop() 
 
 	if GameManger.text_typing == true or locked :
+		SoundManager.sfx_play(&"click_fail")
 		return
 
 	if is_left_click:

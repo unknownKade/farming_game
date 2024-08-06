@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bwua0f38t6pa7"
+path="res://.godot/imported/weather side start.ogg-72f199179664c58238258cabdc2258bb.oggvorbisstr"
+
+[deps]
+
+source_file="res://resource/audio/weather side start.ogg"
+dest_files=["res://.godot/imported/weather side start.ogg-72f199179664c58238258cabdc2258bb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

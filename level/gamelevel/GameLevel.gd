@@ -11,6 +11,10 @@ var current_state
 var states : Dictionary
 
 func _ready():
+	$White/AnimationPlayer.play("fade_in")
+	
+	await get_tree().create_timer(1).timeout
+	SoundManager.bgms[SoundManager.current_bgm].play()
 	GameManger.current_round = test_year * 4 - 4 + 1
 	
 	for child in get_children():
@@ -33,5 +37,3 @@ func on_child_transition(state, next_state):
 	
 	current_state = new_state
 	new_state.enter()
-	
-

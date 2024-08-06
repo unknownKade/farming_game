@@ -2,7 +2,7 @@ extends State
 
 const win_text = "HARVEST\nSURVIVED"
 const lose_text = "GAME OVER"
-
+var clickable = false
 func enter():
 	var text = is_crops_alive()
 	$CenterContainer/Label.text = text
@@ -11,6 +11,7 @@ func enter():
 
 func _on_gradient_faded_out():
 	$CenterContainer.visible = true
+	clickable = true
 
 func is_crops_alive():
 	for crop in GameManger.p1_deck:
@@ -25,3 +26,7 @@ func is_crops_alive():
 		else :
 			return lose_text
 	return win_text
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton and clickable:
+		get_tree().change_scene_to_file(ContentManager.menu_scene_path)

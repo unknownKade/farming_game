@@ -5,7 +5,10 @@ signal signal_click(is_left_click)
 func _on_gui_input(event):
 	var is_click : bool = event is InputEventMouseButton and event.is_pressed()
 
-	if !is_click or !GameManger.p1_turn or get_parent().locked:
+	if !is_click :
+		return
+	if !GameManger.p1_turn or get_parent().locked:
+		SoundManager.sfx_play(&"click_fail")
 		return
 		
 	if event.button_index == MOUSE_BUTTON_LEFT:

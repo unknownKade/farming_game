@@ -5,9 +5,10 @@ signal confirmed_card
 
 func _ready():
 	GameManger.p1_carrot_action.connect(do_carrot_action)
-	for child in get_children():
-		child.confirmed_card.connect(end_board_phase)
-		child.card_return_ended.connect(end_return_card)
+	for child in get_children() :
+		if child is Node2D :
+			child.confirmed_card.connect(end_board_phase)
+			child.card_return_ended.connect(end_return_card)
 
 func display_cards():
 	for card in get_children() :
@@ -29,6 +30,7 @@ func carrot_escape():
 		$Carrot.select_card()
 		await get_tree().create_timer(1).timeout
 	
+	$Carrot.card_dialouge("escape")
 	$Carrot.deck_anim_player.play("escape")
 	GameManger.deselect_card()
 	GameManger.p1_turn = true
