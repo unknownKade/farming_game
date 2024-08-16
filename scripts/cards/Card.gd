@@ -48,27 +48,35 @@ func sync_card_level():
 		
 	$Mask/Sprite2D.set_frame(frame_set[level])
 	$Mask.signal_click.connect(process_click)
+	$Mask.signal_hover.connect(hover_card)
 
 func card_dialouge(dialouge_event):
 	var dialougeManger = get_parent().get_parent().get_node("DialougeManager")
 	dialougeManger.make_speech_bubble(self.name, dialouge_event)
 
+func hover_card(is_enter):
+	if is_enter :
+		deck_anim_player.queue("hover")
+	else :
+		if deck_anim_player.current_animation == "deselect" :
+			await deck_anim_player.animation_finished
+		deck_anim_player.play_backwards("hover")
 func select_card():
 	GameManger.select_card(self.name)
-	deck_anim_player.play("select")
+	deck_anim_player.queue("select")
 	anim_player.play(str(level))
 
 func deselect_card():
 	GameManger.deselect_card()
-	deck_anim_player.play("deselect")
+	deck_anim_player.queue("deselect")
 
 func play_result_animation():
 	anim_player.play("RESET")
-	deck_anim_player.play("flip");
+	deck_anim_player.queue("flip");
 
 func return_card():
 	if self.name == GameManger.confirmed_card.name :
-		deck_anim_player.play("return")
+		deck_anim_player.queue("return")
 
 func play_this_anim(anim_name):
 	deck_anim_player.play(anim_name)

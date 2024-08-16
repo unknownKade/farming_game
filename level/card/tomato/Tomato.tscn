@@ -382,3 +382,5 @@ bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="gui_input" from="Mask" to="Mask" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Mask" to="Mask" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Mask" to="Mask" method="_on_mouse_exited"]

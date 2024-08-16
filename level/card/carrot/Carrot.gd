@@ -12,11 +12,11 @@ func _ready():
 	deck_anim_player = $DeckAnimationPlayer
 	
 func run_away():
-	deck_anim_player.play("escape")
+	deck_anim_player.queue("escape")
 
 func come_back():
 	GameManger.p1_carrot_escaped = false
-	deck_anim_player.play("escape_return")
+	deck_anim_player.queue("escape_return")
 
 func _on_deck_animation_player_animation_finished(anim_name):
 	if anim_name == "escape":
@@ -26,7 +26,7 @@ func _on_deck_animation_player_animation_finished(anim_name):
 	elif anim_name == "revive" :
 		crop_revived.emit()
 	elif anim_name == "confirm" :
-		anim_player.play("seeding")
+		anim_player.queue("seeding")
 	elif anim_name == "flip" :
 		self.return_card()
 	elif anim_name == "return" :

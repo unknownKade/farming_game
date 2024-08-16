@@ -9,3 +9,20 @@ func _gui_input(event):
 		return
 	elif event.button_index == MOUSE_BUTTON_LEFT:
 		signal_click.emit(get_parent().name)
+
+
+func _on_mouse_entered():
+	var crop_name = get_parent().name
+	var is_locked = GameManger.p2_deck[crop_name].state == Crop.States.LOCKED
+	var anim_name = crop_name.to_lower() + "_hover"
+	
+	if GameManger.p2_turn and !is_locked and GameManger.opponent_card == null :
+		%Player2.get_node(GameManger.animation_player).queue(anim_name)
+
+func _on_mouse_exited():
+	var crop_name = get_parent().name
+	var is_locked = GameManger.p2_deck[crop_name].state == Crop.States.LOCKED
+	var anim_name = crop_name.to_lower() + "_hover"
+	
+	if GameManger.p2_turn and !is_locked and GameManger.opponent_card == null :
+		%Player2.get_node(GameManger.animation_player).play_backwards(anim_name)

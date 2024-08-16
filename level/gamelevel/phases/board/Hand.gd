@@ -18,27 +18,18 @@ func display_cards():
 
 func do_carrot_action(action):
 	if action == Carrot.Action.ESCAPE :
-		carrot_escape()
+		$Carrot.card_dialouge("escape")
 	elif action == Carrot.Action.SWAP :
 		swap_to_carrot()
 	else :
 		get_node(GameManger.confirmed_card.name).card_dialouge("select")
 
 func carrot_escape():
-	GameManger.p1_carrot_escaped = true
-	if GameManger.selected_card == null:
-		$Carrot.select_card()
-		await get_tree().create_timer(1).timeout
-	
-	$Carrot.card_dialouge("escape")
 	$Carrot.deck_anim_player.play("escape")
-	GameManger.deselect_card()
+	await get_tree().create_timer(1).timeout
 	GameManger.p1_turn = true
 	
 func swap_to_carrot():
-	if GameManger.selected_card == null:
-		get_node(GameManger.confirmed_card.name).select_card()
-		await get_tree().create_timer(2).timeout
 	get_node(GameManger.confirmed_card.name).deselect_card()
 	
 	await get_tree().create_timer(1).timeout
@@ -62,5 +53,8 @@ func end_return_card():
 	card_return_ended.emit()
 
 func _on_dialouge_manager_finished_speech_bubble(crop, event):
-	if event == "select" :
-		get_node(str(crop)).play_this_anim("confirm")
+	match event :
+		"select" : get_node(str(crop)).play_this_anim("confirm")
+		"escape" : carrot_escape()
+		"swap" : get_node(str(crop)).play_this_anim("confirm")
+	
