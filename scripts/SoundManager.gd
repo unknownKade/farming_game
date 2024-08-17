@@ -31,10 +31,18 @@ func _ready() :
 func sfx_play(sound : StringName) :
 	sound_effects[sound].play()
 	
-func change_bg_music():
-	var new_bgm = randi_range(0,bgms.size() - 1)
+func change_bgm():
+	var new_bgm = randi_range(0,bgms.size()-1)
 	if new_bgm == current_bgm :
-		change_bg_music()
+		change_bgm()
 	else :
-		current_bgm = bgms[new_bgm]
-		bgms[current_bgm].play()
+		bgms[current_bgm].stop()
+		current_bgm = new_bgm
+		play_bgm()
+
+func play_bgm():
+	bgms[current_bgm].play()
+	bgms[current_bgm].finished.connect(play_bgm)
+
+func stop_bgm():
+	bgms[current_bgm].stop()

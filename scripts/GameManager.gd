@@ -31,7 +31,7 @@ func _ready():
 	for crop in crops :
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
-
+	
 func get_random_card(deck) -> Crop:
 	var live_crops: Array
 	
@@ -40,6 +40,11 @@ func get_random_card(deck) -> Crop:
 			live_crops.append(deck[crop])
 	
 	return live_crops[randi_range(0, live_crops.size() - 1)]
+
+func reset():
+	deselect_card()
+	opponent_card = null
+	current_round = 1
 
 func select_card(card_name : String) :
 	selected_card = p1_deck[card_name]
@@ -57,7 +62,6 @@ func play_card(is_p1 : bool) :
 		return
 	else :
 		check_played_cards()
-	
 
 # called when both players have chosen cards
 func check_played_cards() :
@@ -66,7 +70,6 @@ func check_played_cards() :
 			p1_carrot_escaped = true
 			deselect_card()
 			p1_carrot_action.emit(Carrot.Action.ESCAPE)
-			p1_turn = true
 			return
 		elif opponent_card is Beet and p1_deck[Crop.carrot].skill(opponent_card) :
 			p1_carrot_action.emit(Carrot.Action.SWAP)
@@ -77,7 +80,6 @@ func check_played_cards() :
 			opponent_card = null
 			p2_carrot_escaped =true
 			p2_carrot_action.emit(Carrot.Action.ESCAPE)
-			p2_turn = true
 			return
 		elif confirmed_card is Beet and p2_deck[Crop.carrot].skill(confirmed_card) :
 			p2_carrot_action.emit(Carrot.Action.SWAP)

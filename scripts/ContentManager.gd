@@ -35,3 +35,7 @@ func load_json_file(path: String):
 func dialouge_manager():
 	dialouge_finished.emit()
 
+func to_home():
+	GameManger.reset()
+	SoundManager.stop_bgm()
+	get_tree().change_scene_to_file(ContentManager.menu_scene_path)
