@@ -28,7 +28,7 @@ func _process(delta):
 		#reset position on stop
 		position = original_position
 		shivering = false
-## Function to start the shiver effect
+
 func start_shake():
 	shivering = true
 	shiver_timer = shiver_duration
