@@ -334,7 +334,6 @@ vframes = 4
 frame = 26
 
 [node name="Love" type="Sprite2D" parent="."]
-visible = false
 z_index = 20
 texture_filter = 1
 texture_repeat = 1
@@ -378,12 +377,11 @@ position = Vector2(767, 434)
 texture = ExtResource("8_dyj62")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 20
-offset_top = -193.0
-offset_right = 1539.0
-offset_bottom = 862.0
+custom_minimum_size = Vector2(1600, 900)
+offset_right = 1600.0
+offset_bottom = 900.0
 color = Color(0.560784, 0, 0, 1)
 
 [node name="GrayScale" type="Sprite2D" parent="."]
@@ -391,12 +389,13 @@ visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 15
 material = SubResource("ShaderMaterial_xbti3")
-position = Vector2(-67, -41)
-scale = Vector2(1.1, 1.23611)
+position = Vector2(-202, -176)
+scale = Vector2(1.36328, 1.51736)
 texture = ExtResource("8_dyj62")
 centered = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
 panning_strength = 0.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
