@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cd5jldoye2hxu"]
+[gd_scene load_steps=14 format=3 uid="uid://cd5jldoye2hxu"]
 
 [ext_resource type="Texture2D" uid="uid://re6mbdrgeq7u" path="res://resource/reference/rule_reference.aseprite" id="1_bads4"]
 [ext_resource type="Script" path="res://level/rule/Rule.gd" id="1_tiovs"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cajjwe86is1ip" path="res://resource/images/card/rule/carrot.png" id="7_jjwyy"]
 [ext_resource type="Texture2D" uid="uid://bw5lmlgswpbql" path="res://resource/images/card/rule/beet.png" id="8_mwfrw"]
 [ext_resource type="Texture2D" uid="uid://2m6qxj1fo1fl" path="res://resource/images/game_level/menu_button/home.png" id="10_5102s"]
+[ext_resource type="Texture2D" uid="uid://b7jftgcvdwfj5" path="res://resource/images/game_level/menu_button/home_hover.png" id="10_hw8lk"]
 
 [sub_resource type="Animation" id="Animation_k7lob"]
 length = 0.001
@@ -118,6 +119,7 @@ offset_right = 27.0
 offset_bottom = 810.0
 scale = Vector2(5, 5)
 texture_normal = ExtResource("10_5102s")
+texture_hover = ExtResource("10_hw8lk")
 stretch_mode = 4
 
 [connection signal="gui_input" from="HBoxContainer/Potato" to="." method="_on_potato_gui_input"]
