@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brvjveykd7i18"
-path="res://.godot/imported/rule.png-079b51e60991c8c716c670cecac87d9f.ctex"
+uid="uid://dawqlsbypmfob"
+path="res://.godot/imported/start_pressed.png-8a2aa3c8e389c795ed6f9dda6add45de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resource/images/main_menu_button/rule.png"
-dest_files=["res://.godot/imported/rule.png-079b51e60991c8c716c670cecac87d9f.ctex"]
+source_file="res://resource/images/main_menu_button/start_pressed.png"
+dest_files=["res://.godot/imported/start_pressed.png-8a2aa3c8e389c795ed6f9dda6add45de.ctex"]
 
 [params]
 

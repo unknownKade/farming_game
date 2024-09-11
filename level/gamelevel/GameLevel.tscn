@@ -1,10 +1,15 @@
-[gd_scene load_steps=101 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=113 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
-[ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/gamelevel/Side.tscn" id="2_pyyde"]
+[ext_resource type="Texture2D" uid="uid://bgwt2k01i7m0q" path="res://resource/images/game_level/side.png" id="2_4io8s"]
+[ext_resource type="Texture2D" uid="uid://2m6qxj1fo1fl" path="res://resource/images/game_level/menu_button/home.png" id="3_jqmno"]
+[ext_resource type="Texture2D" uid="uid://b7jftgcvdwfj5" path="res://resource/images/game_level/menu_button/home_hover.png" id="4_dl6em"]
 [ext_resource type="Texture2D" uid="uid://dbbxuqpa75ifm" path="res://resource/images/game_level/routine/1Spring.aseprite" id="4_vn1ca"]
+[ext_resource type="Texture2D" uid="uid://dg6swxt3c2kjm" path="res://resource/images/game_level/menu_button/pause.png" id="4_w2dh1"]
+[ext_resource type="Script" path="res://level/gamelevel/HomeButton.gd" id="5_1k4fg"]
 [ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/gamelevel/phases/season/Season.tscn" id="5_4nm7p"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/season/Routine.gd" id="5_8lg57"]
+[ext_resource type="Texture2D" uid="uid://btmd1b64gh0w0" path="res://resource/images/game_level/menu_button/setting.png" id="5_dc0oy"]
 [ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/gamelevel/phases/environment/Environment.tscn" id="5_h7xs0"]
 [ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/beet/Beet.tscn" id="9_v8gl7"]
 [ext_resource type="PackedScene" uid="uid://bcjo6vxhmi3ti" path="res://level/card/potato/Potato.tscn" id="10_goo3l"]
@@ -35,6 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="27_c0sb0"]
 [ext_resource type="Texture2D" uid="uid://ciyvosijn0cu3" path="res://resource/images/game_level/board/explain.png" id="34_2vgkm"]
 [ext_resource type="Script" path="res://level/gamelevel/Instruction.gd" id="35_bvj23"]
+[ext_resource type="Texture2D" uid="uid://dt2y4e3hyko0s" path="res://resource/images/game_level/menu_button/pause_hover.png" id="40_fu7ob"]
+[ext_resource type="Script" path="res://level/gamelevel/PauseButton.gd" id="41_bch87"]
+[ext_resource type="Texture2D" uid="uid://b3jgjy8m14wp" path="res://resource/images/game_level/menu_button/setting_hover.png" id="42_oaf2f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
 
@@ -3613,11 +3621,13 @@ initial_state = NodePath("Weather")
 last_state = NodePath("Disaster")
 timer_sec = 30
 metadata/_edit_horizontal_guides_ = [0.0, 864.0, 423.0, 429.0, 737.0]
-metadata/_edit_vertical_guides_ = [0.0, 383.0, 1536.0]
+metadata/_edit_vertical_guides_ = [0.0, 383.0, 1536.0, 45.0, 58.0, 93.0, 106.0]
 
-[node name="Side" parent="." instance=ExtResource("2_pyyde")]
+[node name="Side" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Side"]
 position = Vector2(192, 432)
-metadata/_edit_horizontal_guides_ = [432.0, 410.0]
+texture = ExtResource("2_4io8s")
 
 [node name="Board" parent="." instance=ExtResource("10_pw725")]
 unique_name_in_owner = true
@@ -3837,6 +3847,7 @@ unique_name_in_owner = true
 script = ExtResource("27_4wjva")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 process_mode = 3
 
 [node name="White" type="ColorRect" parent="CanvasLayer"]
@@ -3858,6 +3869,44 @@ texture_filter = 1
 position = Vector2(768, 436)
 texture = ExtResource("34_2vgkm")
 script = ExtResource("35_bvj23")
+
+[node name="MenuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HomeButton" type="TextureButton" parent="MenuButtons"]
+offset_left = 9.99998
+offset_top = 802.0
+offset_right = 17.0
+offset_bottom = 810.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_jqmno")
+texture_hover = ExtResource("4_dl6em")
+stretch_mode = 4
+script = ExtResource("5_1k4fg")
+
+[node name="PauseButton" type="TextureButton" parent="MenuButtons"]
+offset_left = 58.0
+offset_top = 802.0
+offset_right = 65.0
+offset_bottom = 810.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("4_w2dh1")
+texture_hover = ExtResource("40_fu7ob")
+stretch_mode = 4
+script = ExtResource("41_bch87")
+
+[node name="OptionButton" type="TextureButton" parent="MenuButtons"]
+offset_left = 106.0
+offset_top = 802.0
+offset_right = 113.0
+offset_bottom = 810.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("5_dc0oy")
+texture_hover = ExtResource("42_oaf2f")
+stretch_mode = 4
 
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Potato/DeckAnimationPlayer" to="Hand/Potato" method="_on_deck_animation_player_animation_finished"]
