@@ -1,10 +1,16 @@
 extends Node2D
 
-@export var timer_label : Node
+func _on_home_button_pressed():
+	SoundManager.sfx_play(&"menu_click")
+	ContentManager.to_home()
 
-func _process(delta):
-	if GameManger.player_turn :
-		timer_label.text = %Board.get_timer_time()
+func _on_pause_button_pressed():
+	SoundManager.sfx_play(&"menu_click")
+	if get_tree().paused :
+		get_tree().paused = false
 	else :
-		timer_label.text = ""
-	
+		get_parent().get_node("CanvasLayer").visible = true
+		get_tree().paused = true
+
+func _on_option_button_pressed():
+	SoundManager.sfx_play(&"menu_click")

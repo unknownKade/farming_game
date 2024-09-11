@@ -61,4 +61,5 @@ label_settings = SubResource("LabelSettings_6eyxt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="faded_out" from="Gradient" to="." method="_on_gradient_faded_out"]

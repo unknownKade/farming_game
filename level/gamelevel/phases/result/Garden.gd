@@ -16,6 +16,7 @@ func enter():
 	play_land_animation()
 
 func play_land_animation():
+	SoundManager.sfx_play(&"frontback")
 	back.play_land_animation(GameManger.opponent_card.name)
 	land.play_land_animation(GameManger.confirmed_card.name)
 

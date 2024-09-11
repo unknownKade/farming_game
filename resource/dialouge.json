@@ -1,0 +1,490 @@
+{
+	"작물 이름": {
+		"이벤트": {
+			"단계": {
+				"kr": [
+					"한글"
+				],
+				"en": [
+					"영어"
+				]
+			}
+		}
+	},
+	"potato": {
+		"select": {
+			"1": {
+				"kr": [
+					"맞아.",
+					"응.",
+					"나?",
+					"나는 감자야.",
+					"어?"
+				],
+				"en": [
+					"alright",
+					"Yes!",
+					"Me?",
+					"I'm Potato.",
+					"Huh?"
+				]
+			},
+			"2": {
+				"kr": [
+					"마, 맞아.",
+					"으, 응.",
+					"나, 나?",
+					"나, 나는 가, 감자야야.",
+					"어어...?"
+				],
+				"en": [
+					"Y, Yeah...",
+					"O, ok...",
+					"M, me?",
+					"I, I a, am, po, potato.",
+					"Huuuh...?"
+				]
+			},
+			"3": {
+				"kr": [
+					"응응응응응응."
+				],
+				"en": [
+					"Yesyesyesyesyes."
+				]
+			},
+			"4": {
+				"kr": [
+					"맞맞아맞아맞맞아맞아아아맞."
+				],
+				"en": [
+					"Righrrightthttttriiiiighhht."
+				]
+			}
+		},
+		"result": {
+			"1": {
+				"kr": [
+					"서, 성장했다!"
+				],
+				"en": [
+					"I've... grown!"
+				]
+			},
+			"2": {
+				"kr": [
+					"더더 많많이이이많만...나?"
+				],
+				"en": [
+					"More... and more... me?"
+				]
+			},
+			"3": {
+				"kr": [
+					"더더더더많많많아지고고많이더많고고고."
+				],
+				"en": [
+					"More and more and more and more... more and more and more... more!"
+				]
+			}
+		},
+		"death": {
+			"0": {
+				"kr": [
+					"엑...",
+					"......",
+					"주, 죽, 죽음?"
+				],
+				"en": [
+					"Eh...",
+					"......",
+					"D, De.. Death?"
+				]
+			}
+		},
+		"revive": {
+			"any": {
+				"kr": [
+					"오, 아.",
+					"누가 죽었어?"
+				],
+				"en": [
+					"Oh, ah.",
+					"Who died? When?"
+				]
+			}
+		},
+		"rule": {
+			"any": {
+				"kr": [
+					"나는 감자야. 척박한 환경에서도 잘 자라나고, 모든 걸 쉽게 흡수하지. 다른 작물에게 쉽게 영향을 받곤 하지. 난 정말 키우기 쉬워. 나를 먹어줘. * 감자 카드는 어느 환경에서든 무럭무럭 성장합니다. 성장한다면 다른 카드를 따라할 수도 있습니다."
+				],
+				"en": [
+					"\"I am a potato. I thrive even in harsh environments and absorb everything easily. I am easily influenced by other crops. I’m really easy to grow. Eat me!\"\n\n[i]The Potato Card grows well in any environment. When it grows, it can mimic other cards.[/i]"
+				]
+			}
+		}
+	},
+	"tomato": {
+		"select": {
+			"1": {
+				"kr": [
+					"그래!",
+					"나, 선택, 현명.",
+					"먹어.",
+					"나, 토마토.",
+					"간다. 먹으러."
+				],
+				"en": [
+					"YES!",
+					"CHOOSE, ME, WISE",
+					"EAT",
+					"I. TOMATO.",
+					"GO. EAT. "
+				]
+			},
+			"2": {
+				"kr": [
+					"당연하지!",
+					"배고픔."
+				],
+				"en": [
+					"OF COURSE!",
+					"HUNGER."
+				]
+			},
+			"3": {
+				"kr": [
+					"더. 거대.",
+					"줘."
+				],
+				"en": [
+					"LARGER.",
+					"GIVE ME."
+				]
+			},
+			"4": {
+				"kr": [
+					"다 내 거.",
+					"끄윽, 끄윽, 끄윽."
+				],
+				"en": [
+					"ALL MINE.",
+					"GRRR... ARGH! ..R...RR..."
+				]
+			}
+		},
+		"result": {
+			"1": {
+				"kr": [
+					"(꺼억)"
+				],
+				"en": [
+					"(BURP)"
+				]
+			},
+			"2": {
+				"kr": [
+					"아주 큼!"
+				],
+				"en": [
+					"HUGE!"
+				]
+			},
+			"3": {
+				"kr": [
+					"매우 큼!"
+				],
+				"en": [
+					"HUMONGOUS!"
+				]
+			}
+		},
+		"death": {
+			"0": {
+				"kr": [
+					"안 돼!",
+					"너. 어리석다."
+				],
+				"en": [
+					"NO!",
+					"YOU. FOOLISH."
+				]
+			}
+		},
+		"revive": {
+			"any": {
+				"kr": [
+					"나는 어디에나 존재한다."
+				],
+				"en": [
+					"I AM EVERYWHERE"
+				]
+			}
+		},
+		"rule": {
+			"any": {
+				"kr": [
+					"토마토는 나다. 나는 많은 걸 먹어치우지. 맛은 다 똑같아도, 난 언제나 배가 고파. 끊임없이. * 토마토 카드는 상대방의 카드를 잡아먹으며 성장합니다. 같은 턴에 등장한 상대 카드의 레벨이 1 감소합니다."
+				],
+				"en": [
+					"\"the Tomato am I. I devour everything. Even though I always taste the same, I'm always hungry. Endlessly.\"\n\n[i]The Tomato Card grows by consuming the opponent's cards. The level of any opponent's card that appears in the same turn is reduced by 1.[/i]"
+				]
+			}
+		}
+	},
+	"carrot": {
+		"select": {
+			"1": {
+				"kr": [
+					"나 불렀어?",
+					"나는 당근이야. 아직 팔다리가 자라나진 않았지만 앞으로 큰 활약을 하겠지. 아마도.",
+					"다른 선택은 없었어?",
+					"다른 애들도 눌러 봤어? 토마토, 감자, 비트 말이야.",
+					"난 아주 연약하다고. 빨리 성장하지 않으면 쉽게 죽어버리고 말아."
+				],
+				"en": [
+					"Did you call me?",
+					"I'm the Carrot. I haven't grown my arms and legs yet, but I'll be a big deal someday. Probably.",
+					"Didn't have any other choice?",
+					"Did you try the others? Tomato, Potato, Beet?",
+					"I'm really fragile. If I don't grow quickly, I'll just wither away."
+				]
+			},
+			"2": {
+				"kr": [
+					"이게 돼?",
+					"신중하게 생각해."
+				],
+				"en": [
+					"Is this okay?",
+					"Think carefully."
+				]
+			},
+			"3": {
+				"kr": [
+					"아주 좋아.",
+					"뭘 그렇게 봐?"
+				],
+				"en": [
+					"Very good.",
+					"What are you looking at?"
+				]
+			},
+			"4": {
+				"kr": [
+					"결과는 네 책임이야.",
+					"어디까지 왔더라..."
+				],
+				"en": [
+					"The outcome is your responsibility.",
+					"Where was I..."
+				]
+			}
+		},
+		"result": {
+			"1": {
+				"kr": [
+					"봐! 팔 하나가 생겼어! 꼬리도 생겼다고!",
+					"다른 작물을 만질 수 있게 됐어. 흥미로운 걸..."
+				],
+				"en": [
+					"Look! I've got an arm! And a tail too!",
+					"I can touch other crops now. Interesting..."
+				]
+			},
+			"2": {
+				"kr": [
+					"다리가 생겼어. 이제 더 빠르게 움직일 수 있겠지?"
+				],
+				"en": [
+					"I've got legs. Now I can move faster, right?"
+				]
+			},
+			"3": {
+				"kr": [
+					"날 보고 있는 거야? 어두워서 잘 안 보여."
+				],
+				"en": [
+					"Are you watching me? It's too dark to see well."
+				]
+			}
+		},
+		"escape": {
+			"any": {
+				"kr": [
+					"나 간다, 잘 있어!"
+				],
+				"en": [
+					"Goodbye everyone!"
+				]
+			}
+		},
+		"escape": {
+			"any": {
+				"kr": [
+					"하하하하하하하하하하!"
+				],
+				"en": [
+					"HAHAHAHAHAHAHAHAHAHA!!!!"
+				]
+			}
+		},
+		"swap": {
+			"any": {
+				"kr": [
+					""
+				],
+				"en": [
+					"Drop the beat!"
+				]
+			}
+		},
+		"death": {
+			"0": {
+				"kr": [
+					"결국 이렇게 되는구나.",
+					"싫어! 싫어! 싫어!",
+					"흑, 흑... "
+				],
+				"en": [
+					"So this is how it ends.",
+					"No! No! No!",
+					""
+				]
+			}
+		},
+		"revive": {
+			"any": {
+				"kr": [
+					"세상에!",
+					"나는 죽은 이전의 나와 같은 걸까?"
+				],
+				"en": [
+					"Oh my!",
+					"Am I the same as I was before I died?"
+				]
+			}
+		},
+		"rule": {
+			"any": {
+				"kr": [
+					"하하하. 여기서 만나는 건 어색하네. 안 그래? 날 잘 대해 줘. 난 예민해, 섬세하고. 무서우면 도망을 치지. 마치 너처럼 말이야. 안 그런다고? 왜? 그럼 네 걸 내놔. 난 필요하니까. ",
+					"참, 난 당근이야. 알려주기 싫었는데, 어쩔 수 없지. * 당근 카드는 주체적으로 활동합니다. 움직일 수단만 생긴다면요."
+				],
+				"en": [
+					"\"Haha, it's awkward meeting like this, isn't it? Treat me well. I'm sensitive and delicate. If I'm scared, I'll run away. Just like you. No? Why not? Then give me yours. I need it.\"",
+					"\"Oh, by the way, I'm the Carrot. I didn't want to tell you, but I had no choice.\"\n\n[i]The Carrot Card acts independently. As long as it has a means to move.[/i]"
+				]
+			}
+		}
+	},
+	"beet": {
+		"select": {
+			"1": {
+				"kr": [
+					"얼마든지 도와줄게요.",
+					"저를 찾으셨나요?",
+					"저는 비트라고 해요."
+				],
+				"en": [
+					"I'll help you anytime.",
+					"Were you looking for me?",
+					"I'm the Beet."
+				]
+			},
+			"2": {
+				"kr": [
+					"이번에도 제 도움이 필요하신가요?",
+					"도움이 되었으면 좋겠네요."
+				],
+				"en": [
+					"Do you need my help again?",
+					"I hope I can be of assistance."
+				]
+			},
+			"3": {
+				"kr": [
+					"이번에도?",
+					"도움이 되고 있나요?"
+				],
+				"en": [
+					"Again?",
+					"Am I helping?"
+				]
+			},
+			"4": {
+				"kr": [
+					"이, 번?",
+					"도움."
+				],
+				"en": [
+					"This, time?",
+					"Help."
+				]
+			}
+		},
+		"result": {
+			"1": {
+				"kr": [
+					"조금 괜찮아졌나요?"
+				],
+				"en": [
+					"Are you feeling a bit better now?"
+				]
+			},
+			"2": {
+				"kr": [
+					"안심하세요."
+				],
+				"en": [
+					"Don't worry."
+				]
+			},
+			"3": {
+				"kr": [
+					"괜, ㅊ찮.",
+					"다, 다, 다,"
+				],
+				"en": [
+					"I'm... okay.",
+					"Ev-every...thing..."
+				]
+			}
+		},
+		"death": {
+			"0": {
+				"kr": [
+					"......",
+					"아아..."
+				],
+				"en": [
+					"......",
+					"Ahh..."
+				]
+			}
+		},
+		"revive": {
+			"any": {
+				"kr": [
+					"안녕하세요?",
+					"어떻게 도와드릴까요?"
+				],
+				"en": [
+					"Hello?",
+					"How can I rescue you?"
+				]
+			}
+		},
+		"rule": {
+			"any": {
+				"kr": [
+					"안녕하세요, 저는 비트라고 해요. 제가 필요하다면 언제든 불러 주세요. * 비트 카드 사용 시 해당 턴에 선택된 상대 카드가 +1 성장합니다."
+				],
+				"en": [
+					"\"Hello, I'm the Beet. Call me whenever you need me.\"\n\n[i]Using the Beet Card causes the selected opponent's card to grow by +1 during that turn.[/i]"
+				]
+			}
+		}
+	}
+}

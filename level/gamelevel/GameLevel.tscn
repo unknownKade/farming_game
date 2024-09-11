@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=101 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="PackedScene" uid="uid://drpcmsyafktro" path="res://level/gamelevel/Side.tscn" id="2_pyyde"]
@@ -13,20 +13,28 @@
 [ext_resource type="PackedScene" uid="uid://ssl6ge77mc3l" path="res://level/card/tomato/Tomato.tscn" id="12_ge1t6"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/result/Garden.gd" id="14_6vmu0"]
 [ext_resource type="PackedScene" uid="uid://d1sql72y5avu8" path="res://level/gamelevel/phases/result/land/Land.tscn" id="14_wnyw6"]
+[ext_resource type="AudioStream" uid="uid://x8tdqdu4lhgb" path="res://resource/audio/card_result.wav" id="16_jgkln"]
 [ext_resource type="PackedScene" uid="uid://b6xd15gko1r23" path="res://level/gamelevel/phases/result/land/Back.tscn" id="16_kuwy0"]
+[ext_resource type="AudioStream" uid="uid://hgtu14xbl1l7" path="res://resource/audio/card_select.wav" id="16_pybk0"]
+[ext_resource type="AudioStream" uid="uid://cgv48tyvedmfx" path="res://resource/audio/card_deselect.wav" id="16_uaijc"]
+[ext_resource type="AudioStream" uid="uid://t4fd22gwa3bh" path="res://resource/audio/card_display.wav" id="19_b6nn1"]
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/phases/result/Effect.tscn" id="19_wsyi1"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Hand.gd" id="19_yccec"]
 [ext_resource type="Script" path="res://scripts/cards/Card.gd" id="20_je43g"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/result/Result.gd" id="20_x2kq7"]
 [ext_resource type="PackedScene" uid="uid://dpk0yuafrxxsh" path="res://level/gamelevel/phases/end/End.tscn" id="20_x4yi0"]
+[ext_resource type="AudioStream" uid="uid://c2fmyel12fsqt" path="res://resource/audio/carrot_run.wav" id="22_jgei1"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="23_ckdfh"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="24_tlqqd"]
+[ext_resource type="Script" path="res://level/gamelevel/ColorRect.gd" id="25_7q5rd"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="25_db010"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Player2.gd" id="25_vgpto"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="26_6avfx"]
 [ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/gamelevel/phases/disaster/Disaster.tscn" id="26_xqr1u"]
 [ext_resource type="Script" path="res://level/gamelevel/DailogueManager.gd" id="27_4wjva"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="27_c0sb0"]
+[ext_resource type="Texture2D" uid="uid://ciyvosijn0cu3" path="res://resource/images/game_level/board/explain.png" id="34_2vgkm"]
+[ext_resource type="Script" path="res://level/gamelevel/Instruction.gd" id="35_bvj23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
 
@@ -323,6 +331,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PotatoAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vgc5u"]
 resource_name = "flip"
@@ -400,6 +423,61 @@ tracks/5/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PotatoAudio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_jgkln")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_cranr"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -0.5),
+"update": 0,
+"values": [Vector2(-36.8, 9.8), Vector2(-40.8, -0.199999)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.376991]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_rgvl5"]
 resource_name = "return"
@@ -451,6 +529,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PotatoAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}, {
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0, 0.7)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_u5a7g"]
 resource_name = "revive"
@@ -480,6 +577,33 @@ tracks/1/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.376991]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PotatoAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_6ynlk"]
 resource_name = "select"
@@ -531,6 +655,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 10]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PotatoAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.9,
+"stream": ExtResource("16_pybk0")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_di5vr"]
 _data = {
@@ -538,6 +677,7 @@ _data = {
 "confirm": SubResource("Animation_vjha8"),
 "deselect": SubResource("Animation_klsn4"),
 "flip": SubResource("Animation_vgc5u"),
+"hover": SubResource("Animation_cranr"),
 "return": SubResource("Animation_rgvl5"),
 "revive": SubResource("Animation_u5a7g"),
 "select": SubResource("Animation_6ynlk")
@@ -696,6 +836,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TomatoAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_61hrv"]
 resource_name = "flip"
@@ -773,6 +928,61 @@ tracks/5/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TomatoAudio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_jgkln")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_d3o2l"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(-12.2, 1.6), Vector2(-14, -7.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.202458]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_t8ojj"]
 resource_name = "return"
@@ -824,6 +1034,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TomatoAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}, {
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_1rk36"]
 resource_name = "revive"
@@ -853,6 +1082,21 @@ tracks/1/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TomatoAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_58rbv"]
 resource_name = "select"
@@ -904,6 +1148,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 5, 10]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TomatoAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.9,
+"stream": ExtResource("16_pybk0")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0oht4"]
 _data = {
@@ -911,6 +1170,7 @@ _data = {
 "confirm": SubResource("Animation_gky7j"),
 "deselect": SubResource("Animation_tv4c8"),
 "flip": SubResource("Animation_61hrv"),
+"hover": SubResource("Animation_d3o2l"),
 "return": SubResource("Animation_t8ojj"),
 "revive": SubResource("Animation_1rk36"),
 "select": SubResource("Animation_58rbv")
@@ -1081,6 +1341,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 0, 5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarrotAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_s1dey"]
 resource_name = "escape"
@@ -1132,6 +1407,21 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, -0.0261799, -0.0261799]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarrotAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("22_jgei1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_0ltym"]
 resource_name = "escape_return"
@@ -1182,6 +1472,33 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarrotAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:skew")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_use1c"]
@@ -1260,6 +1577,73 @@ tracks/5/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CarrotAudio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_jgkln")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/6/use_blend = true
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:skew")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_v2btt"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(13.2, 1.6), Vector2(15, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.198968]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2ouei"]
 resource_name = "return"
@@ -1311,6 +1695,25 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarrotAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}, {
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_u8a2m"]
 resource_name = "revive"
@@ -1339,6 +1742,33 @@ tracks/1/keys = {
 "args": [],
 "method": &"sync_card_level"
 }]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CarrotAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.198968]
 }
 
 [sub_resource type="Animation" id="Animation_pgle1"]
@@ -1391,6 +1821,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 5, 10]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarrotAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.9,
+"stream": ExtResource("16_pybk0")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_au1u5"]
 _data = {
@@ -1400,6 +1845,7 @@ _data = {
 "escape": SubResource("Animation_s1dey"),
 "escape_return": SubResource("Animation_0ltym"),
 "flip": SubResource("Animation_use1c"),
+"hover": SubResource("Animation_v2btt"),
 "return": SubResource("Animation_2ouei"),
 "revive": SubResource("Animation_u8a2m"),
 "select": SubResource("Animation_pgle1")
@@ -1558,6 +2004,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeetAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7q8ub"]
 resource_name = "flip"
@@ -1635,6 +2096,61 @@ tracks/5/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BeetAudio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_jgkln")
+}],
+"times": PackedFloat32Array(0.4)
+}
+tracks/6/use_blend = true
+
+[sub_resource type="Animation" id="Animation_t3sh8"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(38.3, 9.8), Vector2(41.4, 1.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.366519]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8qtjt"]
 resource_name = "return"
@@ -1686,6 +2202,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeetAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_uaijc")
+}, {
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0, 0.8)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_m5nlr"]
 resource_name = "revive"
@@ -1715,6 +2250,21 @@ tracks/1/keys = {
 "method": &"sync_card_level"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BeetAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.33,
+"start_offset": 0.2,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_y6rh6"]
 resource_name = "select"
@@ -1766,6 +2316,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [5, 10]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BeetAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.9,
+"stream": ExtResource("16_pybk0")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wbt0y"]
 _data = {
@@ -1773,6 +2338,7 @@ _data = {
 "confirm": SubResource("Animation_eedwl"),
 "deselect": SubResource("Animation_pytl5"),
 "flip": SubResource("Animation_7q8ub"),
+"hover": SubResource("Animation_t3sh8"),
 "return": SubResource("Animation_8qtjt"),
 "revive": SubResource("Animation_m5nlr"),
 "select": SubResource("Animation_y6rh6")
@@ -2401,6 +2967,21 @@ tracks/18/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/19/type = "audio"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../HandAnimationPlayer/AudioStreamPlayer2D")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"clips": [{
+"end_offset": 0.15,
+"start_offset": 0.0,
+"stream": ExtResource("19_b6nn1")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/19/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v6mre"]
 _data = {
@@ -2521,6 +3102,34 @@ tracks/8/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_m52w4"]
+resource_name = "beet_hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(1112, 79), Vector2(1128, 38.0029)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Beet:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.366519]
+}
+
 [sub_resource type="Animation" id="Animation_6xsk0"]
 resource_name = "beet_select"
 length = 0.5
@@ -2535,6 +3144,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Vector2(1112, 79), Vector2(1033, 285.003)]
+}
+
+[sub_resource type="Animation" id="Animation_2ugo0"]
+resource_name = "carrot_hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Carrot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(987, 38), Vector2(995, -4.99747)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Carrot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.191986]
 }
 
 [sub_resource type="Animation" id="Animation_8chom"]
@@ -2664,6 +3301,34 @@ tracks/8/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_m21er"]
+resource_name = "potato_hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Potato:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(735, 80), Vector2(712, 21.0018)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Potato:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.376991]
+}
+
 [sub_resource type="Animation" id="Animation_yqor7"]
 resource_name = "potato_select"
 length = 0.5
@@ -2678,6 +3343,34 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Vector2(735, 80), Vector2(825.999, 273.002)]
+}
+
+[sub_resource type="Animation" id="Animation_6i7id"]
+resource_name = "tomato_hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tomato:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, -2),
+"update": 0,
+"values": [Vector2(856, 39), Vector2(845, -13.9978)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tomato:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.202458]
 }
 
 [sub_resource type="Animation" id="Animation_tlkn8"]
@@ -2699,11 +3392,124 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_minb2"]
 _data = {
 "RESET": SubResource("Animation_v40up"),
+"beet_hover": SubResource("Animation_m52w4"),
 "beet_select": SubResource("Animation_6xsk0"),
+"carrot_hover": SubResource("Animation_2ugo0"),
 "carrot_select": SubResource("Animation_8chom"),
 "display": SubResource("Animation_3t5cq"),
+"potato_hover": SubResource("Animation_m21er"),
 "potato_select": SubResource("Animation_yqor7"),
+"tomato_hover": SubResource("Animation_6i7id"),
 "tomato_select": SubResource("Animation_tlkn8")
+}
+
+[sub_resource type="Animation" id="Animation_iu64a"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.537255, 0.537255, 0.537255, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_atpj4"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5610, -3835), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.537255, 0.537255, 0.537255, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuykl"]
+_data = {
+"RESET": SubResource("Animation_iu64a"),
+"fade_in": SubResource("Animation_atpj4")
 }
 
 [node name="GameLevel" type="Node2D" node_paths=PackedStringArray("initial_state", "last_state")]
@@ -2727,7 +3533,7 @@ material = SubResource("ShaderMaterial_jk7f5")
 position = Vector2(960, 432)
 
 [node name="Weather" type="Node2D" parent="."]
-position = Vector2(182, 79)
+position = Vector2(177, 84)
 script = SubResource("GDScript_ma5pm")
 
 [node name="IntroCard" type="Sprite2D" parent="Weather"]
@@ -2740,6 +3546,7 @@ script = ExtResource("5_8lg57")
 
 [node name="Season" parent="Weather" instance=ExtResource("5_4nm7p")]
 texture_filter = 1
+position = Vector2(5, -5)
 
 [node name="Environment" parent="." instance=ExtResource("5_h7xs0")]
 unique_name_in_owner = true
@@ -2773,7 +3580,7 @@ texture_repeat = 1
 script = ExtResource("20_x2kq7")
 
 [node name="Disaster" parent="." instance=ExtResource("26_xqr1u")]
-position = Vector2(189, 680.409)
+position = Vector2(185, 677)
 scale = Vector2(6, 6)
 
 [node name="Hand" type="Node2D" parent="."]
@@ -2794,6 +3601,8 @@ libraries = {
 "": SubResource("AnimationLibrary_di5vr")
 }
 
+[node name="PotatoAudio" type="AudioStreamPlayer" parent="Hand/Potato"]
+
 [node name="Tomato" parent="Hand" instance=ExtResource("12_ge1t6")]
 z_index = 5
 position = Vector2(-12.2, 1.6)
@@ -2803,6 +3612,8 @@ rotation = -0.202458
 libraries = {
 "": SubResource("AnimationLibrary_0oht4")
 }
+
+[node name="TomatoAudio" type="AudioStreamPlayer" parent="Hand/Tomato"]
 
 [node name="Carrot" parent="Hand" instance=ExtResource("11_wd7mn")]
 unique_name_in_owner = true
@@ -2815,6 +3626,8 @@ libraries = {
 "": SubResource("AnimationLibrary_au1u5")
 }
 
+[node name="CarrotAudio" type="AudioStreamPlayer" parent="Hand/Carrot"]
+
 [node name="Beet" parent="Hand" instance=ExtResource("9_v8gl7")]
 z_index = 5
 position = Vector2(38.3, 9.8)
@@ -2825,12 +3638,18 @@ libraries = {
 "": SubResource("AnimationLibrary_wbt0y")
 }
 
+[node name="BeetAudio" type="AudioStreamPlayer" parent="Hand/Beet"]
+
 [node name="HandAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 root_node = NodePath("../Hand")
 libraries = {
 "": SubResource("AnimationLibrary_v6mre")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="HandAnimationPlayer"]
+position = Vector2(0.00012207, 6.10352e-05)
+attenuation = -2.0
 
 [node name="Card" type="Node2D" parent="."]
 script = ExtResource("20_je43g")
@@ -2856,6 +3675,14 @@ hframes = 6
 vframes = 6
 script = ExtResource("23_ckdfh")
 
+[node name="ColorRect" type="ColorRect" parent="Player2/Potato"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
+
 [node name="Tomato" type="Sprite2D" parent="Player2"]
 position = Vector2(856, 39)
 rotation = -0.202458
@@ -2865,6 +3692,14 @@ hframes = 6
 vframes = 6
 script = ExtResource("23_ckdfh")
 
+[node name="ColorRect" type="ColorRect" parent="Player2/Tomato"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
+
 [node name="Carrot" type="Sprite2D" parent="Player2"]
 position = Vector2(987, 38)
 rotation = 0.191986
@@ -2873,6 +3708,14 @@ texture = ExtResource("26_6avfx")
 hframes = 5
 vframes = 4
 script = ExtResource("23_ckdfh")
+
+[node name="ColorRect" type="ColorRect" parent="Player2/Carrot"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
 
 [node name="Beet" type="Sprite2D" parent="Player2"]
 texture_filter = 1
@@ -2884,6 +3727,14 @@ hframes = 5
 vframes = 4
 script = ExtResource("23_ckdfh")
 
+[node name="ColorRect" type="ColorRect" parent="Player2/Beet"]
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 32.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("25_7q5rd")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player2"]
 libraries = {
 "": SubResource("AnimationLibrary_minb2")
@@ -2893,10 +3744,48 @@ libraries = {
 unique_name_in_owner = true
 script = ExtResource("27_4wjva")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="White" type="ColorRect" parent="CanvasLayer"]
+visible = false
+self_modulate = Color(0.537255, 0.537255, 0.537255, 0)
+offset_left = -36.0
+offset_top = -61.0
+offset_right = 1662.0
+offset_bottom = 938.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../White")
+libraries = {
+"": SubResource("AnimationLibrary_tuykl")
+}
+
+[node name="Instruction" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(768, 436)
+texture = ExtResource("34_2vgkm")
+script = ExtResource("35_bvj23")
+
 [connection signal="animation_finished" from="Garden/AnimationPlayer" to="Garden" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Potato/DeckAnimationPlayer" to="Hand/Potato" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Tomato/DeckAnimationPlayer" to="Hand/Tomato" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Carrot/DeckAnimationPlayer" to="Hand/Carrot" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Hand/Beet/DeckAnimationPlayer" to="Hand/Beet" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="HandAnimationPlayer" to="Disaster" method="_on_level_animation_animation_finished"]
+[connection signal="mouse_entered" from="Player2/Potato/ColorRect" to="Player2/Potato/ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Player2/Potato/ColorRect" to="Player2/Potato/ColorRect" method="_on_mouse_exited"]
+[connection signal="signal_click" from="Player2/Potato/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="mouse_entered" from="Player2/Tomato/ColorRect" to="Player2/Tomato/ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Player2/Tomato/ColorRect" to="Player2/Tomato/ColorRect" method="_on_mouse_exited"]
+[connection signal="signal_click" from="Player2/Tomato/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="mouse_entered" from="Player2/Carrot/ColorRect" to="Player2/Carrot/ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Player2/Carrot/ColorRect" to="Player2/Carrot/ColorRect" method="_on_mouse_exited"]
+[connection signal="signal_click" from="Player2/Carrot/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="mouse_entered" from="Player2/Beet/ColorRect" to="Player2/Beet/ColorRect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Player2/Beet/ColorRect" to="Player2/Beet/ColorRect" method="_on_mouse_exited"]
+[connection signal="signal_click" from="Player2/Beet/ColorRect" to="Player2" method="_on_color_rect_signal_click"]
+[connection signal="animation_finished" from="Player2/AnimationPlayer" to="Player2" method="_on_animation_player_animation_finished"]
 [connection signal="finished_speech_bubble" from="DialougeManager" to="Hand" method="_on_dialouge_manager_finished_speech_bubble"]
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="instruction_clicked" from="CanvasLayer/Instruction" to="." method="_on_instruction_instruction_clicked"]

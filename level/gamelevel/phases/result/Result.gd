@@ -1,14 +1,12 @@
 extends State
 
-signal return_to_hand
-
 const next_state = "Disaster"
 
 var p1 : Crop
 var p2 : Crop
 
 func _ready():
-	%Hand.card_return_ended.connect(end_result)
+	%Hand.card_return_ended.connect(end_phase)
 
 func enter():
 	p1 = GameManger.confirmed_card
@@ -31,17 +29,18 @@ func card_affect():
 	p2.skill(p1)
 	play_result_animation()
 
-func _on_animation_player_animation_finished(anim_name):
+func end_phase():
 	if p1 is Beet and p1.level == 4:
 		check_beet_skill()
-	end_phase()
-	
-func end_phase():
 	if p1 is Potato :
 		check_potato_state()
+	if GameManger.p1_carrot_escaped :
+		%Carrot.come_back()
+		
+	%Player2.deselect_card(GameManger.opponent_card)
 	
 	self.visible = false
-	return_to_hand.emit(p1)
+	end_result()
 
 func check_beet_skill():
 	var revived_crop = p1.revive()
@@ -57,6 +56,4 @@ func check_potato_state() :
 		p1.random_debuff()
 
 func end_result():
-	if GameManger.carrot_escaped :
-		%Carrot.come_back()
 	Transition.emit(self, next_state)

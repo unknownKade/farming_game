@@ -11,7 +11,9 @@ func _init():
 	self.state = States.NONE
 
 func skill(p2 : Crop):
-	if level != 3 or roll_dice(0.5) :
+	if level == 4 :
+		revive()
+	elif level != 3 or roll_dice(0.5) :
 		grow_opponent(p2)
 
 func grow_opponent(p2 : Crop):
@@ -26,17 +28,17 @@ func revive() :
 	
 	var dead_crops: Array
 	
-	for crop in GameManger.p1_deck:
-		if GameManger.p1_deck[crop].level == 0 :
-			dead_crops.append(GameManger.p1_deck[crop])
+	for crop in GameManger.p2_deck:
+		if GameManger.p2_deck[crop].level == 0 :
+			dead_crops.append(GameManger.p2_deck[crop])
 	
 	if dead_crops.is_empty() :
 		return
 	
 	var revived_crop = dead_crops[randi_range(0, dead_crops.size() - 1)]
 	
-	GameManger.p1_deck[revived_crop.name].level = 1
-	
+	GameManger.p2_result(revived_crop, 0, "revive")
+
 	has_revive = false
 	can_have_revive = false
 	

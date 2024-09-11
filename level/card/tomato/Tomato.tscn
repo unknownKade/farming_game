@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://ssl6ge77mc3l"]
+[gd_scene load_steps=19 format=3 uid="uid://ssl6ge77mc3l"]
 
 [ext_resource type="Script" path="res://level/card/tomato/Tomato.gd" id="1_qbr1e"]
 [ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_1am5r"]
+[ext_resource type="AudioStream" uid="uid://df3msb5vjreq4" path="res://resource/audio/card_seeding.wav" id="2_7yl7v"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="2_30hg2"]
+[ext_resource type="AudioStream" uid="uid://bb71iw7jqwny8" path="res://resource/audio/card_seeding 2.wav" id="3_ievgf"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_pl4oj"]
 [ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="6_smdxl"]
 
@@ -200,6 +202,55 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(24, 32), Vector2(24, 81), Vector2(24, 66), Vector2(24, 93), Vector2(24, 77), Vector2(24, 102), Vector2(24, 114)]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_7yl7v")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_7yl7v")
+}],
+"times": PackedFloat32Array(0.7, 1.4)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ievgf")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_ievgf")
+}],
+"times": PackedFloat32Array(0.8)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
@@ -326,5 +377,10 @@ hue_variation_min = -0.32
 hue_variation_max = 1.0
 anim_speed_max = 73.64
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="gui_input" from="Mask" to="Mask" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Mask" to="Mask" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Mask" to="Mask" method="_on_mouse_exited"]
