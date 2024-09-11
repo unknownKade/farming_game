@@ -75,8 +75,8 @@ func play_result_animation():
 	deck_anim_player.queue("flip");
 
 func return_card():
-	if self.name == GameManger.confirmed_card.name :
-		deck_anim_player.queue("return")
+	#if self.name == GameManger.confirmed_card.name :
+	deck_anim_player.queue("return")
 
 func play_this_anim(anim_name):
 	deck_anim_player.play(anim_name)
