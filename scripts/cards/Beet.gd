@@ -34,11 +34,8 @@ func revive(is_p1) :
 		return
 	
 	var revived_crop = dead_crops[randi_range(0, dead_crops.size() - 1)]
-	#Beet revive
-	#print('beet revived ', revived_crop.name)
-	#if !is_p1 :
-		#GameManger.p2_result(revived_crop, 0, "revive")
-	revived_crop.level = 1
+	
+	revived_crop.be_revived()
 
 	has_revive = false
 	can_have_revive = false

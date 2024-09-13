@@ -43,9 +43,12 @@ func process_click(is_left_click):
 func sync_card_level():
 	var card = GameManger.p1_deck[self.name]
 	self.level = card.level
+	
 	if card.level == 0 or card.state == Crop.States.LOCKED :
 		self.locked = true
-		
+	else :
+		self.locked = false
+	
 	$Mask/Sprite2D.set_frame(frame_set[level])
 	$Mask.signal_click.connect(process_click)
 	$Mask.signal_hover.connect(hover_card)

@@ -26,3 +26,7 @@ func roll_dice(probability : float) -> bool:
 
 func lock():
 	self.state = States.LOCKED
+
+func be_revived():
+	self.level = 1
+	self.state = States.NONE
