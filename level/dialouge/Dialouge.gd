@@ -11,8 +11,7 @@ signal finished_text
 const rule_textbox_size = Vector2(1536- (53 *2) -41, 170)
 const game_textbox_size = Vector2(235, 0)
 
-func setup(crop_name, event, is_rule):
-	var level
+func setup(crop_name, level, event, is_rule):
 	var color = ContentManager.color_dictionary[crop_name]
 	
 	if is_rule:
@@ -23,11 +22,11 @@ func setup(crop_name, event, is_rule):
 	panel.self_modulate = color
 	next_arrow.self_modulate = color
 	next_arrow.modulate.a = 0
-	if event != "swap" and event != "escape" and !is_rule :
-		level = str(GameManger.p1_deck[crop_name].level)
-	else :
+
+	if event == "swap" or event == "escape" or is_rule :
 		level = "any"
-	var text_arr = ContentManager.dialouge_dict[crop_name.to_lower()][event][level]["en"]
+		
+	var text_arr = ContentManager.dialouge_dict[crop_name.to_lower()][event][str(level)]["en"]
 	var text = text_arr[randi_range(0, text_arr.size()-1)]
 	textbox.start_dialouge(crop_name, text)
 

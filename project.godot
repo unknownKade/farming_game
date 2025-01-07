@@ -12,7 +12,7 @@ config_version=5
 
 config/name="farming"
 run/main_scene="res://level/mainmenu/MainMenu.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [aseprite_importers]
@@ -33,8 +33,19 @@ SoundManager="*res://scripts/SoundManager.gd"
 
 window/size/viewport_width=1536
 window/size/viewport_height=864
-window/stretch/mode="canvas_items"
+window/size/mode=2
+window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[filesystem]
+
+import/blender/enabled=false
 
 [gui]
 
@@ -53,5 +64,6 @@ theme/custom="res://resource/dialogue_theme.tres"
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

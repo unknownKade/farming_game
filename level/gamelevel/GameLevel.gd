@@ -2,49 +2,48 @@ extends Node2D
 
 class_name GameLevel
 
-@export var initial_state : State
-@export var last_state : State
-@export_range(1,3) var test_year : int = 1
-@export var timer_sec : int = 5
-
-var current_state
-var states : Dictionary
+@export_range(1,3) var test_year: int = 1
+@export var phases: Array[Node]
+@export var instructions: Node
+var current_state: Node
+var current_phase: int = 0
+var states: Dictionary
 
 func _ready():
-	$CanvasLayer/AnimationPlayer.play("fade_in")
-	
-	GameManger.current_round = test_year * 4 - 4 + 1
-	current_state = initial_state
-	
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transition.connect(on_child_transition)
-
-func on_child_transition(state, next_state):
-	if state != current_state:
-		print("current_state: {}", current_state)
-		print("state: {}", state)
-		print("next state : {}", next_state)
-		return
-		
-	if state == last_state:
-		GameManger.new_year()
-	
-	var new_state = states.get(next_state.to_lower())
-	
-	current_state = new_state
-	new_state.enter()
-	
-func _on_instruction_instruction_clicked():
-	if current_state == initial_state:
-		initial_state.enter()
-	
-	if get_tree().paused :
-		$CanvasLayer.hide()
-		get_tree().paused = false
-
-func _on_animation_player_animation_finished(anim_name):
-	await get_tree().create_timer(1).timeout
-	$CanvasLayer/Instruction.show()
+	%Instructions.visible = true
+	%Instructions.instruction_clicked.connect(_on_instruction_click)
 	SoundManager.play_bgm()
+	for phase in phases:
+		phase.Transition.connect(on_state_exit)
+	#_on_instruction_instruction_clicked()
+	instructions.get_node(GameManger.animation_player).play("fade_in")
+	
+func on_state_exit(state: Node):
+	if state == phases[-1]:
+		GameManger.current_round += 1
+		%Player1.played_card = null
+		%Player2.played_card = null
+		current_phase =0
+		
+	else :
+		current_phase +=1
+		
+	phases[current_phase].enter()
+	
+func _on_instruction_click():
+	#start game after instruction is clicked
+	if GameManger.current_round == 0 :
+		GameManger.current_round = test_year * 4 - 4 + 1
+		phases[current_phase].enter()
+
+func reset():
+	for child in %Player1.get_children():
+		child.level =1
+	
+	for child in %Player2.get_children():
+		if child is Node2D:
+			child.level =1
+	
+	GameManger.current_round = 0
+	%Instructions.first_time = true
+	

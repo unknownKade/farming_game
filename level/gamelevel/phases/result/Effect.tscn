@@ -329,16 +329,17 @@ texture_repeat = 1
 position = Vector2(959, 424)
 scale = Vector2(1, 1.6)
 texture = ExtResource("1_5exvj")
-hframes = 7
+hframes = 6
 vframes = 4
-frame = 26
+frame = 23
 
 [node name="Love" type="Sprite2D" parent="."]
+visible = false
 z_index = 20
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(942, 429)
-scale = Vector2(15, 15)
+position = Vector2(767.5, 435.248)
+scale = Vector2(4.4883, 6.49624)
 texture = ExtResource("3_yh3k4")
 hframes = 3
 
@@ -377,10 +378,12 @@ position = Vector2(767, 434)
 texture = ExtResource("8_dyj62")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
+visible = false
 z_index = 20
 custom_minimum_size = Vector2(1600, 900)
-offset_right = 1600.0
+offset_left = -124.0
+offset_top = -118.0
+offset_right = 1660.0
 offset_bottom = 900.0
 color = Color(0.560784, 0, 0, 1)
 
@@ -395,7 +398,7 @@ texture = ExtResource("8_dyj62")
 centered = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-volume_db = 10.0
+volume_db = 6.0
 panning_strength = 0.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

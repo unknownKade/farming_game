@@ -17,8 +17,8 @@ func enter():
 
 func play_land_animation():
 	SoundManager.sfx_play(&"frontback")
-	back.play_land_animation(GameManger.opponent_card.name)
-	land.play_land_animation(GameManger.confirmed_card.name)
+	back.play_land_animation(%Player2.played_card.name)
+	land.play_land_animation(%Player1.played_card.name)
 
 	await get_tree().create_timer(3).timeout
 	effect.play_environment()
@@ -30,7 +30,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "fadeout" :
 		reset(back)
 		reset(land)
-		Transition.emit(self, next_state)
+		exit()
 
 #this is not done with animation player reset because of jittery results
 func reset(node : Node2D):

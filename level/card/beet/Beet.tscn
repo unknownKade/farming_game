@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://dxofbby3bsmfa"]
 
 [ext_resource type="Script" path="res://level/card/beet/Beet.gd" id="1_qfixi"]
-[ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_2fc7b"]
+[ext_resource type="Script" path="res://scripts/Mask.gd" id="2_2fc7b"]
 [ext_resource type="AudioStream" uid="uid://df3msb5vjreq4" path="res://resource/audio/card_seeding.wav" id="2_j07nj"]
 [ext_resource type="Texture2D" uid="uid://boqjkexwrh7s4" path="res://resource/images/card/Beet-Sheet.png" id="2_u3jgl"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_8va6e"]

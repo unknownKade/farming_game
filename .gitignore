@@ -2,3 +2,8 @@
 .godot/
 addons/
 LICENSE
+resource/audio/bgm/
+*.cfg
+*.exe
+/web
+/build

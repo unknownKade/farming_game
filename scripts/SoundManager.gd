@@ -18,6 +18,8 @@ var current_bgm : int = 1
 ]
 
 func _ready() :
+	for bgm in bgms:
+		bgm.finished.connect(play_bgm)
 	for i in sound_effects.keys():
 		sound_effects[i].stream = load(path + str(i) + ".wav")
 		sound_effects[i].bus = &"Sfx"
@@ -42,7 +44,6 @@ func change_bgm():
 
 func play_bgm():
 	bgms[current_bgm].play()
-	bgms[current_bgm].finished.connect(play_bgm)
 
 func stop_bgm():
 	bgms[current_bgm].stop()

@@ -2,7 +2,7 @@ extends Node2D
 
 var card : String
 
-func play_land_animation(card : String):
+func play_land_animation(card: String):
 	self.visible = true
 	self.card = card.to_lower()
 	get_node(card).visible = true
