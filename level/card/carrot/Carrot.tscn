@@ -1,16 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://06bul7hi5akv"]
+[gd_scene load_steps=19 format=3 uid="uid://06bul7hi5akv"]
 
 [ext_resource type="Script" path="res://level/card/carrot/Carrot.gd" id="1_4vqkg"]
+[ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_88n83"]
+[ext_resource type="AudioStream" uid="uid://df3msb5vjreq4" path="res://resource/audio/card_seeding.wav" id="2_461cb"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="2_twubf"]
-[ext_resource type="Script" path="res://scripts/Click.gd" id="3_lh00u"]
-[ext_resource type="Script" path="res://level/card/carrot/Sprite2D.gd" id="3_tl22c"]
+[ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_eybfm"]
+[ext_resource type="AudioStream" uid="uid://bb71iw7jqwny8" path="res://resource/audio/card_seeding 2.wav" id="3_idwiy"]
+[ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="5_3kpdi"]
 
 [sub_resource type="Animation" id="Animation_s3f36"]
 resource_name = "0"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +29,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -42,7 +45,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +61,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -74,7 +77,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +92,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Mask/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -98,6 +101,155 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ground/DirtParticle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ground/DirtParticle2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mask/Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_ywdec"]
+resource_name = "seeding"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ground/DirtParticle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ground/DirtParticle2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.1, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mask/Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1, 1.2, 1.7, 1.9),
+"transitions": PackedFloat32Array(2, 2, 0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(24, 32), Vector2(24, 81), Vector2(24, 66), Vector2(24, 93), Vector2(24, 77), Vector2(24, 102), Vector2(24, 114)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_461cb")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_461cb")
+}],
+"times": PackedFloat32Array(0.7, 1.4)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_idwiy")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_idwiy")
+}],
+"times": PackedFloat32Array(0.8)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4osns"]
 _data = {
@@ -106,34 +258,128 @@ _data = {
 "2": SubResource("Animation_vv637"),
 "3": SubResource("Animation_2feoo"),
 "4": SubResource("Animation_ju1rg"),
-"RESET": SubResource("Animation_jv2ro")
+"RESET": SubResource("Animation_jv2ro"),
+"seeding": SubResource("Animation_ywdec")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7h4i"]
-size = Vector2(48, 64)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1b7ei"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_avcuf"]
+_data = [Vector2(0, 1), 0.0, -0.524917, 0, 0, Vector2(0.512658, 0.527472), -2.4512, -2.4512, 0, 0, Vector2(0.632911, 0.032967), -0.99215, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_76m31"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="Carrot" type="Node2D"]
 texture_filter = 1
 texture_repeat = 1
 script = ExtResource("1_4vqkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture_repeat = 1
-texture = ExtResource("2_twubf")
-hframes = 5
-vframes = 4
-script = ExtResource("3_tl22c")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4osns")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_lh00u")
+[node name="Mask" type="ColorRect" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_88n83")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_d7h4i")
+[node name="Sprite2D" type="Sprite2D" parent="Mask"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(24, 32)
+texture = ExtResource("2_twubf")
+hframes = 5
+vframes = 4
+script = ExtResource("3_eybfm")
 
-[connection signal="signal_card_change" from="Area2D" to="." method="_on_area_2d_signal_card_change"]
+[node name="Ground" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+position = Vector2(0, 17)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+z_index = 5
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(1.77636e-15, 31)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_3kpdi")
+
+[node name="DirtParticle" type="CPUParticles2D" parent="Ground"]
+z_index = 5
+material = SubResource("CanvasItemMaterial_1b7ei")
+position = Vector2(18, 30)
+emitting = false
+amount = 20
+explosiveness = 0.54
+lifetime_randomness = 0.12
+direction = Vector2(0, -10)
+spread = 53.9
+initial_velocity_min = 24.6
+initial_velocity_max = 108.01
+angular_velocity_min = -720.0
+angular_velocity_max = -582.17
+linear_accel_min = -52.05
+linear_accel_max = 26.03
+scale_amount_min = 5.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_avcuf")
+color = Color(0.207843, 0.133333, 0.113725, 1)
+hue_variation_min = -0.32
+hue_variation_max = 1.0
+anim_speed_max = 73.64
+
+[node name="DirtParticle2" type="CPUParticles2D" parent="Ground"]
+z_index = 5
+material = SubResource("CanvasItemMaterial_76m31")
+position = Vector2(-13.6667, 31)
+emitting = false
+amount = 20
+explosiveness = 0.54
+lifetime_randomness = 0.12
+direction = Vector2(0, -10)
+spread = 56.72
+initial_velocity_min = 35.0
+initial_velocity_max = 108.01
+angular_velocity_min = -377.99
+angular_velocity_max = 216.99
+linear_accel_min = -52.05
+linear_accel_max = 26.03
+scale_amount_min = 5.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_avcuf")
+color = Color(0.207843, 0.133333, 0.113725, 1)
+hue_variation_min = -0.32
+hue_variation_max = 1.0
+anim_speed_max = 73.64
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="gui_input" from="Mask" to="Mask" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Mask" to="Mask" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Mask" to="Mask" method="_on_mouse_exited"]

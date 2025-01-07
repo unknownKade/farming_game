@@ -1,0 +1,257 @@
+[gd_scene load_steps=16 format=3 uid="uid://c65ks63ypbe66"]
+
+[ext_resource type="Script" path="res://level/gamelevel/phases/disaster/Disaster.gd" id="1_ctiwy"]
+[ext_resource type="Texture2D" uid="uid://cyei33r8j4n6s" path="res://resource/images/disaster/flood-Sheet.png" id="2_11i4r"]
+[ext_resource type="Texture2D" uid="uid://cqncex5k6lw8b" path="res://resource/images/disaster/drought-Sheet.png" id="3_3ajxy"]
+[ext_resource type="Texture2D" uid="uid://5lq435vmpv5e" path="res://resource/images/disaster/insect-Sheet.png" id="4_w3swu"]
+[ext_resource type="Texture2D" uid="uid://d1km5swqvfv3h" path="res://resource/images/disaster/pollution-Sheet.png" id="5_2pbwr"]
+[ext_resource type="AudioStream" uid="uid://tnwop4xxvqrj" path="res://resource/audio/drought.wav" id="6_ysjyo"]
+[ext_resource type="AudioStream" uid="uid://rd0g4y2sxktx" path="res://resource/audio/flood.wav" id="7_fl867"]
+[ext_resource type="AudioStream" uid="uid://bwugu305o84t0" path="res://resource/audio/insect.wav" id="8_2uk42"]
+[ext_resource type="AudioStream" uid="uid://wlo4tm26brli" path="res://resource/audio/corruption.wav" id="9_r4koy"]
+
+[sub_resource type="Animation" id="Animation_i6ora"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flood:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pollution:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Insect:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Drought:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jfpir"]
+resource_name = "drought"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Drought:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 9.74,
+"start_offset": 9.58,
+"stream": ExtResource("6_ysjyo")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_sqbko"]
+resource_name = "flood"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flood:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 15.7742,
+"start_offset": 0.0,
+"stream": ExtResource("7_fl867")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.4, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -10.0, -20.0]
+}
+
+[sub_resource type="Animation" id="Animation_hsqbr"]
+resource_name = "insect"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Insect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 2, 3, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 15.6086,
+"start_offset": 35.6164,
+"stream": ExtResource("8_2uk42")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_vpenc"]
+resource_name = "pollution"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pollution:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 45.816,
+"start_offset": 4.26565,
+"stream": ExtResource("9_r4koy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1, 2),
+"transitions": PackedFloat32Array(0.5, 1, 2),
+"update": 0,
+"values": [-41.04, 0.0, -46.451]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qt2mx"]
+_data = {
+"RESET": SubResource("Animation_i6ora"),
+"drought": SubResource("Animation_jfpir"),
+"flood": SubResource("Animation_sqbko"),
+"insect": SubResource("Animation_hsqbr"),
+"pollution": SubResource("Animation_vpenc")
+}
+
+[node name="Disaster" type="Node2D"]
+script = ExtResource("1_ctiwy")
+
+[node name="Flood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_11i4r")
+hframes = 5
+vframes = 4
+
+[node name="Drought" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_3ajxy")
+hframes = 4
+vframes = 3
+
+[node name="Insect" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_w3swu")
+hframes = 3
+vframes = 2
+
+[node name="Pollution" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_2pbwr")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qt2mx")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -46.451
+bus = &"Sfx"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

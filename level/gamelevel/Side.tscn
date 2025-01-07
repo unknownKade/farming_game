@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://drpcmsyafktro"]
+
+[ext_resource type="Texture2D" uid="uid://bgwt2k01i7m0q" path="res://resource/images/game_level/side.png" id="1_gj4sr"]
+[ext_resource type="Script" path="res://level/gamelevel/Side.gd" id="1_iby1i"]
+[ext_resource type="Texture2D" uid="uid://2m6qxj1fo1fl" path="res://resource/images/game_level/menu_button/home.png" id="3_d2yjh"]
+[ext_resource type="Texture2D" uid="uid://dg6swxt3c2kjm" path="res://resource/images/game_level/menu_button/pause.png" id="4_5x4vg"]
+[ext_resource type="Texture2D" uid="uid://btmd1b64gh0w0" path="res://resource/images/game_level/menu_button/setting.png" id="5_r51lq"]
+
+[node name="Side" type="Node2D"]
+script = ExtResource("1_iby1i")
+metadata/_edit_vertical_guides_ = [-172.0, -192.0]
+metadata/_edit_horizontal_guides_ = [432.0, 410.0, 370.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gj4sr")
+
+[node name="MarginContainer" type="MarginContainer" parent="Sprite2D"]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -552.0
+offset_right = -192.0
+offset_bottom = -432.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite2D/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HomeButton" type="TextureButton" parent="."]
+offset_left = -182.0
+offset_top = 370.0
+offset_right = -175.0
+offset_bottom = 378.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_d2yjh")
+stretch_mode = 4
+
+[node name="PauseButton" type="TextureButton" parent="."]
+offset_left = -134.0
+offset_top = 370.0
+offset_right = -127.0
+offset_bottom = 378.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("4_5x4vg")
+stretch_mode = 4
+
+[node name="OptionButton" type="TextureButton" parent="."]
+offset_left = -87.0
+offset_top = 370.0
+offset_right = -80.0
+offset_bottom = 378.0
+scale = Vector2(5, 5)
+texture_normal = ExtResource("5_r51lq")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_direction = 2
+offset_left = 113.0
+offset_top = 378.0
+offset_right = 114.0
+offset_bottom = 398.0
+theme_override_font_sizes/font_size = 20
+
+[connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="OptionButton" to="." method="_on_option_button_pressed"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="farming"
-run/main_scene="res://level/gamelevel/GameLevel.tscn"
+run/main_scene="res://level/mainmenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,20 +19,26 @@ config/icon="res://icon.svg"
 
 aseprite_executable_path="D:/programs/Aseprite-v1.3.5-x64/Aseprite.exe"
 
+[audio]
+
+buses/default_bus_layout="res://resource/default_bus.tres"
+
 [autoload]
 
 GameManger="*res://scripts/GameManager.gd"
+ContentManager="*res://scripts/ContentManager.gd"
+SoundManager="*res://scripts/SoundManager.gd"
 
 [display]
 
 window/size/viewport_width=1536
 window/size/viewport_height=864
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
-[editor_plugins]
+[gui]
 
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+theme/custom="res://resource/dialogue_theme.tres"
 
 [input]
 

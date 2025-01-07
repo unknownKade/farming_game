@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp2vb26sg7ojg"]
+
+[ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/dialogue_theme.tres" id="1_fd0sy"]
+[ext_resource type="Script" path="res://level/dialouge/Dialouge.gd" id="2_b8d0q"]
+[ext_resource type="Script" path="res://level/dialouge/TextGridContainer.gd" id="2_hynwp"]
+[ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="3_266vk"]
+[ext_resource type="Texture2D" uid="uid://br8db3gxyp35s" path="res://resource/images/speech_tail.png" id="4_ty772"]
+[ext_resource type="Script" path="res://level/dialouge/RichTextLabel.gd" id="6_61spw"]
+[ext_resource type="Script" path="res://level/dialouge/TextureRect.gd" id="7_ry7i6"]
+[ext_resource type="Script" path="res://level/dialouge/Tail.gd" id="8_m0he4"]
+[ext_resource type="Texture2D" uid="uid://di2qch6mvtnjm" path="res://resource/images/speech_tail_side.png" id="8_yuia6"]
+
+[node name="Dialouge" type="Control" node_paths=PackedStringArray("panel", "tail", "textbox", "next_arrow")]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_fd0sy")
+script = ExtResource("2_b8d0q")
+panel = NodePath("GridContainer/Panel")
+tail = NodePath("GridContainer/Tail")
+textbox = NodePath("GridContainer/Panel/MarginContainer/TextContainer")
+next_arrow = NodePath("GridContainer/Panel/MarginContainer/TextContainer/NextArrow")
+metadata/_edit_vertical_guides_ = [277.0]
+metadata/_edit_horizontal_guides_ = [164.0]
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 277.0
+offset_bottom = 334.0
+columns = 2
+
+[node name="Panel" type="PanelContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/Panel"]
+layout_mode = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="GridContainer/Panel/MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_hynwp")
+
+[node name="Name" type="Label" parent="GridContainer/Panel/MarginContainer/TextContainer"]
+layout_mode = 2
+text = "Beet"
+uppercase = true
+
+[node name="Text" type="RichTextLabel" parent="GridContainer/Panel/MarginContainer/TextContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_266vk")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+script = ExtResource("6_61spw")
+
+[node name="TextTimer" type="Timer" parent="GridContainer/Panel/MarginContainer/TextContainer/Text"]
+wait_time = 0.1
+autostart = true
+
+[node name="NextArrow" type="TextureRect" parent="GridContainer/Panel/MarginContainer/TextContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_ty772")
+stretch_mode = 4
+script = ExtResource("7_ry7i6")
+
+[node name="NextArrowTimer" type="Timer" parent="GridContainer/Panel/MarginContainer/TextContainer/NextArrow"]
+one_shot = true
+
+[node name="Tail" type="Control" parent="GridContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("8_m0he4")
+
+[node name="SideTail" type="Sprite2D" parent="GridContainer/Tail"]
+texture = ExtResource("8_yuia6")
+
+[connection signal="clicked_dialouge" from="." to="GridContainer/Panel/MarginContainer/TextContainer/Text" method="_on_dialouge_clicked_dialouge"]
+[connection signal="gui_input" from="." to="GridContainer/Panel/MarginContainer/TextContainer" method="_on_dialouge_gui_input"]
+[connection signal="finished_displaying" from="GridContainer/Panel/MarginContainer/TextContainer/Text" to="GridContainer/Panel/MarginContainer/TextContainer" method="_on_rich_text_label_finished_displaying"]
+[connection signal="timeout" from="GridContainer/Panel/MarginContainer/TextContainer/Text/TextTimer" to="GridContainer/Panel/MarginContainer/TextContainer/Text" method="_on_timer_timeout"]
+[connection signal="timeout" from="GridContainer/Panel/MarginContainer/TextContainer/NextArrow/NextArrowTimer" to="GridContainer/Panel/MarginContainer/TextContainer/NextArrow" method="_on_next_arrow_timer_timeout"]

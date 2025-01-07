@@ -1,27 +1,24 @@
 extends Node
 
-signal triggered_swap_card
+signal p1_carrot_action(result)
+signal p2_carrot_action(result)
 
 const animation_player = "AnimationPlayer"
 
 var current_round : int = 1
-var player_turn = false
 var selected_card : Crop
 var confirmed_card : Crop
 var opponent_card : Crop
 var current_environment: String
-var carrot_escaped : bool
+
+var p1_turn :bool =  false
+var p2_turn : bool = false
+var p1_carrot_escaped : bool = false
+var p2_carrot_escaped : bool = false
+var text_typing : bool = false
 
 var p1_deck : Dictionary
 var p2_deck : Dictionary
-@export_range(0,4) var potato_lv : int = 1
-@export_range(0,4) var beet_lv : int = 1
-@export_range(0,4) var tomato_lv : int = 1
-@export_range(0,4) var carrot_lv : int = 1
-@export_range(0,4) var p2_potato_lv : int = 1
-@export_range(0,4) var p2_beet_lv : int = 1
-@export_range(0,4) var p2_tomato_lv : int = 1
-@export_range(0,4) var p2_carrot_lv : int = 1
 
 func _ready():
 	var crops = {
@@ -30,51 +27,79 @@ func _ready():
 		"Potato" : Potato,
 		"Tomato" : Tomato
 	}
-	
+
 	for crop in crops :
 		p1_deck[crop] = crops[crop].new()
 		p2_deck[crop] = crops[crop].new()
-		
-	p1_deck["Potato"].level = potato_lv
-	p1_deck["Beet"].level = beet_lv
-	p1_deck["Tomato"].level = tomato_lv
-	p1_deck["Carrot"].level = carrot_lv
-	p2_deck["Potato"].level = p2_potato_lv
-	p2_deck["Beet"].level = p2_beet_lv
-	p2_deck["Tomato"].level = p2_tomato_lv
-	p2_deck["Carrot"].level = p2_carrot_lv
 	
-func get_random_card() -> Crop:
+func get_random_card(deck) -> Crop:
 	var live_crops: Array
 	
-	for crop in p1_deck:
-		if p1_deck[crop].state != Crop.States.LOCKED :
-			live_crops.append(p1_deck[crop])
+	for crop in deck:
+		if deck[crop].state != Crop.States.LOCKED :
+			live_crops.append(deck[crop])
 	
 	return live_crops[randi_range(0, live_crops.size() - 1)]
+
+func reset():
+	deselect_card()
+	opponent_card = null
+	current_round = 1
 
 func select_card(card_name : String) :
 	selected_card = p1_deck[card_name]
 
 func deselect_card():
 	selected_card = null
+	confirmed_card = null
 
-func confirm_card() :
-	if confirmed_card != null:
-		return
-
-	if selected_card == null:
-		confirmed_card = get_random_card()
-	else : 
+func play_card(is_p1 : bool) :
+	if is_p1 :
 		confirmed_card = selected_card
+		p1_turn = false
+	
+	if opponent_card == null or confirmed_card == null :
+		return
+	else :
+		check_played_cards()
+
+# called when both players have chosen cards
+func check_played_cards() :
+	if p1_deck[Crop.potato].state != Crop.States.PHOBIA :
+		if confirmed_card is Carrot and opponent_card is Tomato and confirmed_card.skill(opponent_card):
+			p1_carrot_escaped = true
+			deselect_card()
+			p1_carrot_action.emit(Carrot.Action.ESCAPE)
+			return
+		elif opponent_card is Beet and p1_deck[Crop.carrot].skill(opponent_card) :
+			p1_carrot_action.emit(Carrot.Action.SWAP)
+			return
+
+	if p2_deck[Crop.potato].state != Crop.States.PHOBIA :
+		if opponent_card is Carrot and confirmed_card is Tomato and opponent_card.skill(confirmed_card) :
+			opponent_card = null
+			p2_carrot_escaped =true
+			p2_carrot_action.emit(Carrot.Action.ESCAPE)
+			return
+		elif confirmed_card is Beet and p2_deck[Crop.carrot].skill(confirmed_card) :
+			p2_carrot_action.emit(Carrot.Action.SWAP)
+			return
+	
+	p2_carrot_action.emit(Carrot.Action.NONE)
+	p1_carrot_action.emit(Carrot.Action.NONE)
 
 func p2_result(crop : Crop, value : int, message = null):
-	crop.grow_card(value)
-	print(message)
-
-func swap_card():
-	triggered_swap_card.emit()
-
-func nullify_select_and_confirm():
-	selected_card = null
+	if message == "revive" :
+		print("beet used revive on " + crop.name)
+		crop.level = 1
+	else :
+		print(message, " ", crop.name, " by ", value)
+		crop.grow_card(value)
+		
+func new_year():
+	current_round += 1
 	confirmed_card = null
+	selected_card = null
+	opponent_card = null
+	p1_carrot_escaped = false
+	p2_carrot_escaped = false
