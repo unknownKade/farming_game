@@ -172,7 +172,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_57yob"]
 resource_name = "carrot"
-length = 1.6
+length = 1.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -181,10 +181,10 @@ tracks/0/path = NodePath("Carrot:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_pv05u"]
@@ -236,7 +236,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ns1u6"]
 resource_name = "tomato"
-length = 1.6
+length = 1.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -245,10 +245,10 @@ tracks/0/path = NodePath("Tomato:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_40wxi"]
@@ -263,6 +263,7 @@ _data = {
 }
 
 [node name="Land" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_d5iv8")
 
 [node name="Beet" type="Sprite2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://5tyvct2gygig"]
 
-[ext_resource type="Script" path="res://level/gamelevel/phases/environment/Environment.gd" id="1_cjsn7"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/intro/Environment.gd" id="1_cjsn7"]
 [ext_resource type="Texture2D" uid="uid://7vvvl2qsb2ly" path="res://resource/images/environment/sunlight-Sheet.png" id="1_dlnn4"]
 [ext_resource type="Texture2D" uid="uid://degflds6v67t3" path="res://resource/images/environment/rain-Sheet.png" id="3_wqifo"]
 [ext_resource type="Texture2D" uid="uid://bu81riyms5u1j" path="res://resource/images/environment/music-Sheet.png" id="5_3gi0p"]
@@ -111,6 +111,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4ww6x"]
 resource_name = "sunlight"
+length = 4.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -118,10 +120,10 @@ tracks/0/path = NodePath("Sunlight:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 1.4, 1.8, 2, 2.4, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 0, 1, 0, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r462o"]
@@ -148,7 +150,8 @@ visible = false
 texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("3_wqifo")
-hframes = 26
+hframes = 4
+vframes = 7
 
 [node name="Love" type="Sprite2D" parent="."]
 visible = false

@@ -1,6 +1,4 @@
-extends State
-
-const next_state = "Board"
+extends Node2D
 
 var scenes : Dictionary
 var environments : Array
@@ -12,6 +10,10 @@ func _ready():
 			scenes[child.name] = child
 
 func enter():
+	next_environment()
+	#get_node(GameManger.animation_player).play("rain")
+
+func next_environment():
 	reset()
 	var current_environment = environments[randi_range(0, environments.size()-1)]
 
@@ -20,9 +22,7 @@ func enter():
 	
 	scene.visible = true
 	
-	get_node(GameManger.animation_player).play(current_environment.to_lower())
-	await get_tree().create_timer(2).timeout
-	Transition.emit(self, next_state)
+	get_node(GameManger.animation_player).queue(current_environment.to_lower())
 
 func reset():
 	for scene in scenes :

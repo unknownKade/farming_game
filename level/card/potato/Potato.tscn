@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://level/card/potato/Potato.gd" id="1_31pbs"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="2_3wut7"]
-[ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_kc2vf"]
+[ext_resource type="Script" path="res://scripts/Mask.gd" id="2_kc2vf"]
 [ext_resource type="AudioStream" uid="uid://df3msb5vjreq4" path="res://resource/audio/card_seeding.wav" id="2_rltp2"]
-[ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_78bf0"]
 [ext_resource type="AudioStream" uid="uid://bb71iw7jqwny8" path="res://resource/audio/card_seeding 2.wav" id="3_xo1bn"]
 [ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="5_dbqba"]
+[ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="6_wrb2f"]
 [ext_resource type="Script" path="res://level/card/potato/AudioStreamPlayer.gd" id="8_y0bp6"]
-[ext_resource type="AudioEffectDistortion" uid="uid://cyjeg65ux1yjr" path="res://resource/DistortionEffect.tres" id="9_uq23u"]
+[ext_resource type="AudioEffectDistortion" path="res://resource/DistortionEffect.tres" id="9_uq23u"]
 
 [sub_resource type="Animation" id="Animation_1ec1v"]
 resource_name = "0"
@@ -330,7 +330,7 @@ position = Vector2(24, 32)
 texture = ExtResource("2_3wut7")
 hframes = 6
 vframes = 6
-script = ExtResource("3_78bf0")
+script = ExtResource("6_wrb2f")
 
 [node name="Ground" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -395,7 +395,6 @@ hue_variation_max = 1.0
 anim_speed_max = 73.64
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"Sfx"
 script = ExtResource("8_y0bp6")
 effect = ExtResource("9_uq23u")
 
@@ -403,4 +402,3 @@ effect = ExtResource("9_uq23u")
 [connection signal="gui_input" from="Mask" to="Mask" method="_on_gui_input"]
 [connection signal="mouse_entered" from="Mask" to="Mask" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Mask" to="Mask" method="_on_mouse_exited"]
-[connection signal="signal_click" from="Mask" to="." method="_on_mask_signal_click"]

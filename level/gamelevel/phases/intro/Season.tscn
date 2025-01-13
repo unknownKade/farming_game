@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ysr8yebe3ke"]
 
-[ext_resource type="Script" path="res://level/gamelevel/phases/season/Season.gd" id="1_7jomj"]
+[ext_resource type="Script" path="res://level/gamelevel/phases/intro/Season.gd" id="1_7jomj"]
 [ext_resource type="Texture2D" uid="uid://b8xm5m3l6nux3" path="res://resource/images/weather/spring-Sheet.png" id="2_mho15"]
 [ext_resource type="Texture2D" uid="uid://cx2jlv8wo27vt" path="res://resource/images/weather/summer-Sheet.png" id="3_8yjdi"]
 [ext_resource type="Texture2D" uid="uid://b5y31id2lob4w" path="res://resource/images/weather/authum-Sheet.png" id="4_7q2xc"]
@@ -130,8 +130,9 @@ _data = {
 "winter": SubResource("Animation_5fqkw")
 }
 
-[node name="Season" type="Node2D"]
+[node name="Season" type="Node2D" node_paths=PackedStringArray("seasons")]
 script = ExtResource("1_7jomj")
+seasons = [NodePath("Spring"), NodePath("Summer"), NodePath("Autumn"), NodePath("Winter")]
 
 [node name="Spring" type="Sprite2D" parent="."]
 visible = false

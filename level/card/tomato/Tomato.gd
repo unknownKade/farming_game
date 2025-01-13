@@ -4,10 +4,7 @@ class_name TomatoCard
 
 func _ready():
 	frame_set = [31,0,7,17,24]
-	sync_card_level()
-	anim_player = $AnimationPlayer
-	sprite = $Mask/Sprite2D
-	deck_anim_player = $DeckAnimationPlayer
+	$Mask.signal_input.connect(process_click)
 
 func _on_deck_animation_player_animation_finished(anim_name):
 	if anim_name == "revive" :
@@ -17,9 +14,9 @@ func _on_deck_animation_player_animation_finished(anim_name):
 	elif anim_name == "flip" :
 		self.return_card()
 	elif anim_name == "return" :
-		card_return_ended.emit()
+		get_parent().end_result_phase()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "seeding":
 		$Ground.visible = false
-		confirmed_card.emit()
+		end_player_phase.emit()

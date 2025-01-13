@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpk0yuafrxxsh"]
+[gd_scene load_steps=8 format=3 uid="uid://dpk0yuafrxxsh"]
 
 [ext_resource type="Script" path="res://level/gamelevel/phases/end/End.gd" id="1_ljiy1"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/end/Gradient.gd" id="2_hy562"]
 [ext_resource type="FontFile" uid="uid://cuhv1vev6iboh" path="res://resource/fonts/m12.TTF" id="3_lriy7"]
+[ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="4_blrhm"]
 
 [sub_resource type="Gradient" id="Gradient_4flrq"]
 offsets = PackedFloat32Array(0, 0.8)
@@ -52,7 +53,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 z_index = 30
 z_as_relative = false
 layout_mode = 2
@@ -60,6 +64,16 @@ size_flags_horizontal = 8
 label_settings = SubResource("LabelSettings_6eyxt")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_blrhm")
+theme_override_font_sizes/normal_font_size = 10
+fit_content = true
+scroll_active = false
+autowrap_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="faded_out" from="Gradient" to="." method="_on_gradient_faded_out"]

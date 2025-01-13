@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bp2vb26sg7ojg"]
 
-[ext_resource type="Theme" uid="uid://duq34k8i4gjnq" path="res://resource/dialogue_theme.tres" id="1_fd0sy"]
+[ext_resource type="Theme" uid="uid://d1hf1w85w8hem" path="res://resource/dialogue_theme.tres" id="1_fd0sy"]
 [ext_resource type="Script" path="res://level/dialouge/Dialouge.gd" id="2_b8d0q"]
 [ext_resource type="Script" path="res://level/dialouge/TextGridContainer.gd" id="2_hynwp"]
 [ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="3_266vk"]

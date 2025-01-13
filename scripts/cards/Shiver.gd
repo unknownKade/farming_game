@@ -11,7 +11,6 @@ var shivering = false
 func _ready():
 	# Initialize the original position of the sprite
 	original_position = position
-
 func _process(delta):
 	# Check if it's time to shiver the sprite
 	if shivering and shiver_timer > 0:

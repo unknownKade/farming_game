@@ -1,11 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqwbj61y4b5i8"]
+[gd_scene load_steps=14 format=3 uid="uid://bqwbj61y4b5i8"]
 
 [ext_resource type="Script" path="res://level/mainmenu/MainMenu.gd" id="1_5b4bg"]
 [ext_resource type="Texture2D" uid="uid://r4px6vp5s4yv" path="res://resource/images/main_menu_button/start.png" id="2_e1ipm"]
+[ext_resource type="Texture2D" uid="uid://blpyb21llhtir" path="res://resource/images/main_menu_button/1player1.png" id="2_ub6ia"]
 [ext_resource type="Texture2D" uid="uid://dawqlsbypmfob" path="res://resource/images/main_menu_button/start_pressed.png" id="3_53dml"]
 [ext_resource type="Texture2D" uid="uid://brvjveykd7i18" path="res://resource/images/main_menu_button/rule.png" id="3_ciqft"]
+[ext_resource type="Texture2D" uid="uid://bksbmv12dolo8" path="res://resource/images/main_menu_button/1player2.png" id="3_veuhn"]
+[ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="4_56b2v"]
 [ext_resource type="Texture2D" uid="uid://bv4a6qt3gw06a" path="res://resource/images/main_menu_button/exit.png" id="4_x1sk7"]
+[ext_resource type="Texture2D" uid="uid://cr2inl7db28q8" path="res://resource/images/main_menu_button/2player1.png" id="5_feol3"]
 [ext_resource type="Texture2D" uid="uid://c25k5b6637f8s" path="res://resource/images/main_menu_button/rule_pressed.png" id="5_y8sfj"]
+[ext_resource type="Texture2D" uid="uid://cnb42q1ihtn51" path="res://resource/images/main_menu_button/2player2.png" id="6_cy34n"]
 [ext_resource type="Texture2D" uid="uid://ccnb5cpwxcien" path="res://resource/images/main_menu_button/exit_pressed.png" id="7_3v31g"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_6exnw"]
@@ -24,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0352941, 0.0784314, 0.0156863, 1)
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Title" type="Label" parent="Background"]
 layout_mode = 0
 offset_left = 536.0
 offset_top = 314.0
@@ -33,6 +38,68 @@ offset_bottom = 354.0
 theme_override_colors/font_color = Color(0.0745098, 0.141176, 0.0470588, 1)
 theme_override_font_sizes/font_size = 40
 text = "BLACK GARDEN"
+
+[node name="ButtonContainer2" type="HBoxContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -132.0
+offset_right = 521.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 300
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ButtonContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="1PlayerMode" type="TextureButton" parent="Background/ButtonContainer2/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6exnw")
+texture_normal = ExtResource("2_ub6ia")
+texture_pressed = ExtResource("3_veuhn")
+
+[node name="Label" type="Label" parent="Background/ButtonContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.560784, 0.592157, 0.290196, 1)
+theme_override_colors/font_shadow_color = Color(0.298039, 0.333333, 0.152941, 1)
+theme_override_fonts/font = ExtResource("4_56b2v")
+theme_override_font_sizes/font_size = 0
+text = "PLAY BY MYSELF"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/ButtonContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="2PlayerMode" type="TextureButton" parent="Background/ButtonContainer2/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+button_group = SubResource("ButtonGroup_6exnw")
+texture_normal = ExtResource("5_feol3")
+texture_pressed = ExtResource("6_cy34n")
+
+[node name="Label" type="Label" parent="Background/ButtonContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.843137, 0.482353, 0.729412, 1)
+theme_override_colors/font_shadow_color = Color(0.439216, 0.278431, 0.372549, 1)
+theme_override_fonts/font = ExtResource("4_56b2v")
+theme_override_font_sizes/font_size = 0
+text = "WITH RANDOM AI"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 0
@@ -63,6 +130,8 @@ layout_mode = 2
 texture_normal = ExtResource("4_x1sk7")
 texture_pressed = ExtResource("7_3v31g")
 
+[connection signal="pressed" from="Background/ButtonContainer2/VBoxContainer/1PlayerMode" to="." method="_on_p1_button_pressed"]
+[connection signal="pressed" from="Background/ButtonContainer2/VBoxContainer2/2PlayerMode" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Background/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Background/ButtonContainer/RuleButton" to="." method="_on_rule_button_pressed"]
 [connection signal="pressed" from="Background/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -8,4 +8,4 @@ func enter():
 	pass
 
 func exit():
-	pass
+	Transition.emit(self)

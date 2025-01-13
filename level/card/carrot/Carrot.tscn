@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://06bul7hi5akv"]
 
 [ext_resource type="Script" path="res://level/card/carrot/Carrot.gd" id="1_4vqkg"]
-[ext_resource type="Script" path="res://level/card/potato/Mask.gd" id="2_88n83"]
+[ext_resource type="Script" path="res://scripts/Mask.gd" id="2_88n83"]
 [ext_resource type="AudioStream" uid="uid://df3msb5vjreq4" path="res://resource/audio/card_seeding.wav" id="2_461cb"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="2_twubf"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="3_eybfm"]
