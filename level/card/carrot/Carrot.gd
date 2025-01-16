@@ -27,11 +27,14 @@ func _on_deck_animation_player_animation_finished(anim_name):
 	elif anim_name == "revive" :
 		crop_revived.emit()
 	elif anim_name == "confirm" :
-		anim_player.queue("seeding")
+		anim_player.play("seeding")
 	elif anim_name == "flip" :
 		self.return_card()
 	elif anim_name == "return" :
 		get_parent().end_result_phase()
+	elif anim_name == "escape_return":
+		anim_player.play("RESET")
+		deck_anim_player.play("RESET")
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "seeding":

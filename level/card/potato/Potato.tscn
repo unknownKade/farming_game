@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://udabodtcs1ud" path="res://resource/images/game_level/card_land.png" id="5_dbqba"]
 [ext_resource type="Script" path="res://scripts/cards/Shiver.gd" id="6_wrb2f"]
 [ext_resource type="Script" path="res://level/card/potato/AudioStreamPlayer.gd" id="8_y0bp6"]
-[ext_resource type="AudioEffectDistortion" path="res://resource/DistortionEffect.tres" id="9_uq23u"]
+[ext_resource type="AudioEffectDistortion" uid="uid://cyjeg65ux1yjr" path="res://resource/DistortionEffect.tres" id="9_uq23u"]
 
 [sub_resource type="Animation" id="Animation_1ec1v"]
 resource_name = "0"

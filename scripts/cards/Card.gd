@@ -29,8 +29,8 @@ func process_click(input) -> void:
 			if p1.selected_card == self:
 				p1.selected_card = null
 				p1.played_card = self
-				#p1.played_card.anim_player.queue(str(level))
-				p1.played_card.deck_anim_player.queue("select")
+				p1.played_card.anim_player.play(str(level))
+				p1.played_card.deck_anim_player.play("select")
 				player.assess_played_card()
 			#select new card
 			elif !p1.selected_card:
