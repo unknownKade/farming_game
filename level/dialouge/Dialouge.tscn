@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://level/dialouge/Dialouge.gd" id="2_b8d0q"]
 [ext_resource type="Script" path="res://level/dialouge/TextGridContainer.gd" id="2_hynwp"]
 [ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="3_266vk"]
-[ext_resource type="Texture2D" uid="uid://br8db3gxyp35s" path="res://resource/images/speech_tail.png" id="4_ty772"]
 [ext_resource type="Script" path="res://level/dialouge/RichTextLabel.gd" id="6_61spw"]
 [ext_resource type="Script" path="res://level/dialouge/TextureRect.gd" id="7_ry7i6"]
 [ext_resource type="Script" path="res://level/dialouge/Tail.gd" id="8_m0he4"]
-[ext_resource type="Texture2D" uid="uid://di2qch6mvtnjm" path="res://resource/images/speech_tail_side.png" id="8_yuia6"]
+[ext_resource type="Texture2D" uid="uid://c6lij3kfickxb" path="res://resource/images/speech_tail_up.png" id="8_yuia6"]
+[ext_resource type="Texture2D" uid="uid://di2qch6mvtnjm" path="res://resource/images/speech_tail_side.png" id="9_chxhb"]
 
 [node name="Dialouge" type="Control" node_paths=PackedStringArray("panel", "tail", "textbox", "next_arrow")]
 texture_filter = 3
@@ -62,7 +62,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-texture = ExtResource("4_ty772")
+texture = ExtResource("8_yuia6")
 stretch_mode = 4
 script = ExtResource("7_ry7i6")
 
@@ -75,7 +75,7 @@ layout_mode = 2
 script = ExtResource("8_m0he4")
 
 [node name="SideTail" type="Sprite2D" parent="GridContainer/Tail"]
-texture = ExtResource("8_yuia6")
+texture = ExtResource("9_chxhb")
 
 [connection signal="clicked_dialouge" from="." to="GridContainer/Panel/MarginContainer/TextContainer/Text" method="_on_dialouge_clicked_dialouge"]
 [connection signal="gui_input" from="." to="GridContainer/Panel/MarginContainer/TextContainer" method="_on_dialouge_gui_input"]

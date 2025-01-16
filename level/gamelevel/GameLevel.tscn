@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=121 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level/game_level_background.png" id="2_8q7lq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://2m6qxj1fo1fl" path="res://resource/images/game_level/menu_button/home.png" id="3_jqmno"]
 [ext_resource type="Texture2D" uid="uid://djbcvir6wfy4b" path="res://resource/images/game_level/board/eyes-Sheet.png" id="3_qc2dt"]
 [ext_resource type="Texture2D" uid="uid://b7jftgcvdwfj5" path="res://resource/images/game_level/menu_button/home_hover.png" id="4_dl6em"]
-[ext_resource type="Texture2D" uid="uid://dbbxuqpa75ifm" path="res://resource/images/game_level/routine/1Spring.aseprite" id="4_vn1ca"]
 [ext_resource type="Texture2D" uid="uid://dg6swxt3c2kjm" path="res://resource/images/game_level/menu_button/pause.png" id="4_w2dh1"]
 [ext_resource type="Script" path="res://level/gamelevel/HomeButton.gd" id="5_1k4fg"]
 [ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/gamelevel/phases/intro/Season.tscn" id="5_4nm7p"]
@@ -117,7 +116,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [null],
+"args": [],
 "method": &"change_texture"
 }]
 }
@@ -3851,7 +3850,6 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(777, 345.5)
 scale = Vector2(1, 1e-05)
-texture = ExtResource("4_vn1ca")
 script = ExtResource("5_8lg57")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Intro/IntroCard"]
@@ -4071,6 +4069,7 @@ script = ExtResource("27_4wjva")
 [node name="Instructions" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 follow_viewport_enabled = true
 script = ExtResource("35_bvj23")
 
