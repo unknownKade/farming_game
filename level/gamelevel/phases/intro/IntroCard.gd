@@ -3,12 +3,14 @@ extends Sprite2D
 class_name IntroCard
 
 const path ="res://resource/images/game_level/routine/"
-const extension = ".aseprite"
+const extension = ".png"
 var display_state: bool = true
 const seasons  = ["Spring", "Summer", "Autumn", "Winter"]
 
 func enter() -> void:
 	change_texture()
+	
+	SoundManager.sfx_play(&"weather_side")
 	$AnimationPlayer.queue("enter")
 	#await $AnimationPlayer.animation_finished
 	
@@ -20,7 +22,7 @@ func change_texture() -> void:
 	#
 	#texture = ImageTexture.new()
 	#texture.create_from_image(image)
-	#self.texture = load(load)
+	self.texture = load(load)
 	
 	display_state = true
 	self.scale.y = 0

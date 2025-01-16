@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/dogicabold.otf-213c5583a436ab03379f3be9af4e5f
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
