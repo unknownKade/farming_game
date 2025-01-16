@@ -23,6 +23,8 @@ func _ready():
 		child.end_player_phase.connect(exit)
 
 func display_cards() -> void:
+	for child in p1.get_children():
+		child.sync_level()
 	%HandAnimationPlayer.play("display")
 
 #return carrot
@@ -37,20 +39,21 @@ func assess_played_card() -> void:
 	if !p1.played_card or !p2.played_card:
 		return
 	
-	if p1.played_card.name == "Carrot":
+	if p1.played_card.name == "Carrot" and !is_there_only_carrot(%Player1):
 		var action = carrot_action(p1.played_card, p2.played_card)
+		
 		if action != Action.NONE:
 			p1.escape_or_swap(action)
 			return
 		
-	if p2.played_card.name == "Carrot":
+	if p2.played_card.name == "Carrot" and !is_there_only_carrot(%Player2):
+		
 		var action = carrot_action(p2.played_card, p1.played_card)
 		if action != Action.NONE:
 			p2.escape_or_swap(action)
 			return
 	
 	player_phase = false
-	#seeding and dialouge
 	var dialouge_event = "select"
 	
 	if p1.carrot_swap:
@@ -76,3 +79,10 @@ func carrot_action(card1, card2) -> Action:
 		return Action.SWAP
 		
 	return Action.NONE
+
+func is_there_only_carrot(player: Node) -> bool:
+	for child in player.get_children():
+		if child is Node2D:
+			if child.name != "Carrot" and child.level > 0:
+				return false
+	return true

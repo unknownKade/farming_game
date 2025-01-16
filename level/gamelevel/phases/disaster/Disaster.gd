@@ -24,7 +24,7 @@ func _input(event):
 		%HandAnimationPlayer.play(fade_anim)
 
 func enter():
-	if GameManger.current_round == 12 :
+	if GameManger.current_round == 12 or !(is_any_crop_alive(%Player1) and is_any_crop_alive(%Player2)):
 		%End.enter()
 	elif GameManger.current_round%4 == 0 :
 		#get random disaster
@@ -40,6 +40,8 @@ func _on_level_animation_animation_finished(anim_name):
 			can_click = true
 		fade_anim :
 			%HandAnimationPlayer.play("RESET")
+			for child in  %Player1.get_children():
+				child.anim_player.play("RESET")
 			exit()
 
 #cards shake after disaster
@@ -56,7 +58,7 @@ func _on_animation_player_animation_finished(anim_name):
 	await get_tree().create_timer(2).timeout
 	%HandAnimationPlayer.play(result_anim)
 
-func disaster_result():
+func disaster_result() -> void:
 	for child in %Player1.get_children():
 		child.level = child.level - 1
 		if child.level <0:
@@ -67,3 +69,12 @@ func disaster_result():
 			child.level = child.level - 1
 			if child.level <0:
 				child.level = 0
+
+#returns true if at least one crop is alive
+func is_any_crop_alive(player: Node) -> bool:
+	for child in player.get_children():
+		if child is Node2D:
+			if child.level > 0:
+				return true
+	return false
+	

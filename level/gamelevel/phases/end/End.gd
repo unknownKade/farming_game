@@ -30,10 +30,11 @@ func _on_gradient_faded_out():
 
 func is_crops_alive(player:Node) -> bool:
 	for child in player.get_children():
-		if child.level > 0 :
-			continue
-		else :
-			return false
+		if child is Node2D:
+			if child.level > 0 :
+				continue
+			else :
+				return false
 	return true
 
 func _on_gui_input(event):
