@@ -28,9 +28,10 @@ func escape() -> void:
 	selected_card = null
 	played_card = null
 	$Carrot.deck_anim_player.queue("escape")
+	
 func start_shake() -> void:
 	for child in get_children():
-		child.start_shake()
+		child.play_shake()
 		child.sync_card_level()
 		
 func after_card_dialouge(event) -> void:

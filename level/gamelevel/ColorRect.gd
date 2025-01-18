@@ -8,7 +8,7 @@ signal signal_click(card)
 func _gui_input(event):
 	var is_click : bool = event is InputEventMouseButton and event.is_pressed()
 
-	if !is_click:
+	if !is_click or GameManger.random_ai:
 		return
 	elif event.button_index == MOUSE_BUTTON_LEFT:
 		signal_click.emit(get_parent())

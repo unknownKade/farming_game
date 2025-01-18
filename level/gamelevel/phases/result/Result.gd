@@ -118,7 +118,19 @@ func tomato_skill(c1, c2) -> int:
 			else:
 				return -2
 	return 0
-
+	
+func lift_buff(c1) -> void:
+	var player_name = "player1" if c1.get_parent() == %Player1 else "player2"
+	if c1.state == "CARO_PHOBIA":
+		c1.get_parent().get_node("Carrot").locked = false
+		print(player_name + " potato's CARO-PHOBIA has faded and carrot is unlocked")
+	
+	if c1.state == "FREEZE":
+		c1.get_parent().get_node("Potato").locked = false
+		print(player_name + " potato's buff FREEZE is lifted")
+	if c1.state == "ENVY":
+		print(player_name + " potato's buff ENVY is lifted")
+	c1.state = ""
 func end_phase() -> void:
 	if p1.name == "Beet" and p1.level == 4:
 		check_beet_revive(true)
@@ -129,19 +141,12 @@ func end_phase() -> void:
 	var p1_potato = %Player1.get_node("Potato")
 	var p2_potato = %Player2.get_node("Potato")
 	
-	if p1_potato.state == "CARO_PHOBIA":
-		%Player1.get_node("Carrot").locked = false
-		p1_potato.state = ""
-		print("player1 potato's carophobia has faded and carrot is unlocked")
-	
-	if p1_potato.state == "FREEZE":
-		%Player2.get_node("Potato").locked = false
-		p1_potato.state = ""
-		print("player2 potato's buff Freeze is lifted")
-		
-	if p1_potato.level == 2:
+	lift_buff(p1_potato)
+	lift_buff(p2_potato)
+
+	if p1.name == "Potato" and p1_potato.level == 2:
 		potato_buff(p1_potato)
-	if p2_potato.level == 2:
+	if p2.name == "Potato" and p2_potato.level == 2:
 		potato_buff(p2_potato)
 	
 	if revive_card != null:
