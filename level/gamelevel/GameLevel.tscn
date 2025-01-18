@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=122 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level/game_level_background.png" id="2_8q7lq"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://hgtu14xbl1l7" path="res://resource/audio/card_select.wav" id="16_pybk0"]
 [ext_resource type="AudioStream" uid="uid://cgv48tyvedmfx" path="res://resource/audio/card_deselect.wav" id="16_uaijc"]
 [ext_resource type="AudioStream" uid="uid://t4fd22gwa3bh" path="res://resource/audio/card_display.wav" id="19_b6nn1"]
+[ext_resource type="Script" path="res://level/gamelevel/random_ai.gd" id="19_ptrmm"]
 [ext_resource type="PackedScene" uid="uid://bbvpiyvhbpqwa" path="res://level/gamelevel/phases/result/Effect.tscn" id="19_wsyi1"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Player1.gd" id="19_yccec"]
 [ext_resource type="Script" path="res://level/card/Player2Card.gd" id="20_845fl"]
@@ -3865,6 +3866,12 @@ position = Vector2(5, -5)
 unique_name_in_owner = true
 position = Vector2(5, 140)
 
+[node name="RandomAI" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("19_ptrmm")
+
+[node name="Timer" type="Timer" parent="RandomAI"]
+
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_sdvlp")
@@ -4053,6 +4060,7 @@ texture_repeat = 1
 script = ExtResource("20_x2kq7")
 
 [node name="Disaster" parent="." instance=ExtResource("26_xqr1u")]
+visible = false
 position = Vector2(185, 677)
 scale = Vector2(6, 6)
 
@@ -4069,7 +4077,6 @@ script = ExtResource("27_4wjva")
 [node name="Instructions" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
-visible = false
 follow_viewport_enabled = true
 script = ExtResource("35_bvj23")
 
@@ -4146,6 +4153,7 @@ stretch_mode = 4
 
 [connection signal="timeout" from="BackGround/Timer" to="BackGround" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Intro/IntroCard/AnimationPlayer" to="Intro" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="RandomAI/Timer" to="RandomAI" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Player/Player1/Potato/DeckAnimationPlayer" to="Player/Player1/Potato" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Player/Player1/Tomato/DeckAnimationPlayer" to="Player/Player1/Tomato" method="_on_deck_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Player/Player1/Carrot/DeckAnimationPlayer" to="Player/Player1/Carrot" method="_on_deck_animation_player_animation_finished"]
