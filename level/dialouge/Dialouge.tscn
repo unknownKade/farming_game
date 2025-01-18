@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://level/dialouge/TextGridContainer.gd" id="2_hynwp"]
 [ext_resource type="FontFile" uid="uid://doxxqc2ryyh34" path="res://resource/fonts/Minecraft.ttf" id="3_266vk"]
 [ext_resource type="Script" path="res://level/dialouge/RichTextLabel.gd" id="6_61spw"]
+[ext_resource type="Texture2D" uid="uid://bvrf5oxt36y44" path="res://resource/images/speech_next.png" id="6_vj3m6"]
 [ext_resource type="Script" path="res://level/dialouge/TextureRect.gd" id="7_ry7i6"]
 [ext_resource type="Script" path="res://level/dialouge/Tail.gd" id="8_m0he4"]
-[ext_resource type="Texture2D" uid="uid://c6lij3kfickxb" path="res://resource/images/speech_tail_up.png" id="8_yuia6"]
 [ext_resource type="Texture2D" uid="uid://di2qch6mvtnjm" path="res://resource/images/speech_tail_side.png" id="9_chxhb"]
 
 [node name="Dialouge" type="Control" node_paths=PackedStringArray("panel", "tail", "textbox", "next_arrow")]
@@ -62,7 +62,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-texture = ExtResource("8_yuia6")
+texture = ExtResource("6_vj3m6")
 stretch_mode = 4
 script = ExtResource("7_ry7i6")
 

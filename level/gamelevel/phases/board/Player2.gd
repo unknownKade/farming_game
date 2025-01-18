@@ -59,7 +59,7 @@ func process_click(crop:Node) -> void:
 		$AnimationPlayer.play_backwards(selected_card.name.to_lower() + "_hover")
 		$AnimationPlayer.queue(anim_name)
 		selected_card = crop
-		
+
 func escape() -> void:
 	selected_card = null
 	anim_player.queue("select")

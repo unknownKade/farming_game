@@ -2,6 +2,7 @@ extends Node
 
 var is_turn:bool = false
 var play_card:Node
+
 func choose_card():
 	is_turn = true
 	$Timer.start(3)

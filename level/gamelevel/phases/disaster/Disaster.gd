@@ -44,7 +44,6 @@ func _on_level_animation_animation_finished(anim_name):
 				child.anim_player.play("RESET")
 			exit()
 
-#cards shake after disaster
 func _on_animation_player_animation_finished(anim_name):
 	disaster_result()
 	if current_disaster != null :
@@ -72,7 +71,6 @@ func disaster_result() -> void:
 			if child.level <0:
 				child.level = 0
 
-#returns true if at least one crop is alive
 func is_any_crop_alive(player: Node) -> bool:
 	for child in player.get_children():
 		if child is Node2D:

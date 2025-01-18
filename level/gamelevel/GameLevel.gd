@@ -15,7 +15,6 @@ func _ready():
 	SoundManager.play_bgm()
 	for phase in phases:
 		phase.Transition.connect(on_state_exit)
-	#_on_instruction_instruction_clicked()
 	instructions.get_node(GameManger.animation_player).play("fade_in")
 	
 func on_state_exit(state: Node):
@@ -24,14 +23,12 @@ func on_state_exit(state: Node):
 		%Player1.played_card = null
 		%Player2.played_card = null
 		current_phase =0
-		
 	else :
 		current_phase +=1
 		
 	phases[current_phase].enter()
 	
 func _on_instruction_click():
-	#start game after instruction is clicked
 	if GameManger.current_round == 0 :
 		GameManger.current_round = test_year * 4 - 4 + 1
 		phases[current_phase].enter()

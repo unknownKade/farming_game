@@ -6,13 +6,9 @@ class_name Player
 @onready var p2:Node = $Player2
 @onready var animPlayer:AnimationPlayer = $HandAnimationPlayer
 var player_phase:bool = false
-enum Action{
-	NONE, ESCAPE, SWAP
-}
-
 var carrot_prob = [0, 0, 0.25, 0.5, 1]
 
-func enter() -> void:	#if spring display_cards
+func enter() -> void:
 	if GameManger.current_round%4 == 1:
 		display_cards()
 	player_phase = true
@@ -29,7 +25,6 @@ func display_cards() -> void:
 		child.sync_card_level()
 	%HandAnimationPlayer.play("display")
 
-#return carrot
 func return_carrot() -> void:
 	if p1.has_run_away:
 		p1.return_carrot()
