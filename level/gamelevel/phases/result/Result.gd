@@ -5,10 +5,7 @@ const next_state = "Disaster"
 var p1: Node
 var p2: Node
 var revive_card: Node
-
-func _ready():
-	pass
-	#%Hand.card_return_ended.connect(end_phase)
+var revive_is_p2: bool
 
 func enter() -> void:
 	p1 = %Player1.played_card
@@ -59,41 +56,49 @@ func beet_skill(p1, is_p1) -> int:
 	
 	if p1.level < 4:
 		return 1
-	elif is_p1:
-		opponent = %Player2
-	else:
-		opponent = %Player1
-		
-	for child in opponent.get_children():
-		if child is Node2D and child.level == 0:
-			dead_crops.append(child)
-	revive_card = dead_crops[randi()%len(dead_crops)]
 	
 	return 0
 
 func check_beet_revive(is_p1):
-	var revived_crop = p1.revive(is_p1) if is_p1 else p2.revive(is_p1)
+	print("checked beet revive skill of " + "player1" if is_p1 else "player2")
+	revive_card = p1.revive() if is_p1 else p2.revive()
 	
-	if is_p1 and revived_crop != null :
-		var card = %Hand.get_node(revived_crop.name)
-		card.get_node("DeckAnimationPlayer").queue("revive")
-
-	if !is_p1 and revived_crop != null :
-		var card = %Player2.get_node(revived_crop.name)
-		var animation_player = %Player2.get_node(GameManger.animation_player)
-		animation_player.play(revived_crop.name.to_lower() + "_revive")
-
+	if revive_card == null:
+		print("there are no crops to be revived")
+	else:
+		print("crop to be revived is " + revive_card.name)
+	
+	if is_p1 and revive_card != null :
+		revive_card.level =1
+		revive_is_p2 = true
+		
+		%Player2.anim_player.play(revive_card.name.to_lower() + "_revive")
+		await %Player2.anim_player.animation_finished
+	
+	if !is_p1 and revive_card != null :
+		revive_card.level =1
+		revive_card.deck_anim_player.play("revive")
+		revive_is_p2 = false
+		
 func potato_skill(c1, c2) -> int:
+	var player_name = "player1" if c1.get_parent() == %Player1 else "player2"
 	if c1.state == "ENVY":
+		print(player_name + " potato's envy state has dealt -1lv and state has been removed")
 		c1.state = ""
 		return -1
 	return 0
 	
 func potato_buff(c1) -> void:
+	var player_name = "player1" if c1.get_parent() == %Player1 else "player2"
 	match randi_range(0,2):
 		0 : c1.state = "ENVY"
-		1 : c1.state = "CARO_PHOBIA"
-		3 : c1.state = "FREEZE"
+		1 : 
+			c1.state = "CARO_PHOBIA"
+			c1.get_parent().get_node("Carrot").locked = true
+		2 : 
+			c1.state = "FREEZE"
+			c1.locked = true
+	print(player_name + " potato now has the buff " + c1.state)
 
 func tomato_skill(c1, c2) -> int:
 	match c1.level:
@@ -115,23 +120,39 @@ func tomato_skill(c1, c2) -> int:
 	return 0
 
 func end_phase() -> void:
-	
 	if p1.name == "Beet" and p1.level == 4:
 		check_beet_revive(true)
 	
 	if p2.name == "Beet" and p2.level ==4:
 		check_beet_revive(false)
-
 	
-	if %Player1.get_node("Potato").level == 2:
-		potato_buff(%Player1.get_node("Potato"))
-	if %Player2.get_node("Potato").level == 2:
-		potato_buff(%Player2.get_node("Potato"))
+	var p1_potato = %Player1.get_node("Potato")
+	var p2_potato = %Player2.get_node("Potato")
+	
+	if p1_potato.state == "CARO_PHOBIA":
+		%Player1.get_node("Carrot").locked = false
+		p1_potato.state = ""
+		print("player1 potato's carophobia has faded and carrot is unlocked")
+	
+	if p1_potato.state == "FREEZE":
+		%Player2.get_node("Potato").locked = false
+		p1_potato.state = ""
+		print("player2 potato's buff Freeze is lifted")
 		
-	#%Player1.return_carrot()
+	if p1_potato.level == 2:
+		potato_buff(p1_potato)
+	if p2_potato.level == 2:
+		potato_buff(p2_potato)
 	
+	if revive_card != null:
+		if revive_is_p2:
+			%Player2.anim_player.play(revive_card.name.to_lower() + "_revive")
+			await %Player2.anim_player.animation_finished
+		else:
+			revive_card.deck_anim_player.play("revive")
+
 	%Player2.sync_card_level()
-	%Player2/AnimationPlayer.play_backwards(%Player2.played_card.name.to_lower() + "_select")
+	%Player2.anim_player.play_backwards(%Player2.played_card.name.to_lower() + "_select")
 	
 	self.visible = false
 	exit()

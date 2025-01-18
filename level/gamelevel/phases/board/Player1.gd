@@ -16,43 +16,29 @@ var carrot_escape = false
 var selected_card
 var played_card
 
-#carrot escape
-#swap to carrot
-#confirm card -> seeding
-#return card -> after results
-
 func _ready():
 	%DialougeManager.finished_speech_bubble.connect(after_card_dialouge)
 
 func _on_dialouge_manager_finished_speech_bubble(event) -> void:
-	if carrot_swap:
-			played_card = null
-			$Carrot.deck_anim_player.queue("return")
-	elif carrot_escape:
+	if carrot_escape:
 		played_card = null
 		$Carrot.deck_anim_player.queue("escape")
-	
-func lock_cards(is_locked) -> void:
-	for child in get_children():
-		child.locked = is_locked
 		
-func escape_or_swap(is_escape) -> void:
-	played_card = null
+func escape() -> void:
 	selected_card = null
-	var anim_name = "escape" if is_escape else "return"
-	$Carrot.deck_anim_player.queue(anim_name)
-
-func card_dialouge(dialouge_event) -> void:
-	%DialougeManager.make_speech_bubble(self.name, dialouge_event)
-
+	played_card = null
+	$Carrot.deck_anim_player.queue("escape")
+func start_shake() -> void:
+	for child in get_children():
+		child.start_shake()
+		child.sync_card_level()
+		
 func after_card_dialouge(event) -> void:
-	if event == "swap":
-		played_card.deck_anim_player.queue("swap")
-		played_card = null
-	elif event == "escape":
+	if event == "escape":
 		played_card.deck_anim_player.queue("escape")
 		played_card = null
 	else:
+		carrot_swap = false
 		played_card.deck_anim_player.queue("confirm")
 		
 func end_result_phase() -> void:

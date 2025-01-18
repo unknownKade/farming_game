@@ -50,11 +50,10 @@ func _on_animation_player_animation_finished(anim_name):
 	if current_disaster != null :
 		scenes[current_disaster].visible = false
 		current_disaster = null
-
-	for child in %Player1.get_children():
-		child.sprite.start_shake()
-		child.sync_card_level()
 		
+	%Player1.start_shake()
+	%Player2.start_shake()
+	
 	await get_tree().create_timer(2).timeout
 	%HandAnimationPlayer.play(result_anim)
 

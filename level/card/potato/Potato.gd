@@ -7,14 +7,14 @@ func _ready():
 	$Mask.signal_input.connect(process_click)
 	
 func _on_deck_animation_player_animation_finished(anim_name):
-	if anim_name == "revive" :
+	if anim_name == "revive":
 		crop_revived.emit()
-	elif anim_name == "confirm" :
+	elif anim_name == "confirm":
 		anim_player.play("seeding")
-	elif anim_name == "flip" :
+	elif anim_name == "flip":
 		deck_anim_player.queue("return")
-	elif anim_name == "return" :
-		get_parent().end_result_phase()
+	elif anim_name == "return" and !%Player1.carrot_swap:
+		%Player1.end_result_phase()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "seeding":

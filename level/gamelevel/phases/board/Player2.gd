@@ -8,11 +8,13 @@ const frame_set = {
 }
 
 @onready var player = get_parent()
-var carrot_ran: bool = false
+@onready var anim_player: Node = get_node("AnimationPlayer")
+var carrot_swap: bool = false
 var selected_card: Node
 var played_card: Node
 
 func _ready():
+	sync_card_level()
 	for child in get_children():
 		if child is Node2D:
 			child.get_node("ColorRect").signal_click.connect(process_click)
@@ -23,21 +25,11 @@ func sync_card_level():
 			child.set_frame(frame_set[child.name][child.level])
 
 func start_shake():
+	sync_card_level()
 	for child in get_children():
 		if child is Sprite2D:
 			child.start_shake()
-
-#func deselect_card(selected_card):
-	#sync_card_level()
-	#var anim_name = selected_card.name.to_lower() + "_select"
-	#$AnimationPlayer.play_backwards(anim_name)
-
-#func _on_animation_player_animation_finished(anim_name):
-	#if carrot_ran:
-		#carrot_ran = false
-		#deselect_card(GameManger.p2_deck[Crop.carrot])
-		#get_node(Crop.carrot).shivering = true
-
+			
 func hover(crop_name, is_enter) :
 	var is_locked = false
 	var anim_name = crop_name.to_lower() + "_hover"
@@ -50,7 +42,7 @@ func hover(crop_name, is_enter) :
 			$AnimationPlayer.play_backwards(anim_name)
 
 func process_click(crop:Node) -> void:
-	if !player.player_phase or played_card:
+	if !player.player_phase or played_card or crop.locked or crop.level < 1:
 		SoundManager.sfx_play(&"click_fail")
 		return
 	var anim_name = crop.name.to_lower() + "_hover"
@@ -67,3 +59,9 @@ func process_click(crop:Node) -> void:
 		$AnimationPlayer.play_backwards(selected_card.name.to_lower() + "_hover")
 		$AnimationPlayer.queue(anim_name)
 		selected_card = crop
+		
+func escape() -> void:
+	selected_card = null
+	anim_player.queue("select")
+	played_card = null
+	%Player.assess_played_card()
