@@ -6,7 +6,6 @@ class_name Player
 @onready var p2:Node = $Player2
 @onready var animPlayer:AnimationPlayer = $HandAnimationPlayer
 var player_phase:bool = false
-
 enum Action{
 	NONE, ESCAPE, SWAP
 }
@@ -17,6 +16,8 @@ func enter() -> void:	#if spring display_cards
 	if GameManger.current_round%4 == 1:
 		display_cards()
 	player_phase = true
+	if GameManger.random_ai:
+		%RandomAI.choose_card()
 
 func _ready():
 	for child in p1.get_children():
@@ -61,6 +62,8 @@ func assess_played_card() -> void:
 	if p2_escape:
 		print("player2's carrot escaped")
 		p2.escape()
+		if GameManger.random_ai:
+			%RandomAI.choose_card()
 		return
 	elif p2_swap:
 		print("player2's carrot swapped places")

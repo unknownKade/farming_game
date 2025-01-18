@@ -131,7 +131,7 @@ texture_normal = ExtResource("4_x1sk7")
 texture_pressed = ExtResource("7_3v31g")
 
 [connection signal="pressed" from="Background/ButtonContainer2/VBoxContainer/1PlayerMode" to="." method="_on_p1_button_pressed"]
-[connection signal="pressed" from="Background/ButtonContainer2/VBoxContainer2/2PlayerMode" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/ButtonContainer2/VBoxContainer2/2PlayerMode" to="." method="_on_p2_button_pressed"]
 [connection signal="pressed" from="Background/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Background/ButtonContainer/RuleButton" to="." method="_on_rule_button_pressed"]
 [connection signal="pressed" from="Background/ButtonContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -15,7 +15,12 @@ func _on_rule_button_pressed():
 
 func _on_exit_button_pressed():
 	SoundManager.sfx_play(&"menu_click")
-
+	get_tree().quit()
 
 func _on_p1_button_pressed() -> void:
+	GameManger.random_ai = false
+	get_tree().change_scene_to_file(ContentManager.game_scene_path)
+
+func _on_p2_button_pressed() -> void:
+	GameManger.random_ai = true
 	get_tree().change_scene_to_file(ContentManager.game_scene_path)
