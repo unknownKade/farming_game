@@ -10,8 +10,16 @@ var shiver_timer = 0.0
 var original_position: Vector2
 var shivering = false
 
+var buff_dict
+
 func _ready():
 	original_position = position
+	if self.name == "Potato":
+		buff_dict = {
+			"ENVY" : $Envy,
+			"FREEZE" : $Freeze,
+			"CARO_PHOBIA" : $Carophobia
+		}
 
 func revive():
 	var dead_arr = []
@@ -35,6 +43,12 @@ func _process(delta):
 		position = original_position
 		shivering = false
 
-func start_shake():
+func start_shake() -> void:
 	shivering = true
 	shiver_timer = shiver_duration
+
+func turn_on_buff() -> void:
+	buff_dict[self.state].visible = true
+
+func turn_off_buff() -> void:
+	buff_dict[self.state].visible = false

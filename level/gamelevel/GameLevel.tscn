@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://jxpf5kymyvsd"]
+[gd_scene load_steps=126 format=3 uid="uid://jxpf5kymyvsd"]
 
 [ext_resource type="Script" path="res://level/gamelevel/GameLevel.gd" id="1_lq06n"]
 [ext_resource type="Texture2D" uid="uid://dk5f0l23crbjl" path="res://resource/images/game_level/game_level_background.png" id="2_8q7lq"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://level/gamelevel/HomeButton.gd" id="5_1k4fg"]
 [ext_resource type="PackedScene" uid="uid://ysr8yebe3ke" path="res://level/gamelevel/phases/intro/Season.tscn" id="5_4nm7p"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/intro/IntroCard.gd" id="5_8lg57"]
-[ext_resource type="Texture2D" uid="uid://btmd1b64gh0w0" path="res://resource/images/game_level/menu_button/setting.png" id="5_dc0oy"]
 [ext_resource type="PackedScene" uid="uid://5tyvct2gygig" path="res://level/gamelevel/phases/intro/Environment.tscn" id="5_h7xs0"]
 [ext_resource type="Script" path="res://level/gamelevel/Player.gd" id="7_sdvlp"]
 [ext_resource type="PackedScene" uid="uid://dxofbby3bsmfa" path="res://level/card/beet/Beet.tscn" id="9_v8gl7"]
@@ -31,10 +30,13 @@
 [ext_resource type="Script" path="res://level/gamelevel/phases/result/Result.gd" id="20_x2kq7"]
 [ext_resource type="PackedScene" uid="uid://dpk0yuafrxxsh" path="res://level/gamelevel/phases/end/End.tscn" id="20_x4yi0"]
 [ext_resource type="AudioStream" uid="uid://c2fmyel12fsqt" path="res://resource/audio/carrot_run.wav" id="22_jgei1"]
+[ext_resource type="Texture2D" uid="uid://ctmp0fctq3pff" path="res://resource/images/card/potato2_ENVY.png" id="24_3gnee"]
 [ext_resource type="Texture2D" uid="uid://dslmqx03yl7sc" path="res://resource/images/card/Potato-Sheet.png" id="24_tlqqd"]
 [ext_resource type="Script" path="res://level/gamelevel/ColorRect.gd" id="25_7q5rd"]
 [ext_resource type="Texture2D" uid="uid://8wnq8qe4puw" path="res://resource/images/card/Tomato-Sheet.png" id="25_db010"]
+[ext_resource type="Texture2D" uid="uid://rekmulo735lv" path="res://resource/images/card/potato2_FREEZE.png" id="25_iflc2"]
 [ext_resource type="Script" path="res://level/gamelevel/phases/board/Player2.gd" id="25_vgpto"]
+[ext_resource type="Texture2D" uid="uid://dvl1kdjfsldvn" path="res://resource/images/card/potato2_CAROPHOBIA.png" id="26_1tomg"]
 [ext_resource type="Texture2D" uid="uid://b5w4rgm2hyyhh" path="res://resource/images/card/Carrot-Sheet.png" id="26_6avfx"]
 [ext_resource type="PackedScene" uid="uid://c65ks63ypbe66" path="res://level/gamelevel/phases/disaster/Disaster.tscn" id="26_xqr1u"]
 [ext_resource type="Script" path="res://level/gamelevel/DailogueManager.gd" id="27_4wjva"]
@@ -43,7 +45,9 @@
 [ext_resource type="Script" path="res://level/gamelevel/Instruction.gd" id="35_bvj23"]
 [ext_resource type="Texture2D" uid="uid://dt2y4e3hyko0s" path="res://resource/images/game_level/menu_button/pause_hover.png" id="40_fu7ob"]
 [ext_resource type="Script" path="res://level/gamelevel/PauseButton.gd" id="41_bch87"]
-[ext_resource type="Texture2D" uid="uid://b3jgjy8m14wp" path="res://resource/images/game_level/menu_button/setting_hover.png" id="42_oaf2f"]
+[ext_resource type="Texture2D" uid="uid://8fip5jvelcr0" path="res://resource/images/game_level/menu_button/sound1.png" id="46_bxxcf"]
+[ext_resource type="Texture2D" uid="uid://c7uu2nm8igejd" path="res://resource/images/game_level/menu_button/sound_pressed1.png" id="47_vjfyl"]
+[ext_resource type="Script" path="res://level/gamelevel/option_button.gd" id="48_4ojfu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa1h4"]
 
@@ -3960,6 +3964,18 @@ offset_bottom = 32.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("25_7q5rd")
 
+[node name="Envy" type="Sprite2D" parent="Player/Player2/Potato"]
+visible = false
+texture = ExtResource("24_3gnee")
+
+[node name="Freeze" type="Sprite2D" parent="Player/Player2/Potato"]
+visible = false
+texture = ExtResource("25_iflc2")
+
+[node name="Carophobia" type="Sprite2D" parent="Player/Player2/Potato"]
+visible = false
+texture = ExtResource("26_1tomg")
+
 [node name="Tomato" type="Sprite2D" parent="Player/Player2"]
 position = Vector2(856, 39)
 rotation = -0.202458
@@ -4077,6 +4093,7 @@ script = ExtResource("27_4wjva")
 [node name="Instructions" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+visible = false
 follow_viewport_enabled = true
 script = ExtResource("35_bvj23")
 
@@ -4147,9 +4164,10 @@ offset_top = 802.0
 offset_right = 113.0
 offset_bottom = 810.0
 scale = Vector2(5, 5)
-texture_normal = ExtResource("5_dc0oy")
-texture_hover = ExtResource("42_oaf2f")
+texture_normal = ExtResource("46_bxxcf")
+texture_hover = ExtResource("47_vjfyl")
 stretch_mode = 4
+script = ExtResource("48_4ojfu")
 
 [connection signal="timeout" from="BackGround/Timer" to="BackGround" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Intro/IntroCard/AnimationPlayer" to="Intro" method="_on_animation_player_animation_finished"]

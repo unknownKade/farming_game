@@ -83,6 +83,7 @@ func check_beet_revive(is_p1):
 func potato_skill(c1, c2) -> int:
 	var player_name = "player1" if c1.get_parent() == %Player1 else "player2"
 	if c1.state == "ENVY":
+		c1.turn_off_buff()
 		print(player_name + " potato's envy state has dealt -1lv and state has been removed")
 		c1.state = ""
 		return -1
@@ -91,13 +92,18 @@ func potato_skill(c1, c2) -> int:
 func potato_buff(c1) -> void:
 	var player_name = "player1" if c1.get_parent() == %Player1 else "player2"
 	match randi_range(0,2):
-		0 : c1.state = "ENVY"
+		0 : 
+			c1.state = "ENVY"
+			c1.turn_on_buff()
 		1 : 
 			c1.state = "CARO_PHOBIA"
 			c1.get_parent().get_node("Carrot").locked = true
+			c1.turn_on_buff()
 		2 : 
 			c1.state = "FREEZE"
 			c1.locked = true
+			c1.turn_on_buff()
+			
 	print(player_name + " potato now has the buff " + c1.state)
 
 func tomato_skill(c1, c2) -> int:
@@ -122,15 +128,20 @@ func tomato_skill(c1, c2) -> int:
 func lift_buff(c1) -> void:
 	var player_name = "player1" if c1.get_parent() == %Player1 else "player2"
 	if c1.state == "CARO_PHOBIA":
+		c1.turn_off_buff()
 		c1.get_parent().get_node("Carrot").locked = false
 		print(player_name + " potato's CARO-PHOBIA has faded and carrot is unlocked")
 	
 	if c1.state == "FREEZE":
+		c1.turn_off_buff()
 		c1.get_parent().get_node("Potato").locked = false
 		print(player_name + " potato's buff FREEZE is lifted")
+	
 	if c1.state == "ENVY":
+		c1.turn_off_buff()
 		print(player_name + " potato's buff ENVY is lifted")
 	c1.state = ""
+	
 func end_phase() -> void:
 	if p1.name == "Beet" and p1.level == 4:
 		check_beet_revive(true)
