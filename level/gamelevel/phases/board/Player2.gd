@@ -62,6 +62,6 @@ func process_click(crop:Node) -> void:
 
 func escape() -> void:
 	selected_card = null
-	anim_player.queue("select")
 	played_card = null
+	anim_player.queue("carrot_select")
 	%Player.assess_played_card()

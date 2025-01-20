@@ -58,4 +58,4 @@ func sync_card_level() -> void:
 	$Mask/Sprite2D.set_frame(frame_set[level])
 #if card is selected play level animation
 func play_shake() -> void:
-	anim_player.queue("shake")
+	$Mask/Sprite2D.start_shake()

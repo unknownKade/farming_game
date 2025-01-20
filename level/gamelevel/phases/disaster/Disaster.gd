@@ -51,7 +51,7 @@ func _on_animation_player_animation_finished(anim_name):
 		current_disaster = null
 		
 	%Player1.start_shake()
-	for child in %Player.get_children():
+	for child in %Player1.get_children():
 		child.sync_card_level()
 	%Player2.start_shake()
 	%Player2.sync_card_level()
